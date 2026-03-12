@@ -105,4 +105,99 @@ def run_ga(target, pop_size, num_genes, generations, mutation_rate):
         population = new_population
 
     return best_individual_ever, best_value_ever, best_fitness_per_generation
+def save_plot(fitness_curve, title, filepath, target=None):
+    plt.figure()
+    plt.plot(fitness_curve)
+    plt.xlabel("Generation")
+    plt.ylabel("Best Fitness")
+    if target is not None:
+        plt.title(f"{title} | target = {target}")
+    else:
+        plt.title(title)
+    plt.grid(True)
+    plt.savefig(filepath)
+    plt.close()
 
+def run_experiments(target=42, num_genes=9):
+    generations = 300
+
+    experiments = [
+        ("baseline_pop200_mut0.05", 200, num_genes, 0.05, 1),
+        ("mut0", 200, num_genes, 0.00, 1),
+        ("mut0.5", 200, num_genes, 0.50, 1),
+        ("pop10_mut0.05", 10, num_genes, 0.05, 1),
+        ("baseline_run3x", 200, num_genes, 0.05, 3),
+        ("target42_numgenes13", 200, 13, 0.05, 1) if target == 42 else None,
+    ]
+
+    experiments = [exp for exp in experiments if exp is not None]
+
+    exp_folder = "results/experiments"
+    os.makedirs(exp_folder, exist_ok=True)
+
+    for name, pop_size, genes, mutation_rate, runs in experiments:
+        for r in range(runs):
+            print("\n" + "=" * 50)
+            print(f"Experiment: {name} | run {r+1}")
+
+            best_individual, best_value, fitness_curve = run_ga(
+                target, pop_size, genes, generations, mutation_rate
+            )
+
+            print("Best overall solution:")
+            print(f"{individual_to_string(best_individual)} = {best_value}")
+
+            filename = f"target_{target}__{name}__run{r+1}.png"
+            filepath = os.path.join(exp_folder, filename)
+
+            save_plot(
+                fitness_curve,
+                f"{name} | run {r+1}",
+                filepath,
+                target=target
+            )
+
+def main():
+    solutions_folder = "results/solutions"
+    experiments_folder = "results/experiments"
+    os.makedirs(solutions_folder, exist_ok=True)
+    os.makedirs(experiments_folder, exist_ok=True)
+
+    test_cases = [
+        (10, 5),
+        (42, 9),
+        (350, 9),
+        (0, 9),
+        (999, 13),
+    ]
+
+    for target, num_genes in test_cases:
+        print("\n" + "=" * 50)
+        print(f"Running GA for target: {target} | num_genes: {num_genes}")
+
+        best_individual, best_value, fitness_curve = run_ga(
+            target=target,
+            pop_size=200,
+            num_genes=num_genes,
+            generations=300,
+            mutation_rate=0.05
+        )
+
+        print("\nBest overall solution:")
+        print(f"{individual_to_string(best_individual)} = {best_value}")
+
+        filename = f"target_{target}_genes_{num_genes}.png"
+        filepath = os.path.join(solutions_folder, filename)
+
+        save_plot(
+            fitness_curve,
+            f"GA Convergence",
+            filepath,
+            target=target
+        )
+
+    run_experiments(target=42, num_genes=9)
+    run_experiments(target=999, num_genes=13)
+
+if __name__ == "__main__":
+    main()
