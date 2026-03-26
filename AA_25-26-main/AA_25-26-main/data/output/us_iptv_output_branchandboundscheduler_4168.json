@@ -1,0 +1,274 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "newjerseydevils_nh_nhl_hockey_utah_mammoth__2026-01-04_0000",
+            "channel_id": 7311,
+            "start": 0,
+            "end": 30
+        },
+        {
+            "program_id": "fanduelsportsnetwo_air_date_january_3_2026__2026-01-04_0030",
+            "channel_id": 4405,
+            "start": 30,
+            "end": 60
+        },
+        {
+            "program_id": "cbswdjt_us_jeopardy_2026-01-04_0060",
+            "channel_id": 895,
+            "start": 60,
+            "end": 90
+        },
+        {
+            "program_id": "cbswkbn_us_jeopardy_2026-01-04_0090",
+            "channel_id": 922,
+            "start": 90,
+            "end": 120
+        },
+        {
+            "program_id": "thespotarizona58kw_judge_judy_2026-01-04_0120",
+            "channel_id": 9462,
+            "start": 120,
+            "end": 150
+        },
+        {
+            "program_id": "fanduelsportsnetwo_kings_live_pregame_2026-01-04_0150",
+            "channel_id": 4407,
+            "start": 150,
+            "end": 180
+        },
+        {
+            "program_id": "racernetwork_us_off_road_travel_tv_2026-01-04_0180",
+            "channel_id": 8806,
+            "start": 180,
+            "end": 210
+        },
+        {
+            "program_id": "victorychannel_us_concepts_of_faith_2026-01-04_0210",
+            "channel_id": 9828,
+            "start": 210,
+            "end": 240
+        },
+        {
+            "program_id": "pbsweao_us_the_life_of_a_musician_2026-01-04_0240",
+            "channel_id": 7978,
+            "start": 240,
+            "end": 270
+        },
+        {
+            "program_id": "aljazeera_us_counting_the_cost_2026-01-04_0270",
+            "channel_id": 310,
+            "start": 270,
+            "end": 300
+        },
+        {
+            "program_id": "cwkalbdt3_us_live_pd_presents_2026-01-04_0300",
+            "channel_id": 1198,
+            "start": 300,
+            "end": 330
+        },
+        {
+            "program_id": "cbswboc_us_outdoors_delmarva_2026-01-04_0330",
+            "channel_id": 880,
+            "start": 330,
+            "end": 360
+        },
+        {
+            "program_id": "awe_us_luxury_property_wars_2026-01-04_0360",
+            "channel_id": 291,
+            "start": 360,
+            "end": 390
+        },
+        {
+            "program_id": "abckrdo_us_icrime_with_elizabeth_va_2026-01-04_0390",
+            "channel_id": 77,
+            "start": 390,
+            "end": 420
+        },
+        {
+            "program_id": "abcwhtm_us_the_outdoorsman_with_max_2026-01-04_0420",
+            "channel_id": 157,
+            "start": 420,
+            "end": 450
+        },
+        {
+            "program_id": "abcwgno_us_live_pd_presents_2026-01-04_0450",
+            "channel_id": 151,
+            "start": 450,
+            "end": 480
+        },
+        {
+            "program_id": "cwkcba_us_live_pd_presents_2026-01-04_0480",
+            "channel_id": 1201,
+            "start": 480,
+            "end": 510
+        },
+        {
+            "program_id": "cbswiye_us_the_outdoorsman_with_max_2026-01-04_0510",
+            "channel_id": 917,
+            "start": 510,
+            "end": 540
+        },
+        {
+            "program_id": "cbswdef_us_judge_judy_2026-01-04_0540",
+            "channel_id": 894,
+            "start": 540,
+            "end": 570
+        },
+        {
+            "program_id": "abcwtvm_us_rides_with_jay_thomas_2026-01-04_0570",
+            "channel_id": 214,
+            "start": 570,
+            "end": 600
+        },
+        {
+            "program_id": "theohiochannel_us_wild_ohio_2026-01-04_0600",
+            "channel_id": 9456,
+            "start": 600,
+            "end": 630
+        },
+        {
+            "program_id": "fanduelsportsnetwo_rerun_air_date_january_4_2026-01-04_0630",
+            "channel_id": 4396,
+            "start": 630,
+            "end": 660
+        },
+        {
+            "program_id": "fanduelsportsnetwo_rerun_air_date_january_4_2026-01-04_0660",
+            "channel_id": 4396,
+            "start": 660,
+            "end": 690
+        },
+        {
+            "program_id": "nbcwcnc_us_relieve_your_foot_pain_w_2026-01-04_0690",
+            "channel_id": 6178,
+            "start": 690,
+            "end": 720
+        },
+        {
+            "program_id": "14kjzz_us_positively_america_with__2026-01-04_0720",
+            "channel_id": 0,
+            "start": 720,
+            "end": 750
+        },
+        {
+            "program_id": "23newswvua_us_highway_to_heaven_2026-01-04_0720",
+            "channel_id": 1,
+            "start": 750,
+            "end": 780
+        },
+        {
+            "program_id": "metvwjlp_us_mutual_of_omaha_s_wild_k_2026-01-04_0780",
+            "channel_id": 5377,
+            "start": 780,
+            "end": 810
+        },
+        {
+            "program_id": "cwwcct_us_midnight_cry_2026-01-04_0810",
+            "channel_id": 1255,
+            "start": 810,
+            "end": 840
+        },
+        {
+            "program_id": "worldwgbhdt2_us_gbh_news_rooted_2026-01-04_0840",
+            "channel_id": 9921,
+            "start": 840,
+            "end": 870
+        },
+        {
+            "program_id": "pbswtvi_us_odd_squad_2026-01-04_0870",
+            "channel_id": 8050,
+            "start": 870,
+            "end": 900
+        },
+        {
+            "program_id": "pbswpbt_us_elinor_wonders_why_2026-01-04_0900",
+            "channel_id": 8035,
+            "start": 900,
+            "end": 930
+        },
+        {
+            "program_id": "atlantanewsfirstwa_anf_news_live_weekend_at_2026-01-04_0930",
+            "channel_id": 473,
+            "start": 930,
+            "end": 960
+        },
+        {
+            "program_id": "madeinhollywood_us_family_movie_night_speci_2026-01-04_0960",
+            "channel_id": 5554,
+            "start": 960,
+            "end": 990
+        },
+        {
+            "program_id": "foxwzdx_us_jesse_duplantis_ministri_2026-01-04_0990",
+            "channel_id": 4352,
+            "start": 990,
+            "end": 1020
+        },
+        {
+            "program_id": "foxwzdx_us_fox_nfl_kickoff_2026-01-04_1020",
+            "channel_id": 4352,
+            "start": 1020,
+            "end": 1056
+        },
+        {
+            "program_id": "dazntv_us_uefa_europa_league_socce_2026-01-04_1055",
+            "channel_id": 1737,
+            "start": 1056,
+            "end": 1086
+        },
+        {
+            "program_id": "abckgo_us_abc7_news_9_00am_2026-01-04_1080",
+            "channel_id": 45,
+            "start": 1086,
+            "end": 1116
+        },
+        {
+            "program_id": "projectrunway_us_project_runway_2026-01-04_1098",
+            "channel_id": 8716,
+            "start": 1116,
+            "end": 1148
+        },
+        {
+            "program_id": "starzcomedy_us_trading_places_2026-01-04_1148",
+            "channel_id": 9114,
+            "start": 1148,
+            "end": 1180
+        },
+        {
+            "program_id": "premier3_us_programa_o_premiere_3_2026-01-04_1180",
+            "channel_id": 8677,
+            "start": 1180,
+            "end": 1210
+        },
+        {
+            "program_id": "23newswvua_us_wild_child_2026-01-04_1230",
+            "channel_id": 1,
+            "start": 1230,
+            "end": 1260
+        },
+        {
+            "program_id": "23newswvua_us_beulah_baptist_church_of_2026-01-04_1260",
+            "channel_id": 1,
+            "start": 1260,
+            "end": 1290
+        },
+        {
+            "program_id": "23newswvua_us_miracle_deliverance_temp_2026-01-04_1290",
+            "channel_id": 1,
+            "start": 1290,
+            "end": 1320
+        },
+        {
+            "program_id": "23newswvua_us_tommy_wilcox_outdoors_2026-01-04_1320",
+            "channel_id": 1,
+            "start": 1320,
+            "end": 1350
+        },
+        {
+            "program_id": "23newswvua_us_paid_programming_2026-01-04_1350",
+            "channel_id": 1,
+            "start": 1350,
+            "end": 1380
+        }
+    ]
+}

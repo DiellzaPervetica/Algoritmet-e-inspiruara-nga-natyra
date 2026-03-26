@@ -1,0 +1,286 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "ligue1_fr_le_club_2026-01-04_0000",
+            "channel_id": 204,
+            "start": 0,
+            "end": 30
+        },
+        {
+            "program_id": "luxetv_fr_special_feature_2026-01-04_0000",
+            "channel_id": 217,
+            "start": 30,
+            "end": 60
+        },
+        {
+            "program_id": "eurosport360_6_fr_a_bient_t_sur_eurosport__2026-01-04_0060",
+            "channel_id": 136,
+            "start": 60,
+            "end": 90
+        },
+        {
+            "program_id": "bbcworldnews_fr_this_cultural_life_2026-01-04_0090",
+            "channel_id": 33,
+            "start": 90,
+            "end": 120
+        },
+        {
+            "program_id": "bbcworldnews_fr_bbc_news_2026-01-04_0120",
+            "channel_id": 33,
+            "start": 120,
+            "end": 150
+        },
+        {
+            "program_id": "cnbceurope_fr_cnbc_meets_2026-01-04_0150",
+            "channel_id": 88,
+            "start": 150,
+            "end": 180
+        },
+        {
+            "program_id": "stadedereims_fr_no_match_today_2026-01-04_0180",
+            "channel_id": 319,
+            "start": 180,
+            "end": 210
+        },
+        {
+            "program_id": "dw_tv_fr_watching_you_the_world_o_2026-01-04_0195",
+            "channel_id": 115,
+            "start": 210,
+            "end": 240
+        },
+        {
+            "program_id": "ligue1_8_fr_ligue_1_8_2026-01-04_0240",
+            "channel_id": 212,
+            "start": 240,
+            "end": 270
+        },
+        {
+            "program_id": "24htve_fr_td_internacional_24_hora_2026-01-04_0270",
+            "channel_id": 2,
+            "start": 270,
+            "end": 300
+        },
+        {
+            "program_id": "beinsportsmax10_fr_bein_sports_le_plus_gran_2026-01-04_0300",
+            "channel_id": 387,
+            "start": 300,
+            "end": 330
+        },
+        {
+            "program_id": "phoenixcne_fr_cultural_canvas_2026-01-04_0330",
+            "channel_id": 267,
+            "start": 330,
+            "end": 360
+        },
+        {
+            "program_id": "aljazeeraenglish_f_news_live_2026-01-04_0360",
+            "channel_id": 16,
+            "start": 360,
+            "end": 390
+        },
+        {
+            "program_id": "cnninternational_f_world_sport_2026-01-04_0390",
+            "channel_id": 89,
+            "start": 390,
+            "end": 420
+        },
+        {
+            "program_id": "canal_sport360_fr_le_jt_2026-01-04_0420",
+            "channel_id": 81,
+            "start": 420,
+            "end": 450
+        },
+        {
+            "program_id": "i24newsenglish_fr_i24_magazine_2026-01-04_0450",
+            "channel_id": 184,
+            "start": 450,
+            "end": 480
+        },
+        {
+            "program_id": "mggtv_fr_pro_players_by_trapa_2026-01-04_0480",
+            "channel_id": 222,
+            "start": 480,
+            "end": 510
+        },
+        {
+            "program_id": "viamirabelle_fr_le_grand_journal_des_ter_2026-01-04_0510",
+            "channel_id": 374,
+            "start": 510,
+            "end": 540
+        },
+        {
+            "program_id": "viamirabelle_fr_fais_ton_sport_2026-01-04_0540",
+            "channel_id": 374,
+            "start": 540,
+            "end": 570
+        },
+        {
+            "program_id": "ligue1_10_fr_ligue_1_10_2026-01-04_0420",
+            "channel_id": 205,
+            "start": 570,
+            "end": 600
+        },
+        {
+            "program_id": "n_tv_fr_nachrichten_2026-01-04_0600",
+            "channel_id": 238,
+            "start": 600,
+            "end": 630
+        },
+        {
+            "program_id": "cnbceurope_fr_cnbc_sport_on_the_record_2026-01-04_0630",
+            "channel_id": 88,
+            "start": 630,
+            "end": 660
+        },
+        {
+            "program_id": "bbcworldnews_fr_bbc_news_2026-01-04_0660",
+            "channel_id": 33,
+            "start": 660,
+            "end": 690
+        },
+        {
+            "program_id": "eurosport360_4_fr_a_bient_t_sur_eurosport__2026-01-04_0540",
+            "channel_id": 134,
+            "start": 690,
+            "end": 720
+        },
+        {
+            "program_id": "ntd_fr_china_s_forbidden_news_3_2026-01-04_0720",
+            "channel_id": 242,
+            "start": 720,
+            "end": 750
+        },
+        {
+            "program_id": "beinsportsmax9_fr_bein_sports_le_plus_gran_2026-01-04_0540",
+            "channel_id": 393,
+            "start": 750,
+            "end": 780
+        },
+        {
+            "program_id": "24htve_fr_noticias_24h_2026-01-04_0780",
+            "channel_id": 2,
+            "start": 780,
+            "end": 810
+        },
+        {
+            "program_id": "kabeleins_fr_roadtrip_amerika_drei_sp_2026-01-04_0725",
+            "channel_id": 192,
+            "start": 810,
+            "end": 840
+        },
+        {
+            "program_id": "8montblanc_fr_les_sorties_cin_2026-01-04_0795",
+            "channel_id": 7,
+            "start": 840,
+            "end": 870
+        },
+        {
+            "program_id": "tvmonaco_fr_a_matche_2026-01-04_0840",
+            "channel_id": 351,
+            "start": 870,
+            "end": 900
+        },
+        {
+            "program_id": "aljazeeraenglish_f_news_live_2026-01-04_0900",
+            "channel_id": 16,
+            "start": 900,
+            "end": 930
+        },
+        {
+            "program_id": "kabeleins_fr_roadtrip_amerika_drei_sp_2026-01-04_0840",
+            "channel_id": 192,
+            "start": 930,
+            "end": 960
+        },
+        {
+            "program_id": "i24newsenglish_fr_news_room_2026-01-04_0960",
+            "channel_id": 184,
+            "start": 960,
+            "end": 990
+        },
+        {
+            "program_id": "francetvdocs_fr_25_kilos_3_jours_pour_vi_2026-01-04_0962",
+            "channel_id": 173,
+            "start": 990,
+            "end": 1020
+        },
+        {
+            "program_id": "i24news_fr_i24_news_room_2026-01-04_1020",
+            "channel_id": 395,
+            "start": 1020,
+            "end": 1050
+        },
+        {
+            "program_id": "beinsportsmax6_fr_bein_sports_le_plus_gran_2026-01-04_1050",
+            "channel_id": 390,
+            "start": 1050,
+            "end": 1080
+        },
+        {
+            "program_id": "aljazeeraenglish_f_news_live_2026-01-04_1080",
+            "channel_id": 16,
+            "start": 1080,
+            "end": 1110
+        },
+        {
+            "program_id": "cnbceurope_fr_cnbc_sport_on_the_record_2026-01-04_1110",
+            "channel_id": 88,
+            "start": 1110,
+            "end": 1140
+        },
+        {
+            "program_id": "ligue1_8_fr_ligue_1_8_2026-01-04_1140",
+            "channel_id": 212,
+            "start": 1140,
+            "end": 1170
+        },
+        {
+            "program_id": "cnninternational_f_seasons_2026-01-04_1170",
+            "channel_id": 89,
+            "start": 1170,
+            "end": 1200
+        },
+        {
+            "program_id": "eurosport360_5_fr_a_bient_t_sur_eurosport__2026-01-04_1200",
+            "channel_id": 135,
+            "start": 1200,
+            "end": 1230
+        },
+        {
+            "program_id": "i24newsenglish_fr_news_room_2026-01-04_1230",
+            "channel_id": 184,
+            "start": 1230,
+            "end": 1260
+        },
+        {
+            "program_id": "ligue1_2_fr_ligue_1_2_2026-01-04_1140",
+            "channel_id": 206,
+            "start": 1260,
+            "end": 1290
+        },
+        {
+            "program_id": "bbcworldnews_fr_discovering_the_world_s__2026-01-04_1290",
+            "channel_id": 33,
+            "start": 1290,
+            "end": 1320
+        },
+        {
+            "program_id": "canal_sport360_fr_marie_jo_2026-01-04_1267",
+            "channel_id": 81,
+            "start": 1320,
+            "end": 1350
+        },
+        {
+            "program_id": "dw_tv_fr_tomorrow_today_2026-01-04_1350",
+            "channel_id": 115,
+            "start": 1350,
+            "end": 1380
+        },
+        {
+            "program_id": "planete_crime_fr_l_affaire_agn_s_le_roux__2026-01-04_1370",
+            "channel_id": 261,
+            "start": 1380,
+            "end": 1410
+        }
+    ]
+}
