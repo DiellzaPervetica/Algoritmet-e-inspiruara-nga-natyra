@@ -2,6 +2,7 @@ from typing import List, Optional
 
 from models.channel import Channel
 from models.instance_data import InstanceData
+from models.schedule import Schedule
  
 
 
@@ -87,5 +88,59 @@ class Utils:
             for p in ch.programs:
                 if p.unique_id == unique_id:
                     return p
+
+    @staticmethod
+    def get_start(item):
+        return getattr(item, "start", getattr(item, "start_time", 0))
+
+    @staticmethod
+    def get_end(item):
+        return getattr(item, "end", getattr(item, "end_time", 0))
+
+    @staticmethod
+    def get_uid(item):
+        return getattr(item, "unique_program_id", getattr(item, "unique_id", getattr(item, "program_id", None)))
+
+    @staticmethod
+    def sort_schedule_item(item):
+        return (
+            Utils.get_start(item),
+            Utils.get_end(item),
+            getattr(item, "channel_id", -1),
+            Utils.get_uid(item) or getattr(item, "program_id", ""),
+        )
+
+    @staticmethod
+    def schedule_key(sched):
+        return tuple(
+            (
+                Utils.get_uid(item),
+                getattr(item, "channel_id", None),
+                Utils.get_start(item),
+                Utils.get_end(item),
+            )
+            for item in sorted(sched, key=Utils.sort_schedule_item)
+        )
+
+    @staticmethod
+    def make_schedule(channel_id, program_id, start, end, fitness, uid):
+        try:
+            return Schedule(
+                channel_id=channel_id,
+                program_id=program_id,
+                start=int(start),
+                end=int(end),
+                fitness=float(fitness),
+                unique_program_id=uid,
+            )
+        except TypeError:
+            return Schedule(
+                channel_id=channel_id,
+                program_id=program_id,
+                start_time=int(start),
+                end_time=int(end),
+                fitness=float(fitness),
+                unique_program_id=uid,
+            )
 
 

@@ -1,10 +1,20 @@
-import os
+from pathlib import Path
 
-def select_file(input_dir="data/input"):
-    files = [f for f in os.listdir(input_dir) if f.endswith(".json")]
+
+def select_file(input_dir=None):
+    project_root = Path(__file__).resolve().parents[1]
+    resolved_input_dir = Path(input_dir) if input_dir else project_root / "data" / "input"
+
+    if not resolved_input_dir.is_absolute():
+        resolved_input_dir = project_root / resolved_input_dir
+
+    if not resolved_input_dir.exists():
+        raise FileNotFoundError(f"Input directory not found: {resolved_input_dir}")
+
+    files = sorted(f.name for f in resolved_input_dir.iterdir() if f.suffix == ".json")
 
     if not files:
-        raise FileNotFoundError(f"No JSON files found in {input_dir}")
+        raise FileNotFoundError(f"No JSON files found in {resolved_input_dir}")
 
     print("Available files:")
     for idx, file in enumerate(files):
@@ -20,4 +30,4 @@ def select_file(input_dir="data/input"):
         except ValueError:
             print("Please enter a valid number.")
 
-    return os.path.join(input_dir, files[choice])
+    return str(resolved_input_dir / files[choice])

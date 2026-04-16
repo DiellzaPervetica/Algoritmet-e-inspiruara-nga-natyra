@@ -1,4 +1,4 @@
-from typing import List
+from typing import Dict, List, Set
 
 from models.channel import Channel
 from models.instance_data import InstanceData
@@ -109,3 +109,183 @@ class AlgorithmUtils:
             penalty -= instance_data.termination_penalty
 
         return penalty
+
+    @staticmethod
+    def build_max_bonus_by_genre(instance_data: InstanceData) -> Dict[str, int]:
+        bonuses: Dict[str, int] = {}
+        for channel in instance_data.channels:
+            for program in channel.programs:
+                genre = getattr(program, "genre", "")
+                current = bonuses.get(genre, 0)
+                for pref in instance_data.time_preferences:
+                    if genre == pref.preferred_genre and pref.bonus > current:
+                        current = pref.bonus
+                bonuses[genre] = current
+        return bonuses
+
+    @staticmethod
+    def compute_input_overlap_ids(instance_data: InstanceData) -> Set[str]:
+        overlapped: Set[str] = set()
+        for channel in instance_data.channels:
+            programs = sorted(channel.programs, key=Utils.sort_schedule_item)
+            active = []
+            for program in programs:
+                start = Utils.get_start(program)
+                end = Utils.get_end(program)
+                active = [prev for prev in active if Utils.get_end(prev) > start]
+                for prev in active:
+                    if start < Utils.get_end(prev) and end > Utils.get_start(prev):
+                        overlapped.update([getattr(prev, "unique_id", None), getattr(program, "unique_id", None)])
+                active.append(program)
+        overlapped.discard(None)
+        return overlapped
+
+    @staticmethod
+    def get_segment_bonus(instance_data: InstanceData, sched_item, program: Program):
+        score = 0
+        seg_start = Utils.get_start(sched_item)
+        seg_end = Utils.get_end(sched_item)
+        for pref in instance_data.time_preferences:
+            if getattr(program, "genre", "") != pref.preferred_genre:
+                continue
+            overlap_start = max(seg_start, pref.start)
+            overlap_end = min(seg_end, pref.end)
+            if overlap_end - overlap_start >= instance_data.min_duration:
+                score += pref.bonus
+        return score
+
+    @staticmethod
+    def get_segment_quality(instance_data: InstanceData, sched_item, input_overlap_ids: Set[str]):
+        program = Utils.get_program_by_unique_id(instance_data, Utils.get_uid(sched_item))
+        if not program:
+            return float("-inf")
+
+        seg_len = Utils.get_end(sched_item) - Utils.get_start(sched_item)
+        if seg_len <= 0:
+            return float("-inf")
+
+        quality = getattr(program, "score", 0) + AlgorithmUtils.get_segment_bonus(instance_data, sched_item, program)
+        if Utils.get_start(sched_item) > Utils.get_start(program):
+            quality -= instance_data.termination_penalty
+        if Utils.get_end(sched_item) < Utils.get_end(program):
+            quality -= instance_data.termination_penalty
+        if getattr(program, "unique_id", None) in input_overlap_ids:
+            quality -= 3 * instance_data.termination_penalty
+        return quality
+
+    @staticmethod
+    def get_fill_candidate_value(program: Program, max_bonus_by_genre: Dict[str, int]):
+        return getattr(program, "score", 0) + max_bonus_by_genre.get(getattr(program, "genre", ""), 0)
+
+    @staticmethod
+    def filter_valid_schedule(sched, instance_data: InstanceData, input_overlap_ids: Set[str]):
+        sched = sorted(sched, key=Utils.sort_schedule_item)
+        if not sched:
+            return []
+
+        valid_mask = [True] * len(sched)
+        for i, sched_item in enumerate(sched):
+            program = Utils.get_program_by_unique_id(instance_data, Utils.get_uid(sched_item))
+            if not program:
+                valid_mask[i] = False
+                continue
+
+            seg_start = Utils.get_start(sched_item)
+            seg_end = Utils.get_end(sched_item)
+            seg_len = seg_end - seg_start
+            full_len = Utils.get_end(program) - Utils.get_start(program)
+
+            invalid_len = (full_len >= instance_data.min_duration and seg_len < instance_data.min_duration) or (
+                full_len < instance_data.min_duration and seg_len != full_len
+            )
+            invalid_bounds = seg_start < instance_data.opening_time or seg_end > instance_data.closing_time or seg_len <= 0
+            if invalid_bounds or invalid_len or getattr(program, "unique_id", None) in input_overlap_ids:
+                valid_mask[i] = False
+                continue
+
+            for block in instance_data.priority_blocks:
+                if seg_start < block.end and seg_end > block.start and sched_item.channel_id not in block.allowed_channels:
+                    valid_mask[i] = False
+                    break
+
+        run = 0
+        last_genre = ""
+        for i, sched_item in enumerate(sched):
+            program = Utils.get_program_by_unique_id(instance_data, Utils.get_uid(sched_item))
+            genre = getattr(program, "genre", "") if program else ""
+            run = run + 1 if genre and genre == last_genre else 1
+            last_genre = genre
+            if genre and run > instance_data.max_consecutive_genre:
+                valid_mask[i] = False
+
+        active = []
+        for i, current in enumerate(sched):
+            current_start = Utils.get_start(current)
+            current_end = Utils.get_end(current)
+            active = [j for j in active if Utils.get_end(sched[j]) > current_start]
+            for j in active:
+                prev = sched[j]
+                if current_start < Utils.get_end(prev) and current_end > Utils.get_start(prev):
+                    valid_mask[j] = False
+                    valid_mask[i] = False
+            active.append(i)
+
+        return sched if all(valid_mask) else [item for item, ok in zip(sched, valid_mask) if ok]
+
+    @staticmethod
+    def score_filtered_schedule(sched, instance_data: InstanceData):
+        if not sched:
+            return 0
+
+        stats = {}
+        bonus_sum = 0
+        switches = 0
+        late = 0
+
+        for i, sched_item in enumerate(sched):
+            uid = Utils.get_uid(sched_item)
+            program = Utils.get_program_by_unique_id(instance_data, uid)
+            if not program:
+                continue
+
+            seg_start = Utils.get_start(sched_item)
+            seg_end = Utils.get_end(sched_item)
+            seg_len = seg_end - seg_start
+            full_len = Utils.get_end(program) - Utils.get_start(program)
+
+            prog_stats = stats.setdefault(
+                uid,
+                {
+                    "full_length": full_len,
+                    "has_long_segment": False,
+                    "has_full_short": False,
+                    "reached_end": False,
+                    "score": getattr(program, "score", 0),
+                },
+            )
+            prog_stats["has_long_segment"] |= full_len >= instance_data.min_duration and seg_len >= instance_data.min_duration
+            prog_stats["has_full_short"] |= full_len < instance_data.min_duration and seg_len == full_len
+            prog_stats["reached_end"] |= seg_end >= Utils.get_end(program)
+
+            bonus_sum += AlgorithmUtils.get_segment_bonus(instance_data, sched_item, program)
+            late += int(seg_start > Utils.get_start(program))
+            switches += int(i > 0 and sched[i - 1].channel_id != sched_item.channel_id)
+
+        base_sum = 0
+        early = 0
+        for prog_stats in stats.values():
+            eligible = prog_stats["has_long_segment"] if prog_stats["full_length"] >= instance_data.min_duration else prog_stats["has_full_short"]
+            base_sum += prog_stats["score"] if eligible else 0
+            early += int(not prog_stats["reached_end"])
+
+        return int(
+            base_sum
+            + bonus_sum
+            - switches * instance_data.switch_penalty
+            - (late + early) * instance_data.termination_penalty
+        )
+
+    @staticmethod
+    def score_schedule(sched, instance_data: InstanceData, input_overlap_ids: Set[str]):
+        filtered = AlgorithmUtils.filter_valid_schedule(sched, instance_data, input_overlap_ids)
+        return AlgorithmUtils.score_filtered_schedule(filtered, instance_data)

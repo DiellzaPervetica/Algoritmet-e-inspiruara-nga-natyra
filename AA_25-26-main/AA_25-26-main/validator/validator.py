@@ -14,6 +14,7 @@ class Validator:
         try:
             Validator.validate_schedule_time(instance_data, schedule_time)
             Validator.validate_min_duration(schedule_plan, instance_data, schedule_time)
+            Validator.validate_no_overlap(schedule_plan, schedule_time)
             Validator.validate_max_consecutive_genre(schedule_plan, instance_data, channel_index, schedule_time)
             Validator.validate_priority_time_block(instance_data, channel_index, schedule_time)
         except ConstraintException:
@@ -35,8 +36,17 @@ class Validator:
             return
 
         last_schedule = schedule_plan[-1]
-        if schedule_time < last_schedule.start + instance_data.min_duration:
+        if last_schedule.end - last_schedule.start < instance_data.min_duration:
             raise ConstraintException("min_duration for broadcasting channel has not been reached.")
+
+    @staticmethod
+    def validate_no_overlap(schedule_plan: List[Schedule], schedule_time: int):
+        if not schedule_plan:
+            return
+
+        last_schedule = schedule_plan[-1]
+        if schedule_time < last_schedule.end:
+            raise ConstraintException("Schedule overlaps with the previous program.")
 
     @staticmethod
     def validate_max_consecutive_genre(schedule_plan: List[Schedule], instance_data: InstanceData, channel_index: int,
