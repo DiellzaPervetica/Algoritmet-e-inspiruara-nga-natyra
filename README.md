@@ -1,16 +1,19 @@
-<table border="0">
- <tr>
-    <td><img src="https://uni-pr.edu/images/logosmall.png" width="150" alt="University Logo" /></td>
+<table>
+  <tr>
+    <td width="150" align="center" valign="center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/University_of_Prishtina_logo.svg/1200px-University_of_Prishtina_logo.svg.png" width="120" alt="University Logo" />
+    </td>
+    <td valign="top">
       <p>Universiteti i Prishtinës</p>
       <p>Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike</p>
       <p>Inxhinieri Kompjuterike dhe Softuerike - Programi Master</p>
       <p>Profesor: Prof. Dr. Kadri Sylejmani</p>
       <p>Asistent: MSc. Labeat Arbneshi</p>
     </td>
- </tr>
+  </tr>
 </table>
 
-
+---
 ## Përshkrimi i Projektit: Optimizimi i Orarit Televiziv
 
 Ky projekt adreson **Problemin e Planifikimit Televiziv për Hapësira Publike** (TV Channel Scheduling Optimization for Public Spaces) në kuadër të lëndës **Algoritmet e Inspiruara nga Natyra**. Objektivi primar është përzgjedhja dhe planifikimi optimal i një nënbashkësie të programeve televizive në kanale të shumta, me qëllim maksimizimin e pikëve totale të shikueshmërisë.
