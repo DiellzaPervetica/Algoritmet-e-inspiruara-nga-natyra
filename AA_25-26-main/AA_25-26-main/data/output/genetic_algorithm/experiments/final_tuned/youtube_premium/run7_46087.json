@@ -1,0 +1,4066 @@
+{
+    "scheduled_programs": [
+        {
+            "program_id": "ch1602_4_breaking_news_and_headlines__0004",
+            "channel_id": 1602,
+            "start": 4,
+            "end": 20
+        },
+        {
+            "program_id": "ch415_information_radio_jan_5th_2026_0025",
+            "channel_id": 415,
+            "start": 25,
+            "end": 55
+        },
+        {
+            "program_id": "ch842_december_2025_most_expected_cu_0078",
+            "channel_id": 842,
+            "start": 78,
+            "end": 98
+        },
+        {
+            "program_id": "ch1593_grand_theft_venezuela_trump_sn_0118",
+            "channel_id": 1593,
+            "start": 118,
+            "end": 138
+        },
+        {
+            "program_id": "ch1615_beed_choufer_news_live_is_live_0139",
+            "channel_id": 1615,
+            "start": 139,
+            "end": 164
+        },
+        {
+            "program_id": "ch529_ruturaj_dropped_ind_vs_nz_squa_0211",
+            "channel_id": 529,
+            "start": 211,
+            "end": 231
+        },
+        {
+            "program_id": "ch314_poduty_and_the_news_live_podca_0244",
+            "channel_id": 314,
+            "start": 244,
+            "end": 264
+        },
+        {
+            "program_id": "ch688_breaking_news_from_united_stat_0268",
+            "channel_id": 688,
+            "start": 268,
+            "end": 308
+        },
+        {
+            "program_id": "ch1664_l_50_badi_khabren_ll_news_aaj__0308",
+            "channel_id": 1664,
+            "start": 308,
+            "end": 333
+        },
+        {
+            "program_id": "ch774_team_news_live_norwich_city_v__0340",
+            "channel_id": 774,
+            "start": 340,
+            "end": 365
+        },
+        {
+            "program_id": "ch57_film_and_box_office_news_live__0374",
+            "channel_id": 57,
+            "start": 374,
+            "end": 394
+        },
+        {
+            "program_id": "ch1550_watch_live_assamese_news_4_00__0410",
+            "channel_id": 1550,
+            "start": 410,
+            "end": 426
+        },
+        {
+            "program_id": "ch217_sleuth_intuition_live_breaking_0431",
+            "channel_id": 217,
+            "start": 431,
+            "end": 456
+        },
+        {
+            "program_id": "ch1499_today_breaking_news_top_100_ne_0476",
+            "channel_id": 1499,
+            "start": 476,
+            "end": 496
+        },
+        {
+            "program_id": "ch65_live_house_oversight_committee_0498",
+            "channel_id": 65,
+            "start": 498,
+            "end": 518
+        },
+        {
+            "program_id": "ch377_abc_news_live_is_a_24_7_stream_0509",
+            "channel_id": 377,
+            "start": 524,
+            "end": 539
+        },
+        {
+            "program_id": "ch419_news_live_0564",
+            "channel_id": 419,
+            "start": 564,
+            "end": 599
+        },
+        {
+            "program_id": "ch1227_dbc_news_live_0613",
+            "channel_id": 1227,
+            "start": 613,
+            "end": 653
+        },
+        {
+            "program_id": "ch1573_fox_news_live_hd_president_tru_0586",
+            "channel_id": 1573,
+            "start": 653,
+            "end": 676
+        },
+        {
+            "program_id": "ch289_live_house_oversight_committee_0686",
+            "channel_id": 289,
+            "start": 686,
+            "end": 721
+        },
+        {
+            "program_id": "ch1326_umh_news_live_0722",
+            "channel_id": 1326,
+            "start": 722,
+            "end": 742
+        },
+        {
+            "program_id": "ch1188_v_update_news_live_is_live_0759",
+            "channel_id": 1188,
+            "start": 759,
+            "end": 779
+        },
+        {
+            "program_id": "ch278_the_top_risks_of_2026_with_ian_0791",
+            "channel_id": 278,
+            "start": 791,
+            "end": 821
+        },
+        {
+            "program_id": "ch663_us_strikes_venezuela_news_live_0832",
+            "channel_id": 663,
+            "start": 832,
+            "end": 852
+        },
+        {
+            "program_id": "ch1469_sportbar_news_live_live_0867",
+            "channel_id": 1469,
+            "start": 867,
+            "end": 892
+        },
+        {
+            "program_id": "ch192_rauke_news_live_is_live_0898",
+            "channel_id": 192,
+            "start": 898,
+            "end": 928
+        },
+        {
+            "program_id": "ch503_breaking_news_today_latest_new_0933",
+            "channel_id": 503,
+            "start": 933,
+            "end": 953
+        },
+        {
+            "program_id": "ch828_today_world_breaking_news_live_0972",
+            "channel_id": 828,
+            "start": 972,
+            "end": 1032
+        },
+        {
+            "program_id": "ch982_film_and_box_office_news_live__1047",
+            "channel_id": 982,
+            "start": 1047,
+            "end": 1072
+        },
+        {
+            "program_id": "ch1370_9january_daily_current_affairs_1092",
+            "channel_id": 1370,
+            "start": 1092,
+            "end": 1109
+        },
+        {
+            "program_id": "ch264_live_trump_returns_to_washingt_1080",
+            "channel_id": 264,
+            "start": 1109,
+            "end": 1125
+        },
+        {
+            "program_id": "ch494_dd_sahyadri_news_live_04_01_20_1127",
+            "channel_id": 494,
+            "start": 1127,
+            "end": 1147
+        },
+        {
+            "program_id": "ch730_today_world_breaking_news_live_1160",
+            "channel_id": 730,
+            "start": 1160,
+            "end": 1177
+        },
+        {
+            "program_id": "ch192_fox_news_live_hd_president_tru_1177",
+            "channel_id": 192,
+            "start": 1177,
+            "end": 1193
+        },
+        {
+            "program_id": "ch737_news_live_1193",
+            "channel_id": 737,
+            "start": 1193,
+            "end": 1213
+        },
+        {
+            "program_id": "ch37_today_news_live_pm_narendra_mo_1183",
+            "channel_id": 37,
+            "start": 1213,
+            "end": 1228
+        },
+        {
+            "program_id": "ch879_live_trump_returns_to_washingt_1228",
+            "channel_id": 879,
+            "start": 1228,
+            "end": 1253
+        },
+        {
+            "program_id": "ch357_film_and_box_office_news_live__1256",
+            "channel_id": 357,
+            "start": 1256,
+            "end": 1281
+        },
+        {
+            "program_id": "ch183_news_live_1284",
+            "channel_id": 183,
+            "start": 1284,
+            "end": 1304
+        },
+        {
+            "program_id": "ch903_times_news_live_s_broadcast_1307",
+            "channel_id": 903,
+            "start": 1307,
+            "end": 1327
+        },
+        {
+            "program_id": "ch88_times_news_live_s_broadcast_1270",
+            "channel_id": 88,
+            "start": 1329,
+            "end": 1345
+        },
+        {
+            "program_id": "ch704_team_news_live_norwich_city_v__1240",
+            "channel_id": 704,
+            "start": 1345,
+            "end": 1360
+        },
+        {
+            "program_id": "ch894_times_news_live_s_broadcast_1360",
+            "channel_id": 894,
+            "start": 1360,
+            "end": 1375
+        },
+        {
+            "program_id": "ch848_fox_news_live_stream_now_presi_1319",
+            "channel_id": 848,
+            "start": 1375,
+            "end": 1394
+        },
+        {
+            "program_id": "ch1394_today_breaking_news_top_100_ne_1394",
+            "channel_id": 1394,
+            "start": 1394,
+            "end": 1429
+        },
+        {
+            "program_id": "ch264_live_trump_returns_to_washingt_1369",
+            "channel_id": 264,
+            "start": 1429,
+            "end": 1444
+        },
+        {
+            "program_id": "ch974_bullhorn_betty_breaking_news_t_1279",
+            "channel_id": 974,
+            "start": 1444,
+            "end": 1459
+        },
+        {
+            "program_id": "ch1575_news_live_1400",
+            "channel_id": 1575,
+            "start": 1459,
+            "end": 1475
+        },
+        {
+            "program_id": "ch1331_times_news_live_s_broadcast_1393",
+            "channel_id": 1331,
+            "start": 1475,
+            "end": 1493
+        },
+        {
+            "program_id": "ch1493_grand_theft_venezuela_trump_sn_1360",
+            "channel_id": 1493,
+            "start": 1493,
+            "end": 1510
+        },
+        {
+            "program_id": "ch1256_live_breaking_news_hindi_news__1316",
+            "channel_id": 1256,
+            "start": 1510,
+            "end": 1526
+        },
+        {
+            "program_id": "ch274_live_house_oversight_committee_1333",
+            "channel_id": 274,
+            "start": 1526,
+            "end": 1543
+        },
+        {
+            "program_id": "ch172_l_50_badi_khabren_ll_news_aaj__1348",
+            "channel_id": 172,
+            "start": 1543,
+            "end": 1558
+        },
+        {
+            "program_id": "ch519_king_p_media_is_live_1559",
+            "channel_id": 519,
+            "start": 1559,
+            "end": 1579
+        },
+        {
+            "program_id": "ch1392_today_world_breaking_news_live_1334",
+            "channel_id": 1392,
+            "start": 1611,
+            "end": 1634
+        },
+        {
+            "program_id": "ch385_newsmax_news_breaking_news_and_1349",
+            "channel_id": 385,
+            "start": 1634,
+            "end": 1649
+        },
+        {
+            "program_id": "ch238_sportbar_news_live_live_1386",
+            "channel_id": 238,
+            "start": 1668,
+            "end": 1686
+        },
+        {
+            "program_id": "ch1553_fox_news_live_hd_president_tru_1409",
+            "channel_id": 1553,
+            "start": 1686,
+            "end": 1709
+        },
+        {
+            "program_id": "ch828_bullhorn_betty_breaking_news_t_1709",
+            "channel_id": 828,
+            "start": 1709,
+            "end": 1739
+        },
+        {
+            "program_id": "ch131_disney_parks_live_breaking_new_1739",
+            "channel_id": 131,
+            "start": 1739,
+            "end": 1779
+        },
+        {
+            "program_id": "ch1062_bullhorn_betty_breaking_news_t_1780",
+            "channel_id": 1062,
+            "start": 1780,
+            "end": 1800
+        },
+        {
+            "program_id": "ch1122_an_breaking_news_live_stream_1806",
+            "channel_id": 1122,
+            "start": 1806,
+            "end": 1831
+        },
+        {
+            "program_id": "ch575_sportbar_news_live_live_1866",
+            "channel_id": 575,
+            "start": 1866,
+            "end": 1881
+        },
+        {
+            "program_id": "ch564_grand_theft_venezuela_trump_sn_1812",
+            "channel_id": 564,
+            "start": 1881,
+            "end": 1902
+        },
+        {
+            "program_id": "ch929_live_webcams_around_the_world__1903",
+            "channel_id": 929,
+            "start": 1903,
+            "end": 1933
+        },
+        {
+            "program_id": "ch76_dbc_news_live_1936",
+            "channel_id": 76,
+            "start": 1936,
+            "end": 1966
+        },
+        {
+            "program_id": "ch967_live_pinarayi_vijayan_reporter_2001",
+            "channel_id": 967,
+            "start": 2001,
+            "end": 2018
+        },
+        {
+            "program_id": "ch335_punjabi_news_punjabi_latest_ne_2030",
+            "channel_id": 335,
+            "start": 2030,
+            "end": 2055
+        },
+        {
+            "program_id": "ch619_news_live_2059",
+            "channel_id": 619,
+            "start": 2059,
+            "end": 2094
+        },
+        {
+            "program_id": "ch66_december_2025_most_expected_cu_2095",
+            "channel_id": 66,
+            "start": 2095,
+            "end": 2120
+        },
+        {
+            "program_id": "ch1_the_top_risks_of_2026_with_ian_2123",
+            "channel_id": 1,
+            "start": 2123,
+            "end": 2148
+        },
+        {
+            "program_id": "ch855_bullhorn_betty_breaking_news_t_2170",
+            "channel_id": 855,
+            "start": 2170,
+            "end": 2190
+        },
+        {
+            "program_id": "ch1372_ruturaj_dropped_ind_vs_nz_squa_2200",
+            "channel_id": 1372,
+            "start": 2200,
+            "end": 2225
+        },
+        {
+            "program_id": "ch834_fox_news_live_president_donald_2244",
+            "channel_id": 834,
+            "start": 2244,
+            "end": 2264
+        },
+        {
+            "program_id": "ch1358_cnn_breaking_news_live_hd_2275",
+            "channel_id": 1358,
+            "start": 2275,
+            "end": 2315
+        },
+        {
+            "program_id": "ch895_film_and_box_office_news_live__2348",
+            "channel_id": 895,
+            "start": 2348,
+            "end": 2373
+        },
+        {
+            "program_id": "ch34_bihar_news_live_muzaffarpur_li_2379",
+            "channel_id": 34,
+            "start": 2379,
+            "end": 2424
+        },
+        {
+            "program_id": "ch1115_cn24_live_news_breaking_news_a_2432",
+            "channel_id": 1115,
+            "start": 2432,
+            "end": 2452
+        },
+        {
+            "program_id": "ch491_bullhorn_betty_breaking_news_t_2476",
+            "channel_id": 491,
+            "start": 2476,
+            "end": 2506
+        },
+        {
+            "program_id": "ch20_live_webcams_around_the_world__2513",
+            "channel_id": 20,
+            "start": 2513,
+            "end": 2538
+        },
+        {
+            "program_id": "ch1326_umh_news_live_2541",
+            "channel_id": 1326,
+            "start": 2541,
+            "end": 2566
+        },
+        {
+            "program_id": "ch1184_live_pinarayi_vijayan_reporter_2566",
+            "channel_id": 1184,
+            "start": 2566,
+            "end": 2601
+        },
+        {
+            "program_id": "ch1608_live_untv_news_break_january_5_2601",
+            "channel_id": 1608,
+            "start": 2601,
+            "end": 2626
+        },
+        {
+            "program_id": "ch1305_umh_news_live_2627",
+            "channel_id": 1305,
+            "start": 2627,
+            "end": 2647
+        },
+        {
+            "program_id": "ch108_bullhorn_betty_breaking_news_t_2651",
+            "channel_id": 108,
+            "start": 2651,
+            "end": 2671
+        },
+        {
+            "program_id": "ch1297_2026_welfare_cup_football_ghat_2628",
+            "channel_id": 1297,
+            "start": 2673,
+            "end": 2688
+        },
+        {
+            "program_id": "ch760_fix_news_live_stream_president_2584",
+            "channel_id": 760,
+            "start": 2688,
+            "end": 2704
+        },
+        {
+            "program_id": "ch1188_v_update_news_live_is_live_2570",
+            "channel_id": 1188,
+            "start": 2704,
+            "end": 2720
+        },
+        {
+            "program_id": "ch1641_ruturaj_dropped_ind_vs_nz_squa_2617",
+            "channel_id": 1641,
+            "start": 2720,
+            "end": 2737
+        },
+        {
+            "program_id": "ch363_december_2025_most_expected_cu_2737",
+            "channel_id": 363,
+            "start": 2737,
+            "end": 2762
+        },
+        {
+            "program_id": "ch1458_mahua_khabar_live_breaking_24x_2774",
+            "channel_id": 1458,
+            "start": 2779,
+            "end": 2794
+        },
+        {
+            "program_id": "ch460_2026_welfare_cup_football_ghat_2784",
+            "channel_id": 460,
+            "start": 2794,
+            "end": 2809
+        },
+        {
+            "program_id": "ch1099_abc_news_live_is_a_24_7_stream_2735",
+            "channel_id": 1099,
+            "start": 2809,
+            "end": 2825
+        },
+        {
+            "program_id": "ch1385_team_news_live_norwich_city_v__2840",
+            "channel_id": 1385,
+            "start": 2840,
+            "end": 2856
+        },
+        {
+            "program_id": "ch355_asian_news_live_tv_1165_24_7_b_2814",
+            "channel_id": 355,
+            "start": 2874,
+            "end": 2889
+        },
+        {
+            "program_id": "ch1349_2026_welfare_cup_football_ghat_2669",
+            "channel_id": 1349,
+            "start": 2889,
+            "end": 2909
+        },
+        {
+            "program_id": "ch803_rocket_morning_news_live_jan_8_2684",
+            "channel_id": 803,
+            "start": 2909,
+            "end": 2924
+        },
+        {
+            "program_id": "ch1436_breaking_news_watch_today_s_ma_2760",
+            "channel_id": 1436,
+            "start": 2924,
+            "end": 2940
+        },
+        {
+            "program_id": "ch246_disney_parks_live_breaking_new_2806",
+            "channel_id": 246,
+            "start": 2940,
+            "end": 2956
+        },
+        {
+            "program_id": "ch645_ib_tv_news_live_24x7_ibtv_ap_t_2821",
+            "channel_id": 645,
+            "start": 2956,
+            "end": 2971
+        },
+        {
+            "program_id": "ch1283_mumbai_breaking_news_live_mumb_2813",
+            "channel_id": 1283,
+            "start": 2971,
+            "end": 2993
+        },
+        {
+            "program_id": "ch1173_live_breaking_news_hindi_news__2995",
+            "channel_id": 1173,
+            "start": 2995,
+            "end": 3040
+        },
+        {
+            "program_id": "ch1462_us_strikes_venezuela_news_live_2819",
+            "channel_id": 1462,
+            "start": 3041,
+            "end": 3059
+        },
+        {
+            "program_id": "ch1608_live_untv_news_break_january_5_2864",
+            "channel_id": 1608,
+            "start": 3059,
+            "end": 3074
+        },
+        {
+            "program_id": "ch315_mahua_khabar_live_breaking_24x_2797",
+            "channel_id": 315,
+            "start": 3074,
+            "end": 3097
+        },
+        {
+            "program_id": "ch1319_live_breaking_news_hindi_news__3113",
+            "channel_id": 1319,
+            "start": 3113,
+            "end": 3158
+        },
+        {
+            "program_id": "ch1507_current_affairs_today_4_5_jan__3165",
+            "channel_id": 1507,
+            "start": 3165,
+            "end": 3210
+        },
+        {
+            "program_id": "ch1365_mmtv_news_live_3213",
+            "channel_id": 1365,
+            "start": 3213,
+            "end": 3243
+        },
+        {
+            "program_id": "ch1524_watch_live_the_north_east_news_3244",
+            "channel_id": 1524,
+            "start": 3244,
+            "end": 3279
+        },
+        {
+            "program_id": "ch785_disney_parks_live_breaking_new_3289",
+            "channel_id": 785,
+            "start": 3289,
+            "end": 3324
+        },
+        {
+            "program_id": "ch1442_bullhorn_betty_breaking_news_t_3329",
+            "channel_id": 1442,
+            "start": 3329,
+            "end": 3349
+        },
+        {
+            "program_id": "ch1205_times_news_live_s_broadcast_3364",
+            "channel_id": 1205,
+            "start": 3364,
+            "end": 3380
+        },
+        {
+            "program_id": "ch1402_kairali_news_live_3403",
+            "channel_id": 1402,
+            "start": 3403,
+            "end": 3433
+        },
+        {
+            "program_id": "ch1172_breaking_news_bd_is_live_3452",
+            "channel_id": 1172,
+            "start": 3452,
+            "end": 3469
+        },
+        {
+            "program_id": "ch135_news_live_3476",
+            "channel_id": 135,
+            "start": 3476,
+            "end": 3496
+        },
+        {
+            "program_id": "ch1426_2026_welfare_cup_football_ghat_3503",
+            "channel_id": 1426,
+            "start": 3503,
+            "end": 3548
+        },
+        {
+            "program_id": "ch425_fox_news_live_stream_now_presi_3559",
+            "channel_id": 425,
+            "start": 3559,
+            "end": 3604
+        },
+        {
+            "program_id": "ch587_live_seeman_ntk_meeting_speech_3616",
+            "channel_id": 587,
+            "start": 3616,
+            "end": 3636
+        },
+        {
+            "program_id": "ch1118_team_news_live_norwich_city_v__3643",
+            "channel_id": 1118,
+            "start": 3643,
+            "end": 3683
+        },
+        {
+            "program_id": "ch325_news_live_3685",
+            "channel_id": 325,
+            "start": 3685,
+            "end": 3720
+        },
+        {
+            "program_id": "ch394_9january_daily_current_affairs_3662",
+            "channel_id": 394,
+            "start": 3731,
+            "end": 3752
+        },
+        {
+            "program_id": "ch975_fox_news_live_president_donald_3692",
+            "channel_id": 975,
+            "start": 3752,
+            "end": 3767
+        },
+        {
+            "program_id": "ch1069_rocket_morning_news_live_jan_8_3773",
+            "channel_id": 1069,
+            "start": 3773,
+            "end": 3798
+        },
+        {
+            "program_id": "ch272_news_live_3809",
+            "channel_id": 272,
+            "start": 3809,
+            "end": 3839
+        },
+        {
+            "program_id": "ch1108_today_breaking_news_top_100_ne_3839",
+            "channel_id": 1108,
+            "start": 3839,
+            "end": 3859
+        },
+        {
+            "program_id": "ch1532_times_news_live_s_broadcast_3861",
+            "channel_id": 1532,
+            "start": 3861,
+            "end": 3881
+        },
+        {
+            "program_id": "ch1098_bullhorn_betty_breaking_news_t_3900",
+            "channel_id": 1098,
+            "start": 3900,
+            "end": 3915
+        },
+        {
+            "program_id": "ch1526_cnn_live_stream_hd_president_t_3941",
+            "channel_id": 1526,
+            "start": 3941,
+            "end": 3961
+        },
+        {
+            "program_id": "ch706_film_and_box_office_news_live__3962",
+            "channel_id": 706,
+            "start": 3962,
+            "end": 3992
+        },
+        {
+            "program_id": "ch1250_newsmax_news_breaking_news_and_3993",
+            "channel_id": 1250,
+            "start": 3993,
+            "end": 4013
+        },
+        {
+            "program_id": "ch1100_9january_daily_current_affairs_4037",
+            "channel_id": 1100,
+            "start": 4037,
+            "end": 4053
+        },
+        {
+            "program_id": "ch1336_watch_live_the_north_east_news_4053",
+            "channel_id": 1336,
+            "start": 4053,
+            "end": 4068
+        },
+        {
+            "program_id": "ch187_fox_news_live_stream_now_presi_4023",
+            "channel_id": 187,
+            "start": 4068,
+            "end": 4083
+        },
+        {
+            "program_id": "ch1653_king_p_media_is_live_4083",
+            "channel_id": 1653,
+            "start": 4083,
+            "end": 4099
+        },
+        {
+            "program_id": "ch723_v_update_news_live_is_live_4099",
+            "channel_id": 723,
+            "start": 4099,
+            "end": 4114
+        },
+        {
+            "program_id": "ch170_fox_news_live_hd_the_late_news_4040",
+            "channel_id": 170,
+            "start": 4114,
+            "end": 4130
+        },
+        {
+            "program_id": "ch470_team_news_live_norwich_city_v__4130",
+            "channel_id": 470,
+            "start": 4130,
+            "end": 4147
+        },
+        {
+            "program_id": "ch221_bullhorn_betty_breaking_news_t_4147",
+            "channel_id": 221,
+            "start": 4147,
+            "end": 4163
+        },
+        {
+            "program_id": "ch1053_bullhorn_betty_breaking_news_t_4096",
+            "channel_id": 1053,
+            "start": 4163,
+            "end": 4186
+        },
+        {
+            "program_id": "ch1219_today_breaking_news_top_100_ne_4053",
+            "channel_id": 1219,
+            "start": 4186,
+            "end": 4203
+        },
+        {
+            "program_id": "ch1664_l_50_badi_khabren_ll_news_aaj__4100",
+            "channel_id": 1664,
+            "start": 4203,
+            "end": 4220
+        },
+        {
+            "program_id": "ch497_bullhorn_betty_breaking_news_t_4220",
+            "channel_id": 497,
+            "start": 4220,
+            "end": 4240
+        },
+        {
+            "program_id": "ch326_02_january_2026_aaj_ki_50_sabs_4261",
+            "channel_id": 326,
+            "start": 4261,
+            "end": 4281
+        },
+        {
+            "program_id": "ch1464_disney_parks_live_breaking_new_4286",
+            "channel_id": 1464,
+            "start": 4286,
+            "end": 4305
+        },
+        {
+            "program_id": "ch137_sleuth_intuition_live_breaking_4308",
+            "channel_id": 137,
+            "start": 4308,
+            "end": 4328
+        },
+        {
+            "program_id": "ch47_mmtv_news_live_4329",
+            "channel_id": 47,
+            "start": 4329,
+            "end": 4354
+        },
+        {
+            "program_id": "ch99_kairali_news_live_4354",
+            "channel_id": 99,
+            "start": 4354,
+            "end": 4389
+        },
+        {
+            "program_id": "ch737_today_breaking_news_4401",
+            "channel_id": 737,
+            "start": 4401,
+            "end": 4421
+        },
+        {
+            "program_id": "ch737_today_breaking_news_4433",
+            "channel_id": 737,
+            "start": 4433,
+            "end": 4473
+        },
+        {
+            "program_id": "ch1171_janabheri_cm_revanth_reddy_spe_4474",
+            "channel_id": 1171,
+            "start": 4474,
+            "end": 4504
+        },
+        {
+            "program_id": "ch1499_today_breaking_news_top_100_ne_4508",
+            "channel_id": 1499,
+            "start": 4508,
+            "end": 4528
+        },
+        {
+            "program_id": "ch800_9january_daily_current_affairs_4545",
+            "channel_id": 800,
+            "start": 4545,
+            "end": 4575
+        },
+        {
+            "program_id": "ch731_sleuth_intuition_live_breaking_4602",
+            "channel_id": 731,
+            "start": 4602,
+            "end": 4618
+        },
+        {
+            "program_id": "ch1362_fox_news_live_hd_the_late_news_4599",
+            "channel_id": 1362,
+            "start": 4618,
+            "end": 4634
+        },
+        {
+            "program_id": "ch1257_king_p_media_is_live_4642",
+            "channel_id": 1257,
+            "start": 4642,
+            "end": 4667
+        },
+        {
+            "program_id": "ch231_live_05_01_2026_morning_news_t_4678",
+            "channel_id": 231,
+            "start": 4678,
+            "end": 4708
+        },
+        {
+            "program_id": "ch931_bullhorn_betty_breaking_news_t_4723",
+            "channel_id": 931,
+            "start": 4723,
+            "end": 4740
+        },
+        {
+            "program_id": "ch444_us_strikes_venezuela_news_live_4681",
+            "channel_id": 444,
+            "start": 4740,
+            "end": 4756
+        },
+        {
+            "program_id": "ch1590_dd_sahyadri_news_live_04_01_20_4756",
+            "channel_id": 1590,
+            "start": 4756,
+            "end": 4771
+        },
+        {
+            "program_id": "ch856_information_radio_jan_5th_2026_4776",
+            "channel_id": 856,
+            "start": 4776,
+            "end": 4806
+        },
+        {
+            "program_id": "ch320_cn24_live_news_breaking_news_a_4812",
+            "channel_id": 320,
+            "start": 4812,
+            "end": 4837
+        },
+        {
+            "program_id": "ch48_umh_news_live_4848",
+            "channel_id": 48,
+            "start": 4864,
+            "end": 4888
+        },
+        {
+            "program_id": "ch1548_4_breaking_news_and_headlines__4756",
+            "channel_id": 1548,
+            "start": 4888,
+            "end": 4906
+        },
+        {
+            "program_id": "ch535_breaking_news_corona_latest_ne_4906",
+            "channel_id": 535,
+            "start": 4906,
+            "end": 4921
+        },
+        {
+            "program_id": "ch515_king_p_media_is_live_4765",
+            "channel_id": 515,
+            "start": 4921,
+            "end": 4945
+        },
+        {
+            "program_id": "ch207_bullhorn_betty_breaking_news_t_4926",
+            "channel_id": 207,
+            "start": 4945,
+            "end": 4966
+        },
+        {
+            "program_id": "ch579_breaking_news_live_trump_claim_4861",
+            "channel_id": 579,
+            "start": 4966,
+            "end": 4981
+        },
+        {
+            "program_id": "ch1227_kairali_news_live_4991",
+            "channel_id": 1227,
+            "start": 4991,
+            "end": 5011
+        },
+        {
+            "program_id": "ch621_live_house_oversight_committee_5024",
+            "channel_id": 621,
+            "start": 5024,
+            "end": 5044
+        },
+        {
+            "program_id": "ch792_live_webcams_around_the_world__5047",
+            "channel_id": 792,
+            "start": 5047,
+            "end": 5062
+        },
+        {
+            "program_id": "ch446_news_live_5071",
+            "channel_id": 446,
+            "start": 5071,
+            "end": 5106
+        },
+        {
+            "program_id": "ch791_see_news_urdu_live_latest_paki_5117",
+            "channel_id": 791,
+            "start": 5117,
+            "end": 5147
+        },
+        {
+            "program_id": "ch718_ia_live_uk_house_of_commons_di_4972",
+            "channel_id": 718,
+            "start": 5164,
+            "end": 5182
+        },
+        {
+            "program_id": "ch1305_kairali_news_live_5186",
+            "channel_id": 1305,
+            "start": 5186,
+            "end": 5206
+        },
+        {
+            "program_id": "ch407_9january_daily_current_affairs_5227",
+            "channel_id": 407,
+            "start": 5227,
+            "end": 5272
+        },
+        {
+            "program_id": "ch850_film_and_box_office_news_live__5291",
+            "channel_id": 850,
+            "start": 5291,
+            "end": 5316
+        },
+        {
+            "program_id": "ch410_breaking_news_5_for_bihar_libr_5317",
+            "channel_id": 410,
+            "start": 5317,
+            "end": 5347
+        },
+        {
+            "program_id": "ch954_5_january_2026_daily_current_a_5359",
+            "channel_id": 954,
+            "start": 5359,
+            "end": 5379
+        },
+        {
+            "program_id": "ch641_cnn_breaking_news_live_hd_5385",
+            "channel_id": 641,
+            "start": 5385,
+            "end": 5405
+        },
+        {
+            "program_id": "ch1144_news_live_5405",
+            "channel_id": 1144,
+            "start": 5405,
+            "end": 5435
+        },
+        {
+            "program_id": "ch682_punjabi_news_punjabi_latest_ne_5438",
+            "channel_id": 682,
+            "start": 5438,
+            "end": 5454
+        },
+        {
+            "program_id": "ch352_team_news_live_norwich_city_v__5459",
+            "channel_id": 352,
+            "start": 5459,
+            "end": 5499
+        },
+        {
+            "program_id": "ch122_cnn_breaking_news_live_hd_5491",
+            "channel_id": 122,
+            "start": 5499,
+            "end": 5516
+        },
+        {
+            "program_id": "ch691_fox_news_live_stream_now_presi_5516",
+            "channel_id": 691,
+            "start": 5516,
+            "end": 5546
+        },
+        {
+            "program_id": "ch796_ruturaj_dropped_ind_vs_nz_squa_5475",
+            "channel_id": 796,
+            "start": 5546,
+            "end": 5565
+        },
+        {
+            "program_id": "ch211_rocket_morning_news_live_jan_9_5464",
+            "channel_id": 211,
+            "start": 5565,
+            "end": 5584
+        },
+        {
+            "program_id": "ch221_bullhorn_betty_breaking_news_t_5584",
+            "channel_id": 221,
+            "start": 5584,
+            "end": 5601
+        },
+        {
+            "program_id": "ch1349_2026_welfare_cup_football_ghat_5597",
+            "channel_id": 1349,
+            "start": 5601,
+            "end": 5617
+        },
+        {
+            "program_id": "ch11_4_breaking_news_and_headlines__5514",
+            "channel_id": 11,
+            "start": 5617,
+            "end": 5634
+        },
+        {
+            "program_id": "ch541_ia_live_uk_house_of_commons_di_5614",
+            "channel_id": 541,
+            "start": 5634,
+            "end": 5654
+        },
+        {
+            "program_id": "ch111_king_p_media_is_live_5653",
+            "channel_id": 111,
+            "start": 5654,
+            "end": 5678
+        },
+        {
+            "program_id": "ch386_live_us_president_trump_on_ven_5672",
+            "channel_id": 386,
+            "start": 5678,
+            "end": 5697
+        },
+        {
+            "program_id": "ch359_live_webcams_around_the_world__5688",
+            "channel_id": 359,
+            "start": 5697,
+            "end": 5718
+        },
+        {
+            "program_id": "ch363_december_2025_most_expected_cu_5718",
+            "channel_id": 363,
+            "start": 5718,
+            "end": 5734
+        },
+        {
+            "program_id": "ch1192_bullhorn_betty_breaking_news_t_5622",
+            "channel_id": 1192,
+            "start": 5754,
+            "end": 5772
+        },
+        {
+            "program_id": "ch209_abc_news_live_is_a_24_7_stream_5774",
+            "channel_id": 209,
+            "start": 5774,
+            "end": 5804
+        },
+        {
+            "program_id": "ch515_king_p_media_is_live_5816",
+            "channel_id": 515,
+            "start": 5816,
+            "end": 5841
+        },
+        {
+            "program_id": "ch65_live_house_oversight_committee_5846",
+            "channel_id": 65,
+            "start": 5846,
+            "end": 5891
+        },
+        {
+            "program_id": "ch382_10_00_pm_tcv_news_04_jan_2026_5910",
+            "channel_id": 382,
+            "start": 5910,
+            "end": 5930
+        },
+        {
+            "program_id": "ch1219_today_breaking_news_top_100_ne_5934",
+            "channel_id": 1219,
+            "start": 5934,
+            "end": 5994
+        },
+        {
+            "program_id": "ch1480_marathi_breaking_news_live_mah_5998",
+            "channel_id": 1480,
+            "start": 5998,
+            "end": 6023
+        },
+        {
+            "program_id": "ch1263_information_radio_jan_5th_2026_6031",
+            "channel_id": 1263,
+            "start": 6031,
+            "end": 6071
+        },
+        {
+            "program_id": "ch624_today_breaking_news_top_100_ne_6084",
+            "channel_id": 624,
+            "start": 6084,
+            "end": 6129
+        },
+        {
+            "program_id": "ch1209_today_breaking_news_top_100_ne_6131",
+            "channel_id": 1209,
+            "start": 6131,
+            "end": 6176
+        },
+        {
+            "program_id": "ch963_bullhorn_betty_breaking_news_t_6187",
+            "channel_id": 963,
+            "start": 6187,
+            "end": 6207
+        },
+        {
+            "program_id": "ch1474_bullhorn_betty_breaking_news_t_6210",
+            "channel_id": 1474,
+            "start": 6210,
+            "end": 6230
+        },
+        {
+            "program_id": "ch490_disney_parks_live_breaking_new_6231",
+            "channel_id": 490,
+            "start": 6231,
+            "end": 6256
+        },
+        {
+            "program_id": "ch229_rocket_morning_news_live_jan_8_6186",
+            "channel_id": 229,
+            "start": 6257,
+            "end": 6276
+        },
+        {
+            "program_id": "ch923_the_top_risks_of_2026_with_ian_6276",
+            "channel_id": 923,
+            "start": 6276,
+            "end": 6294
+        },
+        {
+            "program_id": "ch1576_ruturaj_dropped_ind_vs_nz_squa_6100",
+            "channel_id": 1576,
+            "start": 6294,
+            "end": 6310
+        },
+        {
+            "program_id": "ch27_msnbc_live_the_11th_hour_with__6288",
+            "channel_id": 27,
+            "start": 6310,
+            "end": 6333
+        },
+        {
+            "program_id": "ch1609_bullhorn_betty_breaking_news_t_6331",
+            "channel_id": 1609,
+            "start": 6333,
+            "end": 6351
+        },
+        {
+            "program_id": "ch1481_kairali_news_live_6367",
+            "channel_id": 1481,
+            "start": 6367,
+            "end": 6387
+        },
+        {
+            "program_id": "ch1146_news_live_6400",
+            "channel_id": 1146,
+            "start": 6400,
+            "end": 6440
+        },
+        {
+            "program_id": "ch971_breaking_news_live_6340",
+            "channel_id": 971,
+            "start": 6440,
+            "end": 6460
+        },
+        {
+            "program_id": "ch801_live_untv_news_break_january_5_6471",
+            "channel_id": 801,
+            "start": 6471,
+            "end": 6491
+        },
+        {
+            "program_id": "ch909_today_world_breaking_news_live_6499",
+            "channel_id": 909,
+            "start": 6499,
+            "end": 6539
+        },
+        {
+            "program_id": "ch129_9january_daily_current_affairs_6543",
+            "channel_id": 129,
+            "start": 6543,
+            "end": 6563
+        },
+        {
+            "program_id": "ch488_mumbai_breaking_news_live_mumb_6569",
+            "channel_id": 488,
+            "start": 6569,
+            "end": 6599
+        },
+        {
+            "program_id": "ch797_v_update_news_live_is_live_6604",
+            "channel_id": 797,
+            "start": 6604,
+            "end": 6624
+        },
+        {
+            "program_id": "ch604_news_live_6626",
+            "channel_id": 604,
+            "start": 6626,
+            "end": 6651
+        },
+        {
+            "program_id": "ch683_sportbar_news_live_live_6661",
+            "channel_id": 683,
+            "start": 6661,
+            "end": 6681
+        },
+        {
+            "program_id": "ch96_film_and_box_office_news_live__6684",
+            "channel_id": 96,
+            "start": 6684,
+            "end": 6709
+        },
+        {
+            "program_id": "ch1058_news_live_6727",
+            "channel_id": 1058,
+            "start": 6727,
+            "end": 6772
+        },
+        {
+            "program_id": "ch1660_rocket_morning_news_live_jan_9_6778",
+            "channel_id": 1660,
+            "start": 6778,
+            "end": 6803
+        },
+        {
+            "program_id": "ch1201_ia_live_uk_house_of_commons_di_6809",
+            "channel_id": 1201,
+            "start": 6809,
+            "end": 6844
+        },
+        {
+            "program_id": "ch644_us_strikes_venezuela_news_live_6844",
+            "channel_id": 644,
+            "start": 6844,
+            "end": 6889
+        },
+        {
+            "program_id": "ch1552_bullhorn_betty_breaking_news_t_6906",
+            "channel_id": 1552,
+            "start": 6906,
+            "end": 6941
+        },
+        {
+            "program_id": "ch1656_live_webcams_around_the_world__6949",
+            "channel_id": 1656,
+            "start": 6949,
+            "end": 6969
+        },
+        {
+            "program_id": "ch1307_sportbar_news_live_live_6901",
+            "channel_id": 1307,
+            "start": 6972,
+            "end": 6991
+        },
+        {
+            "program_id": "ch856_information_radio_jan_5th_2026_6991",
+            "channel_id": 856,
+            "start": 6991,
+            "end": 7006
+        },
+        {
+            "program_id": "ch1394_cnn_breaking_news_live_hd_7006",
+            "channel_id": 1394,
+            "start": 7006,
+            "end": 7031
+        },
+        {
+            "program_id": "ch1234_film_and_box_office_news_live__7037",
+            "channel_id": 1234,
+            "start": 7037,
+            "end": 7082
+        },
+        {
+            "program_id": "ch1349_live_tonight_skiba_news_nation_7086",
+            "channel_id": 1349,
+            "start": 7086,
+            "end": 7106
+        },
+        {
+            "program_id": "ch1489_bullhorn_betty_breaking_news_t_7113",
+            "channel_id": 1489,
+            "start": 7113,
+            "end": 7138
+        },
+        {
+            "program_id": "ch1638_breaking_news_live_stream_7150",
+            "channel_id": 1638,
+            "start": 7150,
+            "end": 7170
+        },
+        {
+            "program_id": "ch732_news_live_7171",
+            "channel_id": 732,
+            "start": 7171,
+            "end": 7196
+        },
+        {
+            "program_id": "ch488_news_live_7202",
+            "channel_id": 488,
+            "start": 7202,
+            "end": 7227
+        },
+        {
+            "program_id": "ch1585_bullhorn_betty_breaking_news_t_7233",
+            "channel_id": 1585,
+            "start": 7233,
+            "end": 7278
+        },
+        {
+            "program_id": "ch1669_dd_sahyadri_news_live_04_01_20_7095",
+            "channel_id": 1669,
+            "start": 7283,
+            "end": 7305
+        },
+        {
+            "program_id": "ch292_today_breaking_news_top_100_ne_7316",
+            "channel_id": 292,
+            "start": 7316,
+            "end": 7341
+        },
+        {
+            "program_id": "ch939_sportbar_news_live_live_7342",
+            "channel_id": 939,
+            "start": 7342,
+            "end": 7387
+        },
+        {
+            "program_id": "ch1106_fox_news_live_hd_the_late_news_7403",
+            "channel_id": 1106,
+            "start": 7403,
+            "end": 7423
+        },
+        {
+            "program_id": "ch516_cnn_news_live_breaking_news_li_7429",
+            "channel_id": 516,
+            "start": 7429,
+            "end": 7474
+        },
+        {
+            "program_id": "ch113_live_breaking_news_hindi_news__7485",
+            "channel_id": 113,
+            "start": 7485,
+            "end": 7505
+        },
+        {
+            "program_id": "ch1373_bullhorn_betty_breaking_news_t_7506",
+            "channel_id": 1373,
+            "start": 7506,
+            "end": 7526
+        },
+        {
+            "program_id": "ch931_bullhorn_betty_breaking_news_t_7545",
+            "channel_id": 931,
+            "start": 7545,
+            "end": 7561
+        },
+        {
+            "program_id": "ch1640_today_world_breaking_news_live_7579",
+            "channel_id": 1640,
+            "start": 7579,
+            "end": 7624
+        },
+        {
+            "program_id": "ch963_dd_sahyadri_news_live_04_01_20_7633",
+            "channel_id": 963,
+            "start": 7633,
+            "end": 7693
+        },
+        {
+            "program_id": "ch1307_v_update_news_live_is_live_7694",
+            "channel_id": 1307,
+            "start": 7694,
+            "end": 7714
+        },
+        {
+            "program_id": "ch772_cn24_live_news_breaking_news_a_7738",
+            "channel_id": 772,
+            "start": 7738,
+            "end": 7763
+        },
+        {
+            "program_id": "ch158_live_trump_returns_to_washingt_7763",
+            "channel_id": 158,
+            "start": 7763,
+            "end": 7780
+        },
+        {
+            "program_id": "ch888_4_breaking_news_and_headlines__7752",
+            "channel_id": 888,
+            "start": 7780,
+            "end": 7797
+        },
+        {
+            "program_id": "ch990_us_strikes_venezuela_news_live_7807",
+            "channel_id": 990,
+            "start": 7807,
+            "end": 7837
+        },
+        {
+            "program_id": "ch1534_fox_news_live_stream_now_presi_7840",
+            "channel_id": 1534,
+            "start": 7840,
+            "end": 7860
+        },
+        {
+            "program_id": "ch77_live_us_president_trump_on_ven_7861",
+            "channel_id": 77,
+            "start": 7861,
+            "end": 7886
+        },
+        {
+            "program_id": "ch638_kairali_news_live_7889",
+            "channel_id": 638,
+            "start": 7889,
+            "end": 7914
+        },
+        {
+            "program_id": "ch470_team_news_live_norwich_city_v__7919",
+            "channel_id": 470,
+            "start": 7919,
+            "end": 7949
+        },
+        {
+            "program_id": "ch618_fox_news_live_hd_the_late_news_7959",
+            "channel_id": 618,
+            "start": 7959,
+            "end": 8004
+        },
+        {
+            "program_id": "ch1157_bullhorn_betty_breaking_news_t_8006",
+            "channel_id": 1157,
+            "start": 8006,
+            "end": 8031
+        },
+        {
+            "program_id": "ch1077_disney_parks_live_breaking_new_8036",
+            "channel_id": 1077,
+            "start": 8036,
+            "end": 8061
+        },
+        {
+            "program_id": "ch312_december_2025_most_expected_cu_8070",
+            "channel_id": 312,
+            "start": 8070,
+            "end": 8115
+        },
+        {
+            "program_id": "ch65_geo_news_live_pakistan_news_li_8122",
+            "channel_id": 65,
+            "start": 8122,
+            "end": 8142
+        },
+        {
+            "program_id": "ch809_asian_news_live_tv_1165_24_7_b_8164",
+            "channel_id": 809,
+            "start": 8164,
+            "end": 8194
+        },
+        {
+            "program_id": "ch601_news_live_8196",
+            "channel_id": 601,
+            "start": 8196,
+            "end": 8241
+        },
+        {
+            "program_id": "ch992_05_january_2026_current_affair_8243",
+            "channel_id": 992,
+            "start": 8243,
+            "end": 8263
+        },
+        {
+            "program_id": "ch1481_breaking_news_watch_today_s_ma_8263",
+            "channel_id": 1481,
+            "start": 8263,
+            "end": 8280
+        },
+        {
+            "program_id": "ch1114_beed_choufer_news_live_is_live_8280",
+            "channel_id": 1114,
+            "start": 8280,
+            "end": 8298
+        },
+        {
+            "program_id": "ch392_2026_welfare_cup_football_ghat_8301",
+            "channel_id": 392,
+            "start": 8301,
+            "end": 8336
+        },
+        {
+            "program_id": "ch300_marathi_breaking_news_live_mah_8346",
+            "channel_id": 300,
+            "start": 8346,
+            "end": 8391
+        },
+        {
+            "program_id": "ch137_sleuth_intuition_live_breaking_8391",
+            "channel_id": 137,
+            "start": 8391,
+            "end": 8411
+        },
+        {
+            "program_id": "ch548_today_breaking_news_top_100_ne_8444",
+            "channel_id": 548,
+            "start": 8444,
+            "end": 8489
+        },
+        {
+            "program_id": "ch985_breaking_news_live_north_korea_8490",
+            "channel_id": 985,
+            "start": 8490,
+            "end": 8510
+        },
+        {
+            "program_id": "ch1406_we_gone_run_it_trump_venezuela_8512",
+            "channel_id": 1406,
+            "start": 8512,
+            "end": 8542
+        },
+        {
+            "program_id": "ch728_today_breaking_news_top_100_ne_8514",
+            "channel_id": 728,
+            "start": 8556,
+            "end": 8574
+        },
+        {
+            "program_id": "ch1051_rauke_news_live_is_live_8379",
+            "channel_id": 1051,
+            "start": 8574,
+            "end": 8589
+        },
+        {
+            "program_id": "ch517_dd_sahyadri_news_live_04_01_20_8589",
+            "channel_id": 517,
+            "start": 8589,
+            "end": 8614
+        },
+        {
+            "program_id": "ch1275_kairali_news_live_8559",
+            "channel_id": 1275,
+            "start": 8614,
+            "end": 8634
+        },
+        {
+            "program_id": "ch89_geo_news_live_pakistan_news_li_8577",
+            "channel_id": 89,
+            "start": 8634,
+            "end": 8652
+        },
+        {
+            "program_id": "ch622_breaking_news_bd_is_live_8548",
+            "channel_id": 622,
+            "start": 8652,
+            "end": 8668
+        },
+        {
+            "program_id": "ch1451_live_breaking_news_hindi_news__8686",
+            "channel_id": 1451,
+            "start": 8686,
+            "end": 8711
+        },
+        {
+            "program_id": "ch318_trump_live_president_addresses_8725",
+            "channel_id": 318,
+            "start": 8725,
+            "end": 8745
+        },
+        {
+            "program_id": "ch1388_live_transmission_breaking_new_8760",
+            "channel_id": 1388,
+            "start": 8760,
+            "end": 8780
+        },
+        {
+            "program_id": "ch1422_live_untv_news_break_january_5_8783",
+            "channel_id": 1422,
+            "start": 8783,
+            "end": 8813
+        },
+        {
+            "program_id": "ch1127_fix_news_live_stream_president_8828",
+            "channel_id": 1127,
+            "start": 8828,
+            "end": 8853
+        },
+        {
+            "program_id": "ch1434_sportbar_news_live_live_8860",
+            "channel_id": 1434,
+            "start": 8860,
+            "end": 8890
+        },
+        {
+            "program_id": "ch835_today_news_live_pm_narendra_mo_8891",
+            "channel_id": 835,
+            "start": 8891,
+            "end": 8931
+        },
+        {
+            "program_id": "ch732_mmtv_news_live_8934",
+            "channel_id": 732,
+            "start": 8934,
+            "end": 8964
+        },
+        {
+            "program_id": "ch576_live_tonight_skiba_news_nation_8975",
+            "channel_id": 576,
+            "start": 8975,
+            "end": 8995
+        },
+        {
+            "program_id": "ch671_9january_daily_current_affairs_9003",
+            "channel_id": 671,
+            "start": 9003,
+            "end": 9048
+        },
+        {
+            "program_id": "ch974_bullhorn_betty_breaking_news_t_9048",
+            "channel_id": 974,
+            "start": 9048,
+            "end": 9083
+        },
+        {
+            "program_id": "ch136_times_news_live_s_broadcast_9087",
+            "channel_id": 136,
+            "start": 9087,
+            "end": 9112
+        },
+        {
+            "program_id": "ch1214_live_breaking_news_hindi_news__9127",
+            "channel_id": 1214,
+            "start": 9127,
+            "end": 9157
+        },
+        {
+            "program_id": "ch217_breaking_news_live_stream_9164",
+            "channel_id": 217,
+            "start": 9164,
+            "end": 9184
+        },
+        {
+            "program_id": "ch1516_breaking_news_today_latest_new_9188",
+            "channel_id": 1516,
+            "start": 9188,
+            "end": 9233
+        },
+        {
+            "program_id": "ch275_team_news_live_norwich_city_v__9239",
+            "channel_id": 275,
+            "start": 9239,
+            "end": 9274
+        },
+        {
+            "program_id": "ch1136_breaking_news_bd_is_live_9283",
+            "channel_id": 1136,
+            "start": 9283,
+            "end": 9303
+        },
+        {
+            "program_id": "ch1059_kairali_news_live_9310",
+            "channel_id": 1059,
+            "start": 9310,
+            "end": 9330
+        },
+        {
+            "program_id": "ch49_v_update_news_live_is_live_9341",
+            "channel_id": 49,
+            "start": 9341,
+            "end": 9361
+        },
+        {
+            "program_id": "ch673_fox_news_live_president_donald_9294",
+            "channel_id": 673,
+            "start": 9369,
+            "end": 9384
+        },
+        {
+            "program_id": "ch312_live_transmission_breaking_new_9386",
+            "channel_id": 312,
+            "start": 9386,
+            "end": 9416
+        },
+        {
+            "program_id": "ch887_news_live_9423",
+            "channel_id": 887,
+            "start": 9423,
+            "end": 9448
+        },
+        {
+            "program_id": "ch154_december_2025_most_expected_cu_9450",
+            "channel_id": 154,
+            "start": 9450,
+            "end": 9470
+        },
+        {
+            "program_id": "ch1011_breaking_news_live_streaming_n_9335",
+            "channel_id": 1011,
+            "start": 9470,
+            "end": 9485
+        },
+        {
+            "program_id": "ch525_bullhorn_betty_breaking_news_t_9456",
+            "channel_id": 525,
+            "start": 9485,
+            "end": 9501
+        },
+        {
+            "program_id": "ch517_news_live_9523",
+            "channel_id": 517,
+            "start": 9523,
+            "end": 9553
+        },
+        {
+            "program_id": "ch1441_disney_parks_live_breaking_new_9553",
+            "channel_id": 1441,
+            "start": 9553,
+            "end": 9583
+        },
+        {
+            "program_id": "ch456_msnbc_live_the_11th_hour_with__9375",
+            "channel_id": 456,
+            "start": 9600,
+            "end": 9615
+        },
+        {
+            "program_id": "ch1363_bullhorn_betty_breaking_news_t_9486",
+            "channel_id": 1363,
+            "start": 9615,
+            "end": 9636
+        },
+        {
+            "program_id": "ch970_02_january_2026_aaj_ki_50_sabs_9650",
+            "channel_id": 970,
+            "start": 9650,
+            "end": 9695
+        },
+        {
+            "program_id": "ch72_2026_welfare_cup_football_ghat_9695",
+            "channel_id": 72,
+            "start": 9695,
+            "end": 9740
+        },
+        {
+            "program_id": "ch983_information_radio_jan_5th_2026_9759",
+            "channel_id": 983,
+            "start": 9759,
+            "end": 9774
+        },
+        {
+            "program_id": "ch381_ia_live_uk_house_of_commons_di_9774",
+            "channel_id": 381,
+            "start": 9774,
+            "end": 9809
+        },
+        {
+            "program_id": "ch131_us_strikes_venezuela_news_live_9811",
+            "channel_id": 131,
+            "start": 9811,
+            "end": 9856
+        },
+        {
+            "program_id": "ch1012_sportbar_news_live_live_9816",
+            "channel_id": 1012,
+            "start": 9860,
+            "end": 9876
+        },
+        {
+            "program_id": "ch711_v_update_news_live_is_live_9777",
+            "channel_id": 711,
+            "start": 9876,
+            "end": 9897
+        },
+        {
+            "program_id": "ch46_fox_news_live_stream_now_presi_9897",
+            "channel_id": 46,
+            "start": 9897,
+            "end": 9913
+        },
+        {
+            "program_id": "ch111_king_p_media_is_live_9913",
+            "channel_id": 111,
+            "start": 9913,
+            "end": 9928
+        },
+        {
+            "program_id": "ch413_live_house_oversight_committee_9869",
+            "channel_id": 413,
+            "start": 9928,
+            "end": 9944
+        },
+        {
+            "program_id": "ch214_bullhorn_betty_breaking_news_t_9944",
+            "channel_id": 214,
+            "start": 9944,
+            "end": 9963
+        },
+        {
+            "program_id": "ch281_kairali_news_live_9963",
+            "channel_id": 281,
+            "start": 9963,
+            "end": 9978
+        },
+        {
+            "program_id": "ch1664_cnn_breaking_news_live_hd_9978",
+            "channel_id": 1664,
+            "start": 9978,
+            "end": 9996
+        },
+        {
+            "program_id": "ch1156_rocket_morning_news_live_jan_9_9996",
+            "channel_id": 1156,
+            "start": 9996,
+            "end": 10012
+        },
+        {
+            "program_id": "ch279_news_live_9818",
+            "channel_id": 279,
+            "start": 10012,
+            "end": 10028
+        },
+        {
+            "program_id": "ch1247_bullhorn_betty_breaking_news_t_9954",
+            "channel_id": 1247,
+            "start": 10028,
+            "end": 10044
+        },
+        {
+            "program_id": "ch1341_breaking_news_corona_latest_ne_9970",
+            "channel_id": 1341,
+            "start": 10044,
+            "end": 10060
+        },
+        {
+            "program_id": "ch113_news_live_10078",
+            "channel_id": 113,
+            "start": 10078,
+            "end": 10108
+        },
+        {
+            "program_id": "ch30_ia_live_uk_house_of_commons_di_10121",
+            "channel_id": 30,
+            "start": 10121,
+            "end": 10141
+        },
+        {
+            "program_id": "ch1103_breaking_news_bd_is_live_10144",
+            "channel_id": 1103,
+            "start": 10144,
+            "end": 10174
+        },
+        {
+            "program_id": "ch513_news_live_10174",
+            "channel_id": 513,
+            "start": 10174,
+            "end": 10219
+        },
+        {
+            "program_id": "ch340_today_breaking_news_top_100_ne_10220",
+            "channel_id": 340,
+            "start": 10220,
+            "end": 10245
+        },
+        {
+            "program_id": "ch68_newsmax_news_breaking_news_and_10026",
+            "channel_id": 68,
+            "start": 10248,
+            "end": 10266
+        },
+        {
+            "program_id": "ch1017_today_news_live_pm_narendra_mo_10270",
+            "channel_id": 1017,
+            "start": 10270,
+            "end": 10315
+        },
+        {
+            "program_id": "ch146_trump_live_latest_news_on_vene_10318",
+            "channel_id": 146,
+            "start": 10318,
+            "end": 10338
+        },
+        {
+            "program_id": "ch625_disney_parks_live_breaking_new_10348",
+            "channel_id": 625,
+            "start": 10348,
+            "end": 10378
+        },
+        {
+            "program_id": "ch724_breaking_news_live_trump_claim_10378",
+            "channel_id": 724,
+            "start": 10378,
+            "end": 10403
+        },
+        {
+            "program_id": "ch981_live_8_00_am_dd_news_rajasthan_10405",
+            "channel_id": 981,
+            "start": 10405,
+            "end": 10425
+        },
+        {
+            "program_id": "ch1018_sportbar_news_live_live_10447",
+            "channel_id": 1018,
+            "start": 10447,
+            "end": 10477
+        },
+        {
+            "program_id": "ch80_team_news_live_norwich_city_v__10504",
+            "channel_id": 80,
+            "start": 10504,
+            "end": 10534
+        },
+        {
+            "program_id": "ch669_information_radio_jan_5th_2026_10549",
+            "channel_id": 669,
+            "start": 10549,
+            "end": 10569
+        },
+        {
+            "program_id": "ch1027_mumbai_breaking_news_live_mumb_10584",
+            "channel_id": 1027,
+            "start": 10584,
+            "end": 10604
+        },
+        {
+            "program_id": "ch104_trump_live_latest_news_on_vene_10604",
+            "channel_id": 104,
+            "start": 10604,
+            "end": 10624
+        },
+        {
+            "program_id": "ch1491_5_january_2026_daily_current_a_10632",
+            "channel_id": 1491,
+            "start": 10632,
+            "end": 10662
+        },
+        {
+            "program_id": "ch778_today_breaking_news_top_100_ne_10667",
+            "channel_id": 778,
+            "start": 10667,
+            "end": 10687
+        },
+        {
+            "program_id": "ch21_film_and_box_office_news_live__10568",
+            "channel_id": 21,
+            "start": 10727,
+            "end": 10748
+        },
+        {
+            "program_id": "ch1479_sleuth_intuition_live_breaking_10751",
+            "channel_id": 1479,
+            "start": 10751,
+            "end": 10776
+        },
+        {
+            "program_id": "ch1115_pm_live_news_pm_kisan_smman_ni_10783",
+            "channel_id": 1115,
+            "start": 10783,
+            "end": 10803
+        },
+        {
+            "program_id": "ch596_5_january_2026_daily_current_a_10807",
+            "channel_id": 596,
+            "start": 10807,
+            "end": 10842
+        },
+        {
+            "program_id": "ch300_abc_news_live_is_a_24_7_stream_10857",
+            "channel_id": 300,
+            "start": 10857,
+            "end": 10877
+        },
+        {
+            "program_id": "ch1071_grand_theft_venezuela_trump_sn_10877",
+            "channel_id": 1071,
+            "start": 10877,
+            "end": 10902
+        },
+        {
+            "program_id": "ch846_live_breaking_news_hindi_news__10902",
+            "channel_id": 846,
+            "start": 10902,
+            "end": 10937
+        },
+        {
+            "program_id": "ch176_nvidia_ceo_jensen_huang_talks__10943",
+            "channel_id": 176,
+            "start": 10943,
+            "end": 10968
+        },
+        {
+            "program_id": "ch1041_cn24_live_news_breaking_news_a_10971",
+            "channel_id": 1041,
+            "start": 10971,
+            "end": 10996
+        },
+        {
+            "program_id": "ch1334_v_update_news_live_is_live_11001",
+            "channel_id": 1334,
+            "start": 11001,
+            "end": 11021
+        },
+        {
+            "program_id": "ch1187_news_live_11045",
+            "channel_id": 1187,
+            "start": 11045,
+            "end": 11070
+        },
+        {
+            "program_id": "ch77_live_us_president_trump_on_ven_11073",
+            "channel_id": 77,
+            "start": 11073,
+            "end": 11093
+        },
+        {
+            "program_id": "ch255_newsmax_news_breaking_news_and_11099",
+            "channel_id": 255,
+            "start": 11099,
+            "end": 11124
+        },
+        {
+            "program_id": "ch27_live_tv9_bangla_sir_mamata_ban_11128",
+            "channel_id": 27,
+            "start": 11128,
+            "end": 11148
+        },
+        {
+            "program_id": "ch1283_mumbai_breaking_news_live_mumb_11164",
+            "channel_id": 1283,
+            "start": 11164,
+            "end": 11199
+        },
+        {
+            "program_id": "ch1513_dd_sahyadri_news_live_04_01_20_11205",
+            "channel_id": 1513,
+            "start": 11205,
+            "end": 11235
+        },
+        {
+            "program_id": "ch477_december_2025_most_expected_cu_11244",
+            "channel_id": 477,
+            "start": 11271,
+            "end": 11304
+        },
+        {
+            "program_id": "ch702_breaking_news_watch_today_s_ma_11266",
+            "channel_id": 702,
+            "start": 11304,
+            "end": 11326
+        },
+        {
+            "program_id": "ch1060_today_breaking_news_top_100_ne_11326",
+            "channel_id": 1060,
+            "start": 11326,
+            "end": 11346
+        },
+        {
+            "program_id": "ch47_msnbc_live_the_11th_hour_with__11263",
+            "channel_id": 47,
+            "start": 11346,
+            "end": 11363
+        },
+        {
+            "program_id": "ch1490_see_news_urdu_live_latest_paki_11336",
+            "channel_id": 1490,
+            "start": 11363,
+            "end": 11381
+        },
+        {
+            "program_id": "ch1502_5_january_2026_daily_current_a_11314",
+            "channel_id": 1502,
+            "start": 11381,
+            "end": 11404
+        },
+        {
+            "program_id": "ch1454_times_news_live_s_broadcast_11344",
+            "channel_id": 1454,
+            "start": 11404,
+            "end": 11419
+        },
+        {
+            "program_id": "ch803_rocket_morning_news_live_jan_8_11419",
+            "channel_id": 803,
+            "start": 11419,
+            "end": 11434
+        },
+        {
+            "program_id": "ch1305_today_world_breaking_news_live_11458",
+            "channel_id": 1305,
+            "start": 11458,
+            "end": 11483
+        },
+        {
+            "program_id": "ch655_msnbc_live_the_11th_hour_with__11483",
+            "channel_id": 655,
+            "start": 11483,
+            "end": 11499
+        },
+        {
+            "program_id": "ch1028_ib_tv_news_live_24x7_ibtv_ap_t_11499",
+            "channel_id": 1028,
+            "start": 11499,
+            "end": 11519
+        },
+        {
+            "program_id": "ch1263_live_transmission_breaking_new_11450",
+            "channel_id": 1263,
+            "start": 11519,
+            "end": 11550
+        },
+        {
+            "program_id": "ch780_ia_live_uk_house_of_commons_di_11415",
+            "channel_id": 780,
+            "start": 11550,
+            "end": 11565
+        },
+        {
+            "program_id": "ch605_disney_parks_live_breaking_new_11567",
+            "channel_id": 605,
+            "start": 11567,
+            "end": 11592
+        },
+        {
+            "program_id": "ch682_live_us_president_trump_on_ven_11601",
+            "channel_id": 682,
+            "start": 11601,
+            "end": 11626
+        },
+        {
+            "program_id": "ch1425_kairali_news_live_11468",
+            "channel_id": 1425,
+            "start": 11631,
+            "end": 11648
+        },
+        {
+            "program_id": "ch47_mmtv_news_live_11453",
+            "channel_id": 47,
+            "start": 11648,
+            "end": 11663
+        },
+        {
+            "program_id": "ch120_rocket_morning_news_live_jan_8_11663",
+            "channel_id": 120,
+            "start": 11663,
+            "end": 11682
+        },
+        {
+            "program_id": "ch18_disney_parks_live_breaking_new_11682",
+            "channel_id": 18,
+            "start": 11682,
+            "end": 11717
+        },
+        {
+            "program_id": "ch1239_fix_news_live_stream_president_11709",
+            "channel_id": 1239,
+            "start": 11717,
+            "end": 11734
+        },
+        {
+            "program_id": "ch1631_bullhorn_betty_breaking_news_t_11735",
+            "channel_id": 1631,
+            "start": 11735,
+            "end": 11755
+        },
+        {
+            "program_id": "ch115_team_news_live_norwich_city_v__11760",
+            "channel_id": 115,
+            "start": 11760,
+            "end": 11805
+        },
+        {
+            "program_id": "ch1461_disney_parks_live_breaking_new_11829",
+            "channel_id": 1461,
+            "start": 11829,
+            "end": 11854
+        },
+        {
+            "program_id": "ch330_live_untv_news_break_january_5_11854",
+            "channel_id": 330,
+            "start": 11854,
+            "end": 11899
+        },
+        {
+            "program_id": "ch381_ia_live_uk_house_of_commons_di_11915",
+            "channel_id": 381,
+            "start": 11915,
+            "end": 11935
+        },
+        {
+            "program_id": "ch1504_film_and_box_office_news_live__11935",
+            "channel_id": 1504,
+            "start": 11935,
+            "end": 11955
+        },
+        {
+            "program_id": "ch420_ruturaj_dropped_ind_vs_nz_squa_11960",
+            "channel_id": 420,
+            "start": 11960,
+            "end": 11990
+        },
+        {
+            "program_id": "ch981_live_8_00_am_dd_news_rajasthan_11990",
+            "channel_id": 981,
+            "start": 11990,
+            "end": 12010
+        },
+        {
+            "program_id": "ch704_v_update_news_live_is_live_12021",
+            "channel_id": 704,
+            "start": 12021,
+            "end": 12046
+        },
+        {
+            "program_id": "ch115_team_news_live_norwich_city_v__12052",
+            "channel_id": 115,
+            "start": 12052,
+            "end": 12072
+        },
+        {
+            "program_id": "ch462_9january_daily_current_affairs_12074",
+            "channel_id": 462,
+            "start": 12074,
+            "end": 12089
+        },
+        {
+            "program_id": "ch1655_breaking_news_watch_today_s_ma_12029",
+            "channel_id": 1655,
+            "start": 12089,
+            "end": 12104
+        },
+        {
+            "program_id": "ch1134_live_kannada_news_11_am_05_01__12107",
+            "channel_id": 1134,
+            "start": 12107,
+            "end": 12152
+        },
+        {
+            "program_id": "ch1142_disney_parks_live_breaking_new_12166",
+            "channel_id": 1142,
+            "start": 12166,
+            "end": 12186
+        },
+        {
+            "program_id": "ch1408_bullhorn_betty_breaking_news_t_12196",
+            "channel_id": 1408,
+            "start": 12196,
+            "end": 12216
+        },
+        {
+            "program_id": "ch1028_ib_tv_news_live_24x7_ibtv_ap_t_12223",
+            "channel_id": 1028,
+            "start": 12223,
+            "end": 12243
+        },
+        {
+            "program_id": "ch544_9january_daily_current_affairs_12243",
+            "channel_id": 544,
+            "start": 12243,
+            "end": 12288
+        },
+        {
+            "program_id": "ch560_mahua_khabar_live_breaking_24x_12304",
+            "channel_id": 560,
+            "start": 12304,
+            "end": 12334
+        },
+        {
+            "program_id": "ch1037_ia_live_uk_house_of_commons_di_12338",
+            "channel_id": 1037,
+            "start": 12338,
+            "end": 12358
+        },
+        {
+            "program_id": "ch263_cn24_live_news_breaking_news_a_12344",
+            "channel_id": 263,
+            "start": 12366,
+            "end": 12389
+        },
+        {
+            "program_id": "ch824_us_strikes_venezuela_news_live_12389",
+            "channel_id": 824,
+            "start": 12389,
+            "end": 12409
+        },
+        {
+            "program_id": "ch894_times_news_live_s_broadcast_12395",
+            "channel_id": 894,
+            "start": 12409,
+            "end": 12425
+        },
+        {
+            "program_id": "ch1107_fox_news_live_stream_now_presi_12412",
+            "channel_id": 1107,
+            "start": 12425,
+            "end": 12442
+        },
+        {
+            "program_id": "ch683_sportbar_news_live_live_12450",
+            "channel_id": 683,
+            "start": 12450,
+            "end": 12475
+        },
+        {
+            "program_id": "ch203_kairali_news_live_12478",
+            "channel_id": 203,
+            "start": 12478,
+            "end": 12503
+        },
+        {
+            "program_id": "ch339_bihar_news_live_muzaffarpur_li_12503",
+            "channel_id": 339,
+            "start": 12503,
+            "end": 12523
+        },
+        {
+            "program_id": "ch45_fox_news_live_stream_now_presi_12534",
+            "channel_id": 45,
+            "start": 12534,
+            "end": 12559
+        },
+        {
+            "program_id": "ch1570_disney_parks_live_breaking_new_12569",
+            "channel_id": 1570,
+            "start": 12569,
+            "end": 12589
+        },
+        {
+            "program_id": "ch1173_live_breaking_news_hindi_news__12590",
+            "channel_id": 1173,
+            "start": 12590,
+            "end": 12615
+        },
+        {
+            "program_id": "ch1286_msnbc_live_the_11th_hour_with__12617",
+            "channel_id": 1286,
+            "start": 12617,
+            "end": 12647
+        },
+        {
+            "program_id": "ch1533_live_tv9_bangla_sir_mamata_ban_12650",
+            "channel_id": 1533,
+            "start": 12650,
+            "end": 12670
+        },
+        {
+            "program_id": "ch350_today_news_live_pm_narendra_mo_12670",
+            "channel_id": 350,
+            "start": 12670,
+            "end": 12685
+        },
+        {
+            "program_id": "ch30_breaking_news_live_coronavirus_12602",
+            "channel_id": 30,
+            "start": 12685,
+            "end": 12702
+        },
+        {
+            "program_id": "ch489_current_affairs_today_4_5_jan__12702",
+            "channel_id": 489,
+            "start": 12702,
+            "end": 12722
+        },
+        {
+            "program_id": "ch554_fix_news_live_stream_president_12710",
+            "channel_id": 554,
+            "start": 12740,
+            "end": 12755
+        },
+        {
+            "program_id": "ch1234_film_and_box_office_news_live__12625",
+            "channel_id": 1234,
+            "start": 12755,
+            "end": 12775
+        },
+        {
+            "program_id": "ch763_asian_news_live_tv_1165_24_7_b_12775",
+            "channel_id": 763,
+            "start": 12775,
+            "end": 12792
+        },
+        {
+            "program_id": "ch695_aaj_tak_live_news_in_hindi_cur_12792",
+            "channel_id": 695,
+            "start": 12792,
+            "end": 12810
+        },
+        {
+            "program_id": "ch1224_05_jan_current_affairs_2026_cu_12821",
+            "channel_id": 1224,
+            "start": 12821,
+            "end": 12841
+        },
+        {
+            "program_id": "ch197_live_seeman_ntk_meeting_speech_12848",
+            "channel_id": 197,
+            "start": 12848,
+            "end": 12873
+        },
+        {
+            "program_id": "ch501_film_and_box_office_news_live__12878",
+            "channel_id": 501,
+            "start": 12878,
+            "end": 12918
+        },
+        {
+            "program_id": "ch300_today_world_breaking_news_live_12822",
+            "channel_id": 300,
+            "start": 12918,
+            "end": 12942
+        },
+        {
+            "program_id": "ch1474_fox_news_live_stream_now_presi_12861",
+            "channel_id": 1474,
+            "start": 12942,
+            "end": 12961
+        },
+        {
+            "program_id": "ch114_live_05_01_2026_morning_news_t_12881",
+            "channel_id": 114,
+            "start": 12961,
+            "end": 12981
+        },
+        {
+            "program_id": "ch867_disney_parks_live_breaking_new_12992",
+            "channel_id": 867,
+            "start": 12992,
+            "end": 13017
+        },
+        {
+            "program_id": "ch39_rocket_morning_news_live_jan_8_13020",
+            "channel_id": 39,
+            "start": 13020,
+            "end": 13040
+        },
+        {
+            "program_id": "ch965_bullhorn_betty_breaking_news_t_13046",
+            "channel_id": 965,
+            "start": 13046,
+            "end": 13066
+        },
+        {
+            "program_id": "ch1453_current_affairs_today_05_jan_2_12920",
+            "channel_id": 1453,
+            "start": 13094,
+            "end": 13130
+        },
+        {
+            "program_id": "ch1590_bullhorn_betty_breaking_news_t_12905",
+            "channel_id": 1590,
+            "start": 13130,
+            "end": 13145
+        },
+        {
+            "program_id": "ch656_king_p_media_is_live_13150",
+            "channel_id": 656,
+            "start": 13150,
+            "end": 13175
+        },
+        {
+            "program_id": "ch1142_05_january_2026_current_affair_13180",
+            "channel_id": 1142,
+            "start": 13180,
+            "end": 13205
+        },
+        {
+            "program_id": "ch140_kairali_news_live_13210",
+            "channel_id": 140,
+            "start": 13210,
+            "end": 13230
+        },
+        {
+            "program_id": "ch154_today_breaking_news_13241",
+            "channel_id": 154,
+            "start": 13241,
+            "end": 13261
+        },
+        {
+            "program_id": "ch522_newsmax_news_breaking_news_and_13261",
+            "channel_id": 522,
+            "start": 13261,
+            "end": 13281
+        },
+        {
+            "program_id": "ch41_news_live_13283",
+            "channel_id": 41,
+            "start": 13283,
+            "end": 13313
+        },
+        {
+            "program_id": "ch1569_watch_live_the_north_east_news_13332",
+            "channel_id": 1569,
+            "start": 13332,
+            "end": 13352
+        },
+        {
+            "program_id": "ch273_sportbar_news_live_live_13357",
+            "channel_id": 273,
+            "start": 13357,
+            "end": 13387
+        },
+        {
+            "program_id": "ch927_mahua_khabar_live_breaking_24x_13395",
+            "channel_id": 927,
+            "start": 13395,
+            "end": 13440
+        },
+        {
+            "program_id": "ch1573_fox_news_live_hd_president_tru_13445",
+            "channel_id": 1573,
+            "start": 13445,
+            "end": 13490
+        },
+        {
+            "program_id": "ch205_kairali_news_live_13498",
+            "channel_id": 205,
+            "start": 13498,
+            "end": 13518
+        },
+        {
+            "program_id": "ch466_bullhorn_betty_breaking_news_t_13482",
+            "channel_id": 466,
+            "start": 13524,
+            "end": 13542
+        },
+        {
+            "program_id": "ch1127_breaking_news_from_united_stat_13483",
+            "channel_id": 1127,
+            "start": 13542,
+            "end": 13558
+        },
+        {
+            "program_id": "ch29_ruturaj_dropped_ind_vs_nz_squa_13577",
+            "channel_id": 29,
+            "start": 13577,
+            "end": 13607
+        },
+        {
+            "program_id": "ch1418_rauke_news_live_is_live_13608",
+            "channel_id": 1418,
+            "start": 13608,
+            "end": 13638
+        },
+        {
+            "program_id": "ch688_breaking_news_live_north_korea_13638",
+            "channel_id": 688,
+            "start": 13638,
+            "end": 13698
+        },
+        {
+            "program_id": "ch1_cn24_live_news_breaking_news_a_13698",
+            "channel_id": 1,
+            "start": 13698,
+            "end": 13728
+        },
+        {
+            "program_id": "ch547_l_50_badi_khabren_ll_news_aaj__13745",
+            "channel_id": 547,
+            "start": 13745,
+            "end": 13790
+        },
+        {
+            "program_id": "ch1060_today_breaking_news_top_100_ne_13733",
+            "channel_id": 1060,
+            "start": 13803,
+            "end": 13823
+        },
+        {
+            "program_id": "ch1327_cnn_breaking_news_live_hd_13823",
+            "channel_id": 1327,
+            "start": 13823,
+            "end": 13848
+        },
+        {
+            "program_id": "ch1573_fox_news_live_hd_president_tru_13849",
+            "channel_id": 1573,
+            "start": 13849,
+            "end": 13874
+        },
+        {
+            "program_id": "ch1551_film_and_box_office_news_live__13874",
+            "channel_id": 1551,
+            "start": 13874,
+            "end": 13894
+        },
+        {
+            "program_id": "ch1474_bullhorn_betty_breaking_news_t_13900",
+            "channel_id": 1474,
+            "start": 13900,
+            "end": 13920
+        },
+        {
+            "program_id": "ch939_sportbar_news_live_live_13922",
+            "channel_id": 939,
+            "start": 13922,
+            "end": 13947
+        },
+        {
+            "program_id": "ch65_film_and_box_office_news_live__13955",
+            "channel_id": 65,
+            "start": 13955,
+            "end": 13975
+        },
+        {
+            "program_id": "ch1369_film_and_box_office_news_live__13978",
+            "channel_id": 1369,
+            "start": 13978,
+            "end": 13998
+        },
+        {
+            "program_id": "ch705_2026_welfare_cup_football_ghat_13998",
+            "channel_id": 705,
+            "start": 13998,
+            "end": 14018
+        },
+        {
+            "program_id": "ch212_mahua_khabar_live_breaking_24x_14029",
+            "channel_id": 212,
+            "start": 14029,
+            "end": 14054
+        },
+        {
+            "program_id": "ch587_times_news_live_s_broadcast_13998",
+            "channel_id": 587,
+            "start": 14058,
+            "end": 14073
+        },
+        {
+            "program_id": "ch234_ruturaj_dropped_ind_vs_nz_squa_14076",
+            "channel_id": 234,
+            "start": 14076,
+            "end": 14116
+        },
+        {
+            "program_id": "ch242_msnbc_live_the_11th_hour_with__14132",
+            "channel_id": 242,
+            "start": 14132,
+            "end": 14177
+        },
+        {
+            "program_id": "ch747_pm_live_news_pm_kisan_smman_ni_14177",
+            "channel_id": 747,
+            "start": 14177,
+            "end": 14207
+        },
+        {
+            "program_id": "ch435_news_live_14215",
+            "channel_id": 435,
+            "start": 14215,
+            "end": 14235
+        },
+        {
+            "program_id": "ch727_grand_theft_venezuela_trump_sn_14236",
+            "channel_id": 727,
+            "start": 14236,
+            "end": 14296
+        },
+        {
+            "program_id": "ch400_dbc_news_live_14300",
+            "channel_id": 400,
+            "start": 14300,
+            "end": 14320
+        },
+        {
+            "program_id": "ch773_bullhorn_betty_breaking_news_t_14320",
+            "channel_id": 773,
+            "start": 14320,
+            "end": 14336
+        },
+        {
+            "program_id": "ch1499_today_breaking_news_top_100_ne_14353",
+            "channel_id": 1499,
+            "start": 14353,
+            "end": 14383
+        },
+        {
+            "program_id": "ch140_bullhorn_betty_breaking_news_t_14399",
+            "channel_id": 140,
+            "start": 14399,
+            "end": 14459
+        },
+        {
+            "program_id": "ch128_live_house_oversight_committee_14469",
+            "channel_id": 128,
+            "start": 14469,
+            "end": 14489
+        },
+        {
+            "program_id": "ch1188_today_world_breaking_news_live_14506",
+            "channel_id": 1188,
+            "start": 14506,
+            "end": 14551
+        },
+        {
+            "program_id": "ch223_bullhorn_betty_breaking_news_t_14555",
+            "channel_id": 223,
+            "start": 14555,
+            "end": 14570
+        },
+        {
+            "program_id": "ch1025_disney_parks_live_breaking_new_14574",
+            "channel_id": 1025,
+            "start": 14574,
+            "end": 14599
+        },
+        {
+            "program_id": "ch186_dd_sahyadri_news_live_04_01_20_14599",
+            "channel_id": 186,
+            "start": 14599,
+            "end": 14619
+        },
+        {
+            "program_id": "ch446_times_news_live_s_broadcast_14634",
+            "channel_id": 446,
+            "start": 14634,
+            "end": 14654
+        },
+        {
+            "program_id": "ch1606_sportbar_news_live_live_14658",
+            "channel_id": 1606,
+            "start": 14658,
+            "end": 14688
+        },
+        {
+            "program_id": "ch1338_disney_parks_live_breaking_new_14689",
+            "channel_id": 1338,
+            "start": 14689,
+            "end": 14714
+        },
+        {
+            "program_id": "ch895_ruturaj_dropped_ind_vs_nz_squa_14717",
+            "channel_id": 895,
+            "start": 14717,
+            "end": 14737
+        },
+        {
+            "program_id": "ch765_times_news_live_s_broadcast_14739",
+            "channel_id": 765,
+            "start": 14739,
+            "end": 14759
+        },
+        {
+            "program_id": "ch1444_today_breaking_news_14761",
+            "channel_id": 1444,
+            "start": 14761,
+            "end": 14781
+        },
+        {
+            "program_id": "ch722_today_world_breaking_news_live_14811",
+            "channel_id": 722,
+            "start": 14811,
+            "end": 14871
+        },
+        {
+            "program_id": "ch633_marathi_breaking_news_live_mah_14879",
+            "channel_id": 633,
+            "start": 14879,
+            "end": 14909
+        },
+        {
+            "program_id": "ch1118_live_webcams_around_the_world__14930",
+            "channel_id": 1118,
+            "start": 14930,
+            "end": 14950
+        },
+        {
+            "program_id": "ch1441_disney_parks_live_breaking_new_14951",
+            "channel_id": 1441,
+            "start": 14951,
+            "end": 14971
+        },
+        {
+            "program_id": "ch1493_live_us_president_trump_on_ven_14977",
+            "channel_id": 1493,
+            "start": 14977,
+            "end": 15002
+        },
+        {
+            "program_id": "ch425_live_house_oversight_committee_15003",
+            "channel_id": 425,
+            "start": 15003,
+            "end": 15063
+        },
+        {
+            "program_id": "ch598_4_5_january_current_affairs_20_15063",
+            "channel_id": 598,
+            "start": 15063,
+            "end": 15093
+        },
+        {
+            "program_id": "ch19_msnbc_live_the_11th_hour_with__15104",
+            "channel_id": 19,
+            "start": 15104,
+            "end": 15149
+        },
+        {
+            "program_id": "ch1370_9january_daily_current_affairs_14931",
+            "channel_id": 1370,
+            "start": 15153,
+            "end": 15171
+        },
+        {
+            "program_id": "ch647_cnn_breaking_news_live_hd_15162",
+            "channel_id": 647,
+            "start": 15171,
+            "end": 15192
+        },
+        {
+            "program_id": "ch1351_sleuth_intuition_live_breaking_15134",
+            "channel_id": 1351,
+            "start": 15192,
+            "end": 15209
+        },
+        {
+            "program_id": "ch1475_news_live_15219",
+            "channel_id": 1475,
+            "start": 15219,
+            "end": 15239
+        },
+        {
+            "program_id": "ch43_ruturaj_dropped_ind_vs_nz_squa_15239",
+            "channel_id": 43,
+            "start": 15239,
+            "end": 15259
+        },
+        {
+            "program_id": "ch806_news_live_15264",
+            "channel_id": 806,
+            "start": 15264,
+            "end": 15304
+        },
+        {
+            "program_id": "ch540_asian_news_live_tv_1165_24_7_b_15274",
+            "channel_id": 540,
+            "start": 15304,
+            "end": 15319
+        },
+        {
+            "program_id": "ch477_rocket_morning_news_live_jan_8_15319",
+            "channel_id": 477,
+            "start": 15319,
+            "end": 15335
+        },
+        {
+            "program_id": "ch524_9january_daily_current_affairs_15353",
+            "channel_id": 524,
+            "start": 15353,
+            "end": 15378
+        },
+        {
+            "program_id": "ch281_sadim_vines_live_15378",
+            "channel_id": 281,
+            "start": 15378,
+            "end": 15408
+        },
+        {
+            "program_id": "ch273_sportbar_news_live_live_15390",
+            "channel_id": 273,
+            "start": 15412,
+            "end": 15430
+        },
+        {
+            "program_id": "ch173_live_untv_news_break_january_5_15396",
+            "channel_id": 173,
+            "start": 15430,
+            "end": 15456
+        },
+        {
+            "program_id": "ch742_live_cruise_news_1_4_2026_15459",
+            "channel_id": 742,
+            "start": 15459,
+            "end": 15499
+        },
+        {
+            "program_id": "ch897_4_5_january_current_affairs_20_15503",
+            "channel_id": 897,
+            "start": 15503,
+            "end": 15528
+        },
+        {
+            "program_id": "ch173_disney_parks_live_breaking_new_15532",
+            "channel_id": 173,
+            "start": 15532,
+            "end": 15567
+        },
+        {
+            "program_id": "ch499_aaj_tak_live_news_in_hindi_cur_15503",
+            "channel_id": 499,
+            "start": 15567,
+            "end": 15593
+        },
+        {
+            "program_id": "ch18_live_us_president_trump_on_ven_15578",
+            "channel_id": 18,
+            "start": 15593,
+            "end": 15608
+        },
+        {
+            "program_id": "ch583_us_strikes_venezuela_news_live_15573",
+            "channel_id": 583,
+            "start": 15608,
+            "end": 15633
+        },
+        {
+            "program_id": "ch773_bullhorn_betty_breaking_news_t_15559",
+            "channel_id": 773,
+            "start": 15633,
+            "end": 15649
+        },
+        {
+            "program_id": "ch1120_bullhorn_betty_breaking_news_t_15649",
+            "channel_id": 1120,
+            "start": 15649,
+            "end": 15664
+        },
+        {
+            "program_id": "ch1025_disney_parks_live_breaking_new_15671",
+            "channel_id": 1025,
+            "start": 15671,
+            "end": 15696
+        },
+        {
+            "program_id": "ch1410_news_live_15671",
+            "channel_id": 1410,
+            "start": 15717,
+            "end": 15746
+        },
+        {
+            "program_id": "ch544_today_breaking_news_15674",
+            "channel_id": 544,
+            "start": 15746,
+            "end": 15764
+        },
+        {
+            "program_id": "ch288_breaking_news_from_united_stat_15660",
+            "channel_id": 288,
+            "start": 15764,
+            "end": 15780
+        },
+        {
+            "program_id": "ch414_sportbar_news_live_live_15780",
+            "channel_id": 414,
+            "start": 15780,
+            "end": 15795
+        },
+        {
+            "program_id": "ch253_bullhorn_betty_breaking_news_t_15663",
+            "channel_id": 253,
+            "start": 15795,
+            "end": 15813
+        },
+        {
+            "program_id": "ch15_bullhorn_betty_breaking_news_t_15679",
+            "channel_id": 15,
+            "start": 15813,
+            "end": 15829
+        },
+        {
+            "program_id": "ch1182_live_tv9_bangla_sir_mamata_ban_15786",
+            "channel_id": 1182,
+            "start": 15829,
+            "end": 15846
+        },
+        {
+            "program_id": "ch1638_times_news_live_s_broadcast_15763",
+            "channel_id": 1638,
+            "start": 15846,
+            "end": 15863
+        },
+        {
+            "program_id": "ch38_rauke_news_live_is_live_15778",
+            "channel_id": 38,
+            "start": 15863,
+            "end": 15878
+        },
+        {
+            "program_id": "ch1217_2026_welfare_cup_football_ghat_15604",
+            "channel_id": 1217,
+            "start": 15878,
+            "end": 15904
+        },
+        {
+            "program_id": "ch450_the_top_risks_of_2026_with_ian_15739",
+            "channel_id": 450,
+            "start": 15904,
+            "end": 15919
+        },
+        {
+            "program_id": "ch1018_breaking_news_today_latest_new_15756",
+            "channel_id": 1018,
+            "start": 15919,
+            "end": 15936
+        },
+        {
+            "program_id": "ch156_02_january_2026_aaj_ki_50_sabs_15948",
+            "channel_id": 156,
+            "start": 15948,
+            "end": 15993
+        },
+        {
+            "program_id": "ch1333_film_and_box_office_news_live__16003",
+            "channel_id": 1333,
+            "start": 16003,
+            "end": 16028
+        },
+        {
+            "program_id": "ch1487_kairali_news_live_16032",
+            "channel_id": 1487,
+            "start": 16032,
+            "end": 16077
+        },
+        {
+            "program_id": "ch1508_beed_choufer_news_live_is_live_16089",
+            "channel_id": 1508,
+            "start": 16089,
+            "end": 16119
+        },
+        {
+            "program_id": "ch261_live_webcams_around_the_world__16120",
+            "channel_id": 261,
+            "start": 16120,
+            "end": 16140
+        },
+        {
+            "program_id": "ch980_kairali_news_live_16143",
+            "channel_id": 980,
+            "start": 16143,
+            "end": 16178
+        },
+        {
+            "program_id": "ch133_today_world_breaking_news_live_16180",
+            "channel_id": 133,
+            "start": 16180,
+            "end": 16210
+        },
+        {
+            "program_id": "ch7_fox_news_live_hd_the_late_news_16214",
+            "channel_id": 7,
+            "start": 16214,
+            "end": 16234
+        },
+        {
+            "program_id": "ch1438_fox_news_live_hd_the_late_news_16250",
+            "channel_id": 1438,
+            "start": 16250,
+            "end": 16295
+        },
+        {
+            "program_id": "ch1660_2026_welfare_cup_football_ghat_16301",
+            "channel_id": 1660,
+            "start": 16301,
+            "end": 16346
+        },
+        {
+            "program_id": "ch1365_disney_parks_live_breaking_new_16350",
+            "channel_id": 1365,
+            "start": 16350,
+            "end": 16380
+        },
+        {
+            "program_id": "ch1473_02_january_2026_aaj_ki_50_sabs_16335",
+            "channel_id": 1473,
+            "start": 16380,
+            "end": 16395
+        },
+        {
+            "program_id": "ch1296_bullhorn_betty_breaking_news_t_16242",
+            "channel_id": 1296,
+            "start": 16395,
+            "end": 16422
+        },
+        {
+            "program_id": "ch1473_dd_sahyadri_news_live_04_01_20_16422",
+            "channel_id": 1473,
+            "start": 16422,
+            "end": 16467
+        },
+        {
+            "program_id": "ch1427_4_5_january_current_affairs_20_16468",
+            "channel_id": 1427,
+            "start": 16468,
+            "end": 16513
+        },
+        {
+            "program_id": "ch1653_9january_daily_current_affairs_16513",
+            "channel_id": 1653,
+            "start": 16513,
+            "end": 16533
+        },
+        {
+            "program_id": "ch1453_bullhorn_betty_breaking_news_t_16537",
+            "channel_id": 1453,
+            "start": 16537,
+            "end": 16562
+        },
+        {
+            "program_id": "ch282_the_top_risks_of_2026_with_ian_16563",
+            "channel_id": 282,
+            "start": 16563,
+            "end": 16583
+        },
+        {
+            "program_id": "ch1376_today_breaking_news_top_100_ne_16597",
+            "channel_id": 1376,
+            "start": 16597,
+            "end": 16657
+        },
+        {
+            "program_id": "ch1565_umh_news_live_16676",
+            "channel_id": 1565,
+            "start": 16676,
+            "end": 16696
+        },
+        {
+            "program_id": "ch339_ib_tv_news_live_24x7_ibtv_ap_t_16698",
+            "channel_id": 339,
+            "start": 16698,
+            "end": 16723
+        },
+        {
+            "program_id": "ch953_fox_news_live_president_donald_16566",
+            "channel_id": 953,
+            "start": 16726,
+            "end": 16746
+        },
+        {
+            "program_id": "ch200_5_january_2026_daily_current_a_16747",
+            "channel_id": 200,
+            "start": 16747,
+            "end": 16777
+        },
+        {
+            "program_id": "ch223_bullhorn_betty_breaking_news_t_16790",
+            "channel_id": 223,
+            "start": 16790,
+            "end": 16810
+        },
+        {
+            "program_id": "ch1391_the_top_risks_of_2026_with_ian_16813",
+            "channel_id": 1391,
+            "start": 16813,
+            "end": 16858
+        },
+        {
+            "program_id": "ch412_us_strikes_venezuela_news_live_16860",
+            "channel_id": 412,
+            "start": 16860,
+            "end": 16880
+        },
+        {
+            "program_id": "ch678_film_and_box_office_news_live__16880",
+            "channel_id": 678,
+            "start": 16880,
+            "end": 16925
+        },
+        {
+            "program_id": "ch715_bullhorn_betty_breaking_news_t_16929",
+            "channel_id": 715,
+            "start": 16929,
+            "end": 16949
+        },
+        {
+            "program_id": "ch573_marathi_breaking_news_live_mah_16969",
+            "channel_id": 573,
+            "start": 16969,
+            "end": 16989
+        },
+        {
+            "program_id": "ch534_news_live_16992",
+            "channel_id": 534,
+            "start": 16992,
+            "end": 17052
+        },
+        {
+            "program_id": "ch1432_fox_news_live_president_donald_17069",
+            "channel_id": 1432,
+            "start": 17069,
+            "end": 17114
+        },
+        {
+            "program_id": "ch1157_bullhorn_betty_breaking_news_t_16935",
+            "channel_id": 1157,
+            "start": 17115,
+            "end": 17145
+        },
+        {
+            "program_id": "ch623_5_january_2026_daily_current_a_17083",
+            "channel_id": 623,
+            "start": 17162,
+            "end": 17203
+        },
+        {
+            "program_id": "ch878_aaj_tak_live_news_in_hindi_cur_16922",
+            "channel_id": 878,
+            "start": 17203,
+            "end": 17222
+        },
+        {
+            "program_id": "ch792_4_breaking_news_and_headlines__17061",
+            "channel_id": 792,
+            "start": 17222,
+            "end": 17241
+        },
+        {
+            "program_id": "ch186_team_news_live_norwich_city_v__17242",
+            "channel_id": 186,
+            "start": 17242,
+            "end": 17287
+        },
+        {
+            "program_id": "ch321_film_and_box_office_news_live__17308",
+            "channel_id": 321,
+            "start": 17308,
+            "end": 17338
+        },
+        {
+            "program_id": "ch1363_breaking_news_live_stream_17338",
+            "channel_id": 1363,
+            "start": 17338,
+            "end": 17373
+        },
+        {
+            "program_id": "ch226_breaking_news_5_for_bihar_libr_17390",
+            "channel_id": 226,
+            "start": 17390,
+            "end": 17435
+        },
+        {
+            "program_id": "ch674_punjabi_news_punjabi_latest_ne_17441",
+            "channel_id": 674,
+            "start": 17441,
+            "end": 17461
+        },
+        {
+            "program_id": "ch1230_rocket_morning_news_live_jan_8_17468",
+            "channel_id": 1230,
+            "start": 17468,
+            "end": 17503
+        },
+        {
+            "program_id": "ch1020_cn24_live_news_breaking_news_a_17505",
+            "channel_id": 1020,
+            "start": 17505,
+            "end": 17535
+        },
+        {
+            "program_id": "ch54_10_00_pm_tcv_news_04_jan_2026_17536",
+            "channel_id": 54,
+            "start": 17536,
+            "end": 17571
+        },
+        {
+            "program_id": "ch1668_breaking_news_live_coronavirus_17584",
+            "channel_id": 1668,
+            "start": 17584,
+            "end": 17609
+        },
+        {
+            "program_id": "ch892_disney_parks_live_breaking_new_17615",
+            "channel_id": 892,
+            "start": 17615,
+            "end": 17645
+        },
+        {
+            "program_id": "ch1532_today_breaking_news_top_100_ne_17646",
+            "channel_id": 1532,
+            "start": 17646,
+            "end": 17661
+        },
+        {
+            "program_id": "ch534_bullhorn_betty_breaking_news_t_17670",
+            "channel_id": 534,
+            "start": 17670,
+            "end": 17690
+        },
+        {
+            "program_id": "ch444_us_strikes_venezuela_news_live_17697",
+            "channel_id": 444,
+            "start": 17697,
+            "end": 17717
+        },
+        {
+            "program_id": "ch517_dd_sahyadri_news_live_04_01_20_17729",
+            "channel_id": 517,
+            "start": 17729,
+            "end": 17774
+        },
+        {
+            "program_id": "ch357_bihar_news_live_muzaffarpur_li_17780",
+            "channel_id": 357,
+            "start": 17780,
+            "end": 17797
+        },
+        {
+            "program_id": "ch400_dbc_news_live_17800",
+            "channel_id": 400,
+            "start": 17800,
+            "end": 17820
+        },
+        {
+            "program_id": "ch14_bullhorn_betty_breaking_news_t_17822",
+            "channel_id": 14,
+            "start": 17822,
+            "end": 17852
+        },
+        {
+            "program_id": "ch1147_2026_welfare_cup_football_ghat_17853",
+            "channel_id": 1147,
+            "start": 17853,
+            "end": 17913
+        },
+        {
+            "program_id": "ch1468_bullhorn_betty_breaking_news_t_17922",
+            "channel_id": 1468,
+            "start": 17922,
+            "end": 17942
+        },
+        {
+            "program_id": "ch868_dd_sahyadri_news_live_04_01_20_17954",
+            "channel_id": 868,
+            "start": 17954,
+            "end": 17974
+        },
+        {
+            "program_id": "ch998_umh_news_live_17982",
+            "channel_id": 998,
+            "start": 17982,
+            "end": 18042
+        },
+        {
+            "program_id": "ch312_december_2025_most_expected_cu_18052",
+            "channel_id": 312,
+            "start": 18052,
+            "end": 18077
+        },
+        {
+            "program_id": "ch768_breaking_news_bd_is_live_18077",
+            "channel_id": 768,
+            "start": 18077,
+            "end": 18102
+        },
+        {
+            "program_id": "ch906_trump_live_president_addresses_18101",
+            "channel_id": 906,
+            "start": 18120,
+            "end": 18146
+        },
+        {
+            "program_id": "ch541_team_news_live_norwich_city_v__18152",
+            "channel_id": 541,
+            "start": 18152,
+            "end": 18182
+        },
+        {
+            "program_id": "ch51_team_news_live_norwich_city_v__18158",
+            "channel_id": 51,
+            "start": 18210,
+            "end": 18233
+        },
+        {
+            "program_id": "ch1561_live_untv_news_break_january_5_18099",
+            "channel_id": 1561,
+            "start": 18233,
+            "end": 18249
+        },
+        {
+            "program_id": "ch1081_asian_news_live_tv_1165_24_7_b_18253",
+            "channel_id": 1081,
+            "start": 18253,
+            "end": 18278
+        },
+        {
+            "program_id": "ch1600_kairali_news_live_18283",
+            "channel_id": 1600,
+            "start": 18283,
+            "end": 18313
+        },
+        {
+            "program_id": "ch222_9january_daily_current_affairs_18330",
+            "channel_id": 222,
+            "start": 18330,
+            "end": 18355
+        },
+        {
+            "program_id": "ch866_bullhorn_betty_breaking_news_t_18380",
+            "channel_id": 866,
+            "start": 18380,
+            "end": 18396
+        },
+        {
+            "program_id": "ch1396_breaking_news_corona_latest_ne_18400",
+            "channel_id": 1396,
+            "start": 18400,
+            "end": 18430
+        },
+        {
+            "program_id": "ch796_ruturaj_dropped_ind_vs_nz_squa_18434",
+            "channel_id": 796,
+            "start": 18434,
+            "end": 18464
+        },
+        {
+            "program_id": "ch1520_cnn_breaking_news_live_hd_18469",
+            "channel_id": 1520,
+            "start": 18469,
+            "end": 18489
+        },
+        {
+            "program_id": "ch465_mahua_khabar_live_breaking_24x_18499",
+            "channel_id": 465,
+            "start": 18499,
+            "end": 18534
+        },
+        {
+            "program_id": "ch1217_2026_welfare_cup_football_ghat_18537",
+            "channel_id": 1217,
+            "start": 18537,
+            "end": 18597
+        },
+        {
+            "program_id": "ch619_news_live_18553",
+            "channel_id": 619,
+            "start": 18597,
+            "end": 18613
+        },
+        {
+            "program_id": "ch646_punjabi_news_punjabi_latest_ne_18508",
+            "channel_id": 646,
+            "start": 18613,
+            "end": 18628
+        },
+        {
+            "program_id": "ch428_nvidia_ceo_jensen_huang_talks__18632",
+            "channel_id": 428,
+            "start": 18632,
+            "end": 18652
+        },
+        {
+            "program_id": "ch1477_2026_welfare_cup_football_ghat_18598",
+            "channel_id": 1477,
+            "start": 18654,
+            "end": 18673
+        },
+        {
+            "program_id": "ch1032_breaking_news_watch_today_s_ma_18673",
+            "channel_id": 1032,
+            "start": 18673,
+            "end": 18689
+        },
+        {
+            "program_id": "ch39_fox_news_live_hd_president_tru_18585",
+            "channel_id": 39,
+            "start": 18689,
+            "end": 18705
+        },
+        {
+            "program_id": "ch1217_2026_welfare_cup_football_ghat_18709",
+            "channel_id": 1217,
+            "start": 18709,
+            "end": 18769
+        },
+        {
+            "program_id": "ch1460_watch_live_assamese_news_4_00__18783",
+            "channel_id": 1460,
+            "start": 18783,
+            "end": 18843
+        },
+        {
+            "program_id": "ch1469_today_breaking_news_top_100_ne_18850",
+            "channel_id": 1469,
+            "start": 18850,
+            "end": 18870
+        },
+        {
+            "program_id": "ch416_breaking_news_corona_latest_ne_18879",
+            "channel_id": 416,
+            "start": 18879,
+            "end": 18899
+        },
+        {
+            "program_id": "ch122_breaking_news_bd_is_live_18843",
+            "channel_id": 122,
+            "start": 18902,
+            "end": 18918
+        },
+        {
+            "program_id": "ch532_trump_live_latest_news_on_vene_18941",
+            "channel_id": 532,
+            "start": 18941,
+            "end": 18971
+        },
+        {
+            "program_id": "ch1323_news_live_18971",
+            "channel_id": 1323,
+            "start": 18971,
+            "end": 18991
+        },
+        {
+            "program_id": "ch108_bullhorn_betty_breaking_news_t_18997",
+            "channel_id": 108,
+            "start": 18997,
+            "end": 19017
+        },
+        {
+            "program_id": "ch791_see_news_urdu_live_latest_paki_19022",
+            "channel_id": 791,
+            "start": 19022,
+            "end": 19039
+        },
+        {
+            "program_id": "ch393_kairali_news_live_19059",
+            "channel_id": 393,
+            "start": 19059,
+            "end": 19089
+        },
+        {
+            "program_id": "ch341_bullhorn_betty_breaking_news_t_19100",
+            "channel_id": 341,
+            "start": 19100,
+            "end": 19125
+        },
+        {
+            "program_id": "ch995_4_5_january_current_affairs_20_19125",
+            "channel_id": 995,
+            "start": 19125,
+            "end": 19160
+        },
+        {
+            "program_id": "ch763_live_pinarayi_vijayan_reporter_19131",
+            "channel_id": 763,
+            "start": 19175,
+            "end": 19191
+        },
+        {
+            "program_id": "ch576_bullhorn_betty_breaking_news_t_19193",
+            "channel_id": 576,
+            "start": 19193,
+            "end": 19213
+        },
+        {
+            "program_id": "ch1565_umh_news_live_19251",
+            "channel_id": 1565,
+            "start": 19251,
+            "end": 19276
+        },
+        {
+            "program_id": "ch520_fox_news_live_president_donald_19288",
+            "channel_id": 520,
+            "start": 19288,
+            "end": 19308
+        },
+        {
+            "program_id": "ch693_mmtv_news_live_19315",
+            "channel_id": 693,
+            "start": 19315,
+            "end": 19345
+        },
+        {
+            "program_id": "ch96_film_and_box_office_news_live__19379",
+            "channel_id": 96,
+            "start": 19379,
+            "end": 19409
+        },
+        {
+            "program_id": "ch444_cnn_breaking_news_live_hd_19414",
+            "channel_id": 444,
+            "start": 19414,
+            "end": 19459
+        },
+        {
+            "program_id": "ch1468_9january_daily_current_affairs_19460",
+            "channel_id": 1468,
+            "start": 19460,
+            "end": 19485
+        },
+        {
+            "program_id": "ch1138_sadim_vines_live_19486",
+            "channel_id": 1138,
+            "start": 19486,
+            "end": 19526
+        },
+        {
+            "program_id": "ch1579_dd_sahyadri_news_live_04_01_20_19553",
+            "channel_id": 1579,
+            "start": 19553,
+            "end": 19588
+        },
+        {
+            "program_id": "ch392_02_january_2026_aaj_ki_50_sabs_19620",
+            "channel_id": 392,
+            "start": 19620,
+            "end": 19645
+        },
+        {
+            "program_id": "ch809_asian_news_live_tv_1165_24_7_b_19653",
+            "channel_id": 809,
+            "start": 19653,
+            "end": 19673
+        },
+        {
+            "program_id": "ch497_bullhorn_betty_breaking_news_t_19659",
+            "channel_id": 497,
+            "start": 19687,
+            "end": 19704
+        },
+        {
+            "program_id": "ch258_05_jan_current_affairs_2026_cu_19723",
+            "channel_id": 258,
+            "start": 19723,
+            "end": 19768
+        },
+        {
+            "program_id": "ch1383_film_and_box_office_news_live__19773",
+            "channel_id": 1383,
+            "start": 19773,
+            "end": 19813
+        },
+        {
+            "program_id": "ch1557_breaking_news_today_latest_new_19818",
+            "channel_id": 1557,
+            "start": 19818,
+            "end": 19838
+        },
+        {
+            "program_id": "ch56_breaking_news_watch_today_s_ma_19815",
+            "channel_id": 56,
+            "start": 19840,
+            "end": 19860
+        },
+        {
+            "program_id": "ch508_05_january_2026_current_affair_19860",
+            "channel_id": 508,
+            "start": 19860,
+            "end": 19877
+        },
+        {
+            "program_id": "ch462_bullhorn_betty_breaking_news_t_19877",
+            "channel_id": 462,
+            "start": 19877,
+            "end": 19912
+        },
+        {
+            "program_id": "ch784_sleuth_intuition_live_breaking_19912",
+            "channel_id": 784,
+            "start": 19912,
+            "end": 19927
+        },
+        {
+            "program_id": "ch1595_disney_parks_live_breaking_new_19930",
+            "channel_id": 1595,
+            "start": 19930,
+            "end": 19955
+        },
+        {
+            "program_id": "ch837_breaking_news_5_for_bihar_libr_19963",
+            "channel_id": 837,
+            "start": 19963,
+            "end": 19983
+        },
+        {
+            "program_id": "ch896_today_breaking_news_top_100_ne_19984",
+            "channel_id": 896,
+            "start": 19984,
+            "end": 20004
+        },
+        {
+            "program_id": "ch898_information_radio_jan_5th_2026_20000",
+            "channel_id": 898,
+            "start": 20004,
+            "end": 20020
+        },
+        {
+            "program_id": "ch1629_kairali_news_live_20020",
+            "channel_id": 1629,
+            "start": 20020,
+            "end": 20035
+        },
+        {
+            "program_id": "ch1337_fox_news_live_stream_now_presi_20032",
+            "channel_id": 1337,
+            "start": 20035,
+            "end": 20052
+        },
+        {
+            "program_id": "ch623_live_trump_returns_to_washingt_20052",
+            "channel_id": 623,
+            "start": 20052,
+            "end": 20069
+        },
+        {
+            "program_id": "ch943_02_january_2026_aaj_ki_50_sabs_20071",
+            "channel_id": 943,
+            "start": 20071,
+            "end": 20096
+        },
+        {
+            "program_id": "ch835_breaking_news_live_stream_20097",
+            "channel_id": 835,
+            "start": 20097,
+            "end": 20127
+        },
+        {
+            "program_id": "ch137_aaj_tak_live_news_in_hindi_cur_20127",
+            "channel_id": 137,
+            "start": 20127,
+            "end": 20152
+        },
+        {
+            "program_id": "ch1009_disney_parks_live_breaking_new_20156",
+            "channel_id": 1009,
+            "start": 20156,
+            "end": 20176
+        },
+        {
+            "program_id": "ch122_live_breaking_news_hindi_news__20184",
+            "channel_id": 122,
+            "start": 20184,
+            "end": 20209
+        },
+        {
+            "program_id": "ch425_fox_news_live_stream_now_presi_20209",
+            "channel_id": 425,
+            "start": 20209,
+            "end": 20229
+        },
+        {
+            "program_id": "ch1115_pm_live_news_pm_kisan_smman_ni_20234",
+            "channel_id": 1115,
+            "start": 20234,
+            "end": 20279
+        },
+        {
+            "program_id": "ch1249_december_2025_most_expected_cu_20284",
+            "channel_id": 1249,
+            "start": 20284,
+            "end": 20309
+        },
+        {
+            "program_id": "ch1559_geo_news_live_pakistan_news_li_20314",
+            "channel_id": 1559,
+            "start": 20314,
+            "end": 20339
+        },
+        {
+            "program_id": "ch1657_grand_theft_venezuela_trump_sn_20359",
+            "channel_id": 1657,
+            "start": 20359,
+            "end": 20389
+        },
+        {
+            "program_id": "ch1519_9january_daily_current_affairs_20443",
+            "channel_id": 1519,
+            "start": 20443,
+            "end": 20468
+        },
+        {
+            "program_id": "ch572_cn24_live_news_breaking_news_a_20475",
+            "channel_id": 572,
+            "start": 20475,
+            "end": 20500
+        },
+        {
+            "program_id": "ch480_an_breaking_news_live_stream_20510",
+            "channel_id": 480,
+            "start": 20510,
+            "end": 20535
+        },
+        {
+            "program_id": "ch227_05_jan_current_affairs_2026_cu_20543",
+            "channel_id": 227,
+            "start": 20543,
+            "end": 20563
+        },
+        {
+            "program_id": "ch281_breaking_news_live_coronavirus_20571",
+            "channel_id": 281,
+            "start": 20571,
+            "end": 20611
+        },
+        {
+            "program_id": "ch260_fox_news_live_president_donald_20613",
+            "channel_id": 260,
+            "start": 20613,
+            "end": 20633
+        },
+        {
+            "program_id": "ch598_4_5_january_current_affairs_20_20657",
+            "channel_id": 598,
+            "start": 20657,
+            "end": 20677
+        },
+        {
+            "program_id": "ch1325_breaking_news_live_coronavirus_20678",
+            "channel_id": 1325,
+            "start": 20678,
+            "end": 20718
+        },
+        {
+            "program_id": "ch806_bullhorn_betty_breaking_news_t_20728",
+            "channel_id": 806,
+            "start": 20728,
+            "end": 20758
+        },
+        {
+            "program_id": "ch896_us_strikes_venezuela_news_live_20772",
+            "channel_id": 896,
+            "start": 20772,
+            "end": 20802
+        },
+        {
+            "program_id": "ch376_cnn_live_stream_hd_president_t_20804",
+            "channel_id": 376,
+            "start": 20804,
+            "end": 20839
+        },
+        {
+            "program_id": "ch1111_us_strikes_venezuela_news_live_20839",
+            "channel_id": 1111,
+            "start": 20839,
+            "end": 20874
+        },
+        {
+            "program_id": "ch684_king_p_media_is_live_20874",
+            "channel_id": 684,
+            "start": 20874,
+            "end": 20894
+        },
+        {
+            "program_id": "ch735_information_radio_jan_5th_2026_20897",
+            "channel_id": 735,
+            "start": 20897,
+            "end": 20917
+        },
+        {
+            "program_id": "ch906_nvidia_ceo_jensen_huang_talks__20933",
+            "channel_id": 906,
+            "start": 20933,
+            "end": 20968
+        },
+        {
+            "program_id": "ch361_l_50_badi_khabren_ll_news_aaj__20973",
+            "channel_id": 361,
+            "start": 20973,
+            "end": 20993
+        },
+        {
+            "program_id": "ch153_rocket_morning_news_live_jan_9_20993",
+            "channel_id": 153,
+            "start": 20993,
+            "end": 21013
+        },
+        {
+            "program_id": "ch51_us_strikes_venezuela_news_live_21028",
+            "channel_id": 51,
+            "start": 21028,
+            "end": 21048
+        },
+        {
+            "program_id": "ch524_9january_daily_current_affairs_21072",
+            "channel_id": 524,
+            "start": 21072,
+            "end": 21117
+        },
+        {
+            "program_id": "ch1609_aaj_tak_live_news_in_hindi_cur_21129",
+            "channel_id": 1609,
+            "start": 21129,
+            "end": 21154
+        },
+        {
+            "program_id": "ch1272_us_strikes_venezuela_news_live_21158",
+            "channel_id": 1272,
+            "start": 21158,
+            "end": 21183
+        },
+        {
+            "program_id": "ch629_ia_live_uk_house_of_commons_di_21187",
+            "channel_id": 629,
+            "start": 21187,
+            "end": 21207
+        },
+        {
+            "program_id": "ch1394_news_live_21252",
+            "channel_id": 1394,
+            "start": 21252,
+            "end": 21297
+        },
+        {
+            "program_id": "ch1597_bullhorn_betty_breaking_news_t_21304",
+            "channel_id": 1597,
+            "start": 21304,
+            "end": 21324
+        },
+        {
+            "program_id": "ch1057_live_untv_news_break_january_5_21325",
+            "channel_id": 1057,
+            "start": 21325,
+            "end": 21345
+        },
+        {
+            "program_id": "ch1595_kairali_news_live_21321",
+            "channel_id": 1595,
+            "start": 21365,
+            "end": 21396
+        },
+        {
+            "program_id": "ch61_aaj_tak_live_news_in_hindi_cur_21396",
+            "channel_id": 61,
+            "start": 21396,
+            "end": 21413
+        },
+        {
+            "program_id": "ch1072_live_untv_news_break_january_5_21375",
+            "channel_id": 1072,
+            "start": 21413,
+            "end": 21435
+        },
+        {
+            "program_id": "ch1302_december_2025_most_expected_cu_21449",
+            "channel_id": 1302,
+            "start": 21449,
+            "end": 21469
+        },
+        {
+            "program_id": "ch1166_dd_sahyadri_news_live_04_01_20_21471",
+            "channel_id": 1166,
+            "start": 21471,
+            "end": 21506
+        },
+        {
+            "program_id": "ch1284_rocket_morning_news_live_jan_9_21508",
+            "channel_id": 1284,
+            "start": 21508,
+            "end": 21538
+        },
+        {
+            "program_id": "ch1401_today_world_breaking_news_live_21555",
+            "channel_id": 1401,
+            "start": 21555,
+            "end": 21600
+        }
+    ]
+}
