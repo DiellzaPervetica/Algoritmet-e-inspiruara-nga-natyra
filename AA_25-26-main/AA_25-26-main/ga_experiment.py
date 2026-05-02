@@ -182,6 +182,9 @@ def get_time_limit(params, file_name, index, started):
     else:
         time_limit = remaining / instances_left
 
+    if params.max_instance_time is not None:
+        time_limit = min(time_limit, params.max_instance_time)
+
     return max(1.0, time_limit - params.time_buffer), remaining
 
 
@@ -275,6 +278,7 @@ def main():
     parser.add_argument("--repair-random-rate", type=float, default=0.20)
     parser.add_argument("--stagnation-limit", type=int, default=5)
     parser.add_argument("--min-runtime-before-stop", type=float, default=None)
+    parser.add_argument("--max-instance-time", type=float, default=None)
     parser.add_argument("--time-buffer", type=float, default=0.5)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--instances", nargs="*", default=INSTANCE_FILES)

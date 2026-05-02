@@ -92,6 +92,7 @@ def run_ga_experiment_batches(runs: int = 10, per_instance_time_sec: float = 300
         "--mutation-rate", "0.30",
         "--stagnation-limit", "5",
         "--min-runtime-before-stop", "30",
+        "--max-instance-time", str(per_instance_time_sec),
         "--clean-output",
     ]
 
