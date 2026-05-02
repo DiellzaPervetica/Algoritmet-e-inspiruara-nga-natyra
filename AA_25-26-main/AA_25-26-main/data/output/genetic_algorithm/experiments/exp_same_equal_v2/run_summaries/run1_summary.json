@@ -1,10 +1,10 @@
 [
     {
         "instance": "australia_iptv",
-        "score": 4188,
-        "programs": 43,
-        "elapsed_seconds": 9.04,
-        "time_limit_seconds": 17.65,
+        "score": 4374,
+        "programs": 45,
+        "elapsed_seconds": 21.18,
+        "time_limit_seconds": 300.0,
         "seed": 40425,
         "bnb_output": "australia_iptv_output_branchandboundscheduler_3541.json",
         "initial_population_scores": [
@@ -59,7 +59,7 @@
             3319,
             3543
         ],
-        "generations": 32,
+        "generations": 60,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -70,14 +70,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\australia_iptv\\run1_4188.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\australia_iptv\\run1_4374.json"
     },
     {
         "instance": "canada_pw",
-        "score": 4652,
+        "score": 4716,
         "programs": 48,
-        "elapsed_seconds": 11.2,
-        "time_limit_seconds": 18.18,
+        "elapsed_seconds": 12.78,
+        "time_limit_seconds": 300.0,
         "seed": 299982,
         "bnb_output": "canada_pw_output_branchandboundscheduler_4157.json",
         "initial_population_scores": [
@@ -132,7 +132,7 @@
             4149,
             4220
         ],
-        "generations": 26,
+        "generations": 40,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -143,14 +143,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\canada_pw\\run1_4652.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\canada_pw\\run1_4716.json"
     },
     {
         "instance": "china_pw",
-        "score": 2778,
+        "score": 2801,
         "programs": 42,
-        "elapsed_seconds": 11.46,
-        "time_limit_seconds": 18.64,
+        "elapsed_seconds": 17.16,
+        "time_limit_seconds": 300.0,
         "seed": 730045,
         "bnb_output": "china_pw_output_branchandboundscheduler_2535.json",
         "initial_population_scores": [
@@ -205,7 +205,7 @@
             2554,
             2498
         ],
-        "generations": 17,
+        "generations": 33,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -216,14 +216,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\china_pw\\run1_2778.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\china_pw\\run1_2801.json"
     },
     {
         "instance": "croatia_tv",
         "score": 2220,
         "programs": 26,
-        "elapsed_seconds": 7.91,
-        "time_limit_seconds": 19.13,
+        "elapsed_seconds": 1.97,
+        "time_limit_seconds": 300.0,
         "seed": 799733,
         "bnb_output": "croatia_tv_output_branchandboundscheduler_2120.json",
         "initial_population_scores": [
@@ -278,7 +278,7 @@
             2204,
             2202
         ],
-        "generations": 31,
+        "generations": 21,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -293,10 +293,10 @@
     },
     {
         "instance": "france_iptv",
-        "score": 7437,
-        "programs": 119,
-        "elapsed_seconds": 19.99,
-        "time_limit_seconds": 19.99,
+        "score": 9182,
+        "programs": 158,
+        "elapsed_seconds": 53.09,
+        "time_limit_seconds": 300.0,
         "seed": 150925,
         "bnb_output": "france_iptv_output_branchandboundscheduler_4046.json",
         "initial_population_scores": [
@@ -351,7 +351,7 @@
             4148,
             4158
         ],
-        "generations": 45,
+        "generations": 136,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -362,14 +362,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\france_iptv\\run1_7437.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\france_iptv\\run1_9182.json"
     },
     {
         "instance": "germany_tv",
         "score": 1626,
         "programs": 28,
-        "elapsed_seconds": 7.99,
-        "time_limit_seconds": 19.97,
+        "elapsed_seconds": 1.41,
+        "time_limit_seconds": 300.0,
         "seed": 485001,
         "bnb_output": "germany_tv_output_branchandboundscheduler_1626.json",
         "initial_population_scores": [
@@ -424,7 +424,7 @@
             1481,
             1576
         ],
-        "generations": 89,
+        "generations": 20,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -441,8 +441,8 @@
         "instance": "kosovo_tv",
         "score": 2567,
         "programs": 32,
-        "elapsed_seconds": 8.44,
-        "time_limit_seconds": 21.05,
+        "elapsed_seconds": 1.79,
+        "time_limit_seconds": 300.0,
         "seed": 387845,
         "bnb_output": "kosovo_tv_output_branchandboundscheduler_2567.json",
         "initial_population_scores": [
@@ -497,7 +497,7 @@
             2529,
             2560
         ],
-        "generations": 97,
+        "generations": 20,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -514,8 +514,8 @@
         "instance": "netherlands_tv",
         "score": 2632,
         "programs": 35,
-        "elapsed_seconds": 8.93,
-        "time_limit_seconds": 22.31,
+        "elapsed_seconds": 1.84,
+        "time_limit_seconds": 300.0,
         "seed": 704273,
         "bnb_output": "netherlands_tv_output_branchandboundscheduler_2632.json",
         "initial_population_scores": [
@@ -570,7 +570,7 @@
             2632,
             2632
         ],
-        "generations": 96,
+        "generations": 20,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -585,10 +585,10 @@
     },
     {
         "instance": "singapore_pw",
-        "score": 4593,
-        "programs": 52,
-        "elapsed_seconds": 10.11,
-        "time_limit_seconds": 23.79,
+        "score": 4406,
+        "programs": 47,
+        "elapsed_seconds": 4.52,
+        "time_limit_seconds": 300.0,
         "seed": 732366,
         "bnb_output": "singapore_pw_output_branchandboundscheduler_4292.json",
         "initial_population_scores": [
@@ -643,7 +643,7 @@
             4364,
             4406
         ],
-        "generations": 52,
+        "generations": 20,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -654,14 +654,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\singapore_pw\\run1_4593.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\singapore_pw\\run1_4406.json"
     },
     {
         "instance": "spain_iptv",
-        "score": 5177,
+        "score": 5195,
         "programs": 64,
-        "elapsed_seconds": 11.42,
-        "time_limit_seconds": 25.49,
+        "elapsed_seconds": 12.06,
+        "time_limit_seconds": 300.0,
         "seed": 831470,
         "bnb_output": "spain_iptv_output_branchandboundscheduler_4232.json",
         "initial_population_scores": [
@@ -716,7 +716,7 @@
             4282,
             4296
         ],
-        "generations": 64,
+        "generations": 57,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -727,14 +727,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\spain_iptv\\run1_5177.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\spain_iptv\\run1_5195.json"
     },
     {
         "instance": "toy",
         "score": 510,
         "programs": 5,
-        "elapsed_seconds": 11.01,
-        "time_limit_seconds": 27.48,
+        "elapsed_seconds": 0.28,
+        "time_limit_seconds": 300.0,
         "seed": 100962,
         "bnb_output": "toy_output_branchandboundscheduler_510.json",
         "initial_population_scores": [
@@ -789,7 +789,7 @@
             510,
             510
         ],
-        "generations": 455,
+        "generations": 20,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -804,10 +804,10 @@
     },
     {
         "instance": "uk_iptv",
-        "score": 5519,
-        "programs": 58,
-        "elapsed_seconds": 14.77,
-        "time_limit_seconds": 30.22,
+        "score": 6124,
+        "programs": 70,
+        "elapsed_seconds": 20.21,
+        "time_limit_seconds": 300.0,
         "seed": 475204,
         "bnb_output": "uk_iptv_output_branchandboundscheduler_4855.json",
         "initial_population_scores": [
@@ -862,7 +862,7 @@
             4895,
             4750
         ],
-        "generations": 53,
+        "generations": 57,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -873,14 +873,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\uk_iptv\\run1_5519.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\uk_iptv\\run1_6124.json"
     },
     {
         "instance": "uk_tv",
-        "score": 2240,
+        "score": 2236,
         "programs": 26,
-        "elapsed_seconds": 13.37,
-        "time_limit_seconds": 33.28,
+        "elapsed_seconds": 2.4,
+        "time_limit_seconds": 300.0,
         "seed": 627896,
         "bnb_output": "uk_tv_output_branchandboundscheduler_2171.json",
         "initial_population_scores": [
@@ -935,7 +935,7 @@
             2120,
             2152
         ],
-        "generations": 128,
+        "generations": 22,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -946,14 +946,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\uk_tv\\run1_2240.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\uk_tv\\run1_2236.json"
     },
     {
         "instance": "usa_tv",
         "score": 3575,
         "programs": 35,
-        "elapsed_seconds": 15.53,
-        "time_limit_seconds": 38.24,
+        "elapsed_seconds": 10.49,
+        "time_limit_seconds": 300.0,
         "seed": 522477,
         "bnb_output": "usa_tv_output_branchandboundscheduler_3561.json",
         "initial_population_scores": [
@@ -1008,7 +1008,7 @@
             3406,
             3416
         ],
-        "generations": 29,
+        "generations": 20,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -1023,10 +1023,10 @@
     },
     {
         "instance": "us_iptv",
-        "score": 4405,
-        "programs": 46,
-        "elapsed_seconds": 21.53,
-        "time_limit_seconds": 45.76,
+        "score": 4564,
+        "programs": 47,
+        "elapsed_seconds": 64.3,
+        "time_limit_seconds": 300.0,
         "seed": 638571,
         "bnb_output": "us_iptv_output_branchandboundscheduler_4168.json",
         "initial_population_scores": [
@@ -1081,7 +1081,7 @@
             4168,
             4098
         ],
-        "generations": 24,
+        "generations": 41,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -1092,14 +1092,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\us_iptv\\run1_4405.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\us_iptv\\run1_4564.json"
     },
     {
         "instance": "youtube_gold",
-        "score": 67117,
-        "programs": 3139,
-        "elapsed_seconds": 57.57,
-        "time_limit_seconds": 57.46,
+        "score": 67513,
+        "programs": 3076,
+        "elapsed_seconds": 300.07,
+        "time_limit_seconds": 300.0,
         "seed": 20088,
         "bnb_output": "youtube_gold_output_branchandboundscheduler_66919.json",
         "initial_population_scores": [
@@ -1154,7 +1154,7 @@
             66871,
             66910
         ],
-        "generations": 6,
+        "generations": 34,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -1165,14 +1165,14 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\youtube_gold\\run1_67117.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\youtube_gold\\run1_67513.json"
     },
     {
         "instance": "youtube_premium",
-        "score": 25805,
-        "programs": 1058,
-        "elapsed_seconds": 57.09,
-        "time_limit_seconds": 57.07,
+        "score": 40480,
+        "programs": 792,
+        "elapsed_seconds": 300.01,
+        "time_limit_seconds": 300.0,
         "seed": 539051,
         "bnb_output": "youtube_premium_output_branchandboundscheduler_22641.json",
         "initial_population_scores": [
@@ -1227,7 +1227,7 @@
             22834,
             22732
         ],
-        "generations": 17,
+        "generations": 137,
         "parameters": {
             "population_size": 50,
             "tournament_size": 3,
@@ -1238,6 +1238,6 @@
             "candidate_pool_size": 700,
             "repair_random_rate": 0.2
         },
-        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\youtube_premium\\run1_25805.json"
+        "output": "data\\output\\genetic_algorithm\\experiments\\exp_same_equal_v2\\youtube_premium\\run1_40480.json"
     }
 ]

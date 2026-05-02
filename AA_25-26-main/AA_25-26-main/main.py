@@ -90,8 +90,8 @@ def run_ga_experiment_batches(runs: int = 10, per_instance_time_sec: float = 300
         "--time-buffer", "0",
         "--population-size", "50",
         "--mutation-rate", "0.30",
-        "--stagnation-limit", "5",
-        "--min-runtime-before-stop", "30",
+        "--stagnation-limit", "20",
+        "--min-runtime-before-stop", "0",
         "--max-instance-time", str(per_instance_time_sec),
         "--clean-output",
     ]

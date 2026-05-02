@@ -1,0 +1,5 @@
+
+============================================================
+[AUTO-GA] Starting: exp_same_equal_v2
+Command: C:\Users\perve\AppData\Local\Programs\Python\Python313\python.exe C:\Users\perve\Desktop\Algoritmet-e-inspiruara-nga-natyra\AA_25-26-main\AA_25-26-main\ga_experiment.py --runs 10 --total-time 5100.0 --time-buffer 0 --population-size 50 --mutation-rate 0.30 --clean-output --experiment-name exp_same_equal_v2 --profile single --time-profile equal
+============================================================

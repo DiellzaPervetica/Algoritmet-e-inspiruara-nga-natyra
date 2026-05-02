@@ -172,6 +172,9 @@ class GeneticAlgorithmScheduler:
                 break
 
             for prog in self.progs_by_start[start]:
+                if self._time_left() <= 0:
+                    break
+
                 uid = getattr(prog, "unique_id", None)
                 end = Utils.get_end(prog)
 
@@ -339,7 +342,6 @@ class GeneticAlgorithmScheduler:
             if current_score > best_score:
                 best_score = current_score
                 best_sched = list(current_best)
-                stagnation = 0
             else:
                 stagnation += 1
 
