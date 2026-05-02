@@ -200,6 +200,8 @@ def run_one_instance(file_name, output_root, run_index, time_limit, params, seed
         initial_schedule=initial_schedule,
         time_limit_sec=time_limit,
         seed=seed,
+        stagnation_limit=params.stagnation_limit,
+        min_runtime_before_stop_sec=params.min_runtime_before_stop,
         **ga_params,
     )
 
@@ -271,6 +273,8 @@ def main():
     parser.add_argument("--max-generations", type=int, default=10000)
     parser.add_argument("--candidate-pool-size", type=int, default=700)
     parser.add_argument("--repair-random-rate", type=float, default=0.20)
+    parser.add_argument("--stagnation-limit", type=int, default=5)
+    parser.add_argument("--min-runtime-before-stop", type=float, default=None)
     parser.add_argument("--time-buffer", type=float, default=0.5)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--instances", nargs="*", default=INSTANCE_FILES)
