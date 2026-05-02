@@ -16,7 +16,7 @@ class GeneticAlgorithmScheduler:
         instance_data,
         initial_schedule=None,
         time_limit_sec=300.0,
-        population_size=10,
+        population_size=50,
         tournament_size=3,
         elite_size=2,
         crossover_rate=0.85,
@@ -25,6 +25,8 @@ class GeneticAlgorithmScheduler:
         candidate_pool_size=700,
         repair_random_rate=0.20,
         seed=None,
+        stagnation_limit=5,
+        min_runtime_before_stop_sec=None,
     ):
         self.instance = instance_data
         self.initial_schedule = list(initial_schedule) if initial_schedule else None
@@ -38,6 +40,12 @@ class GeneticAlgorithmScheduler:
         self.repair_random_rate = repair_random_rate
         self.rng = random.Random(seed if seed is not None else random.randint(1, 1000000))
         self.start_time = 0.0
+        self.stagnation_limit = stagnation_limit
+        self.min_runtime_before_stop_sec = (
+            min_runtime_before_stop_sec
+            if min_runtime_before_stop_sec is not None
+            else min(120.0, self.time_limit * 0.4)
+        )
 
         self.f_cache = {}
         self.add_cache = {}
@@ -72,8 +80,11 @@ class GeneticAlgorithmScheduler:
 
         self.start_times = sorted(self.progs_by_start)
 
+    def _elapsed_time(self):
+        return time.perf_counter() - self.start_time
+
     def _time_left(self):
-        return self.time_limit - (time.perf_counter() - self.start_time)
+        return self.time_limit - self._elapsed_time()
 
     def _fitness(self, sched):
         filtered = AlgorithmUtils.filter_valid_schedule(sched, self.instance, self.input_overlap_ids)
@@ -356,6 +367,12 @@ class GeneticAlgorithmScheduler:
                 seen_keys.add(candidate_key)
 
             generation += 1
+
+            if (
+                stagnation >= self.stagnation_limit
+                and self._elapsed_time() >= self.min_runtime_before_stop_sec
+            ):
+                break
 
         self.generations_done = generation
         final_sched = AlgorithmUtils.filter_valid_schedule(best_sched or [], self.instance, self.input_overlap_ids)

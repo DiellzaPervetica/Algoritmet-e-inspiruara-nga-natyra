@@ -2,6 +2,8 @@ import os
 import argparse
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 from parser.file_selector import select_file
 from parser.parser import Parser
@@ -66,6 +68,47 @@ def _find_best_branch_and_bound_output(instance_name: str) -> Path | None:
     return max(candidates, key=_extract_last_number)
 
 
+
+
+def run_ga_experiment_batches(runs: int = 10, per_instance_time_sec: float = 300.0):
+    """Run all GA experiments in batch mode using ga_experiment.py."""
+    script_path = PROJECT_ROOT / "ga_experiment.py"
+
+    experiments = [
+        ("exp_same_equal_v2", "single", "equal"),
+        ("exp_tuned_equal_v2", "tuned", "equal"),
+        ("exp_tuned_equal_mutboost_v2", "tuned", "equal"),
+    ]
+
+    common_args = [
+        sys.executable,
+        str(script_path),
+        "--runs", str(runs),
+        "--total-time", str(per_instance_time_sec),
+        "--time-buffer", "0",
+        "--population-size", "50",
+        "--mutation-rate", "0.30",
+    ]
+
+    for experiment_name, profile, time_profile in experiments:
+        cmd = common_args + [
+            "--experiment-name", experiment_name,
+            "--profile", profile,
+            "--time-profile", time_profile,
+        ]
+
+        print("\n" + "=" * 60)
+        print(f"[AUTO-GA] Starting: {experiment_name}")
+        print("Command:", " ".join(cmd))
+        print("=" * 60)
+        subprocess.run(cmd, cwd=str(PROJECT_ROOT), check=True)
+
+    total_runs = len(experiments) * runs
+    total_instances = 17
+    worst_case_hours = (total_runs * total_instances * per_instance_time_sec) / 3600.0
+    print(f"\n[AUTO-GA] Done. Total experiment runs: {total_runs}")
+    print(f"[AUTO-GA] Worst-case time estimate: {worst_case_hours:.2f} hours")
+
 def _load_initial_schedule_from_output(output_path: Path, instance) -> list[Schedule]:
     with open(output_path, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -96,9 +139,16 @@ def _load_initial_schedule_from_output(output_path: Path, instance) -> list[Sche
 def main():
     parser_arg = argparse.ArgumentParser(description="Run TV scheduling algorithms")
     parser_arg.add_argument("--input", "-i", dest="input_file", help="Path to input JSON")
+    parser_arg.add_argument("--ga-auto", action="store_true", help="Run all GA experiments automatically (non-interactive)")
+    parser_arg.add_argument("--ga-runs", type=int, default=10, help="Number of runs per experiment in auto mode")
+    parser_arg.add_argument("--ga-time", type=float, default=300.0, help="Per-instance time limit (seconds) in auto mode")
     args = parser_arg.parse_args()
 
     clear_console()
+
+    if args.ga_auto:
+        run_ga_experiment_batches(runs=args.ga_runs, per_instance_time_sec=args.ga_time)
+        return
     print("=" * 60)
     print("            TV SCHEDULING OPTIMIZATION SYSTEM               ")
     print("=" * 60)
@@ -165,7 +215,7 @@ def main():
             instance,
             initial_schedule=initial_schedule,
             time_limit_sec=300.0,
-            population_size=10,
+            population_size=50,
             mutation_rate=0.30
         )
         sol = scheduler.generate_solution()
