@@ -73,6 +73,8 @@ def _find_best_branch_and_bound_output(instance_name: str) -> Path | None:
 def run_ga_experiment_batches(runs: int = 10, per_instance_time_sec: float = 300.0):
     """Run all GA experiments in batch mode using ga_experiment.py."""
     script_path = PROJECT_ROOT / "ga_experiment.py"
+    total_instances = 17
+    total_time_per_run_sec = per_instance_time_sec * total_instances
 
     experiments = [
         ("exp_same_equal_v2", "single", "equal"),
@@ -84,10 +86,11 @@ def run_ga_experiment_batches(runs: int = 10, per_instance_time_sec: float = 300
         sys.executable,
         str(script_path),
         "--runs", str(runs),
-        "--total-time", str(per_instance_time_sec),
+        "--total-time", str(total_time_per_run_sec),
         "--time-buffer", "0",
         "--population-size", "50",
         "--mutation-rate", "0.30",
+        "--clean-output",
     ]
 
     for experiment_name, profile, time_profile in experiments:
@@ -104,9 +107,10 @@ def run_ga_experiment_batches(runs: int = 10, per_instance_time_sec: float = 300
         subprocess.run(cmd, cwd=str(PROJECT_ROOT), check=True)
 
     total_runs = len(experiments) * runs
-    total_instances = 17
     worst_case_hours = (total_runs * total_instances * per_instance_time_sec) / 3600.0
     print(f"\n[AUTO-GA] Done. Total experiment runs: {total_runs}")
+    print(f"[AUTO-GA] Per-instance time limit: {per_instance_time_sec:.2f} seconds")
+    print(f"[AUTO-GA] Total time per run: {total_time_per_run_sec:.2f} seconds")
     print(f"[AUTO-GA] Worst-case time estimate: {worst_case_hours:.2f} hours")
 
 def _load_initial_schedule_from_output(output_path: Path, instance) -> list[Schedule]:
