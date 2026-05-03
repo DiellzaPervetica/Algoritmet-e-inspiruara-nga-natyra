@@ -246,8 +246,8 @@ Eksperimenti i tretë teston nëse eksplorimi më agresiv jep rezultate më të 
 | Experiment | Parametrat |
 |---|---|
 | `exp_uniform_balanced` | `population_size=50`, `crossover_rate=0.90`, `mutation_rate=0.30` për të gjitha instancat |
-| `exp_tuned_by_instance` | Small: `population_size=25`, `mutation_rate=0.25`; Medium: `population_size=40`, `mutation_rate=0.30`; Large: `population_size=60`, `crossover_rate=0.88`, `mutation_rate=0.35`; Huge: `population_size=70`, `crossover_rate=0.85`, `mutation_rate=0.40` |
-| `exp_stronger_exploration` | Small: `population_size=35`, `mutation_rate=0.30`; Medium: `population_size=55`, `mutation_rate=0.35`; Large: `population_size=75`, `crossover_rate=0.85`, `mutation_rate=0.42`; Hard/Huge: `population_size=85`, `crossover_rate=0.85`, `mutation_rate=0.45` |
+| `exp_tuned_by_instance` | **Small:** `population_size=25`, `mutation_rate=0.25`<br>**Medium:** `population_size=40`, `mutation_rate=0.30`<br>**Large:** `population_size=60`, `crossover_rate=0.88`, `mutation_rate=0.35`<br>**Huge:** `population_size=70`, `crossover_rate=0.85`, `mutation_rate=0.40` |
+| `exp_stronger_exploration` | **Small:** `population_size=35`, `mutation_rate=0.30`<br>**Medium:** `population_size=55`, `mutation_rate=0.35`<br>**Large:** `population_size=75`, `crossover_rate=0.85`, `mutation_rate=0.42`<br>**Hard/Huge:** `population_size=85`, `crossover_rate=0.85`, `mutation_rate=0.45` |
 
 Parametrat që mbeten të njëjtë në të gjitha eksperimentet janë:
 
