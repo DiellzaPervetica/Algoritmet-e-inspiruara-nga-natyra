@@ -13,7 +13,25 @@
   </tr>
 </table>
 
+
 ---
+
+## Përmbajtja
+
+- [Përshkrimi i Projektit](#përshkrimi-i-projektit-optimizimi-i-orarit-televiziv)
+- [Zgjidhjet Fillestare](#zgjidhjet-fillestare)
+- [Beam Search Scheduler](#beam-search-scheduler)
+- [Branch and Bound Scheduler](#branch-and-bound-scheduler)
+- [Algoritmi Gjenetik](#algoritmi-gjenetik)
+- [Parametrat e Algoritmit Gjenetik](#parametrat-e-algoritmit-gjenetik)
+- [Eksperimentet e Realizuara](#eksperimentet-e-realizuara)
+- [Rezultatet e Eksperimenteve](#rezultatet-e-eksperimenteve)
+- [Rezultatet e Plota për çdo Eksperiment](#rezultatet-e-plota-për-çdo-eksperiment)
+- [Konfigurimi Final i Zgjedhur](#konfigurimi-final-i-zgjedhur)
+- [Si të Ekzekutohet Projekti](#si-të-ekzekutohet-projekti)
+- [Përfundim](#përfundim)
+
+
 ## Përshkrimi i Projektit: Optimizimi i Orarit Televiziv
 
 Ky projekt adreson **Problemin e Planifikimit Televiziv për Hapësira Publike** (TV Channel Scheduling Optimization for Public Spaces) në kuadër të lëndës **Algoritmet e Inspiruara nga Natyra**. Objektivi primar është përzgjedhja dhe planifikimi optimal i një nënbashkësie të programeve televizive në kanale të shumta, me qëllim maksimizimin e pikëve totale të shikueshmërisë.
@@ -32,83 +50,83 @@ Përveç kufizimeve bazë kohore, problemi përfshin rregulla specifike për të
 
 ## Zgjidhjet Fillestare
 
-Para algoritmit gjenetik jane implementuar dy metoda per gjenerimin e zgjidhjeve fillestare:
+Para algoritmit gjenetik janë implementuar dy metoda për gjenerimin e zgjidhjeve fillestare:
 
 ```text
 1. Beam Search Scheduler
 2. Branch and Bound Scheduler
 ```
 
-Keto metoda sherbejne si baze krahasimi dhe si menyre per te krijuar zgjidhje fillestare te mira.
+Këto metoda shërbejnë si bazë krahasimi dhe si mënyrë për të krijuar zgjidhje fillestare të mira.
 
 ## Beam Search Scheduler
 
-Beam Search Scheduler eshte nje metode heuristike qe mban disa zgjidhje te pjesshme me te mira ne cdo hap, ne vend qe te ndjeke vetem nje zgjidhje te vetme.
+Beam Search Scheduler është një metodë heuristike që mban disa zgjidhje të pjesshme më të mira në çdo hap, në vend që të ndjekë vetëm një zgjidhje të vetme.
 
 Ideja kryesore:
 
-- ndertohet orari hap pas hapi;
-- ne cdo hap ruhen disa kandidatet me te mire;
-- perdoret nje vleresim heuristik per te zgjedhur drejtimet me premtuese;
-- shmanget nje pjese e gabimeve qe mund t'i beje nje algoritm greedy.
+- ndërtohet orari hap pas hapi;
+- në çdo hap ruhen disa kandidatë më të mirë;
+- përdoret një vlerësim heuristik për të zgjedhur drejtimet më premtuese;
+- shmanget një pjesë e gabimeve që mund t'i bëjë një algoritm greedy.
 
-Parametrat kryesore te Beam Search:
+Parametrat kryesore të Beam Search:
 
-| Parameter | Value | Pershkrim |
+| Parameter | Value | Përshkrim |
 |---|---:|---|
-| beam_width | 100 | Numri i zgjidhjeve te pjesshme qe ruhen ne cdo hap |
-| lookahead_limit | 4 | Sa hapa perpara analizohet ndikimi i nje vendimi |
+| beam_width | 100 | Numri i zgjidhjeve të pjesshme që ruhen në çdo hap |
+| lookahead_limit | 4 | Sa hapa përpara analizohet ndikimi i një vendimi |
 
-Beam Search eshte perdorur si metode fillestare dhe si pike krahasimi, por per algoritmin gjenetik kemi vendosur te perdorim Branch and Bound si zgjidhje iniciale, sepse output-et e tij kane qene me te pershtatshme per warm start.
+Beam Search është përdorur si metodë fillestare dhe si pikë krahasimi, por për algoritmin gjenetik kemi vendosur të përdorim Branch and Bound si zgjidhje iniciale, sepse output-et e tij kanë qenë më të përshtatshme për warm start.
 
 ## Branch and Bound Scheduler
 
-Branch and Bound Scheduler eksploron hapesiren e zgjidhjeve duke krijuar degezime te mundshme dhe duke larguar drejtimet qe nuk duken premtuese.
-Kjo metode eshte perdorur per te krijuar zgjidhje fillestare te forta, te cilat me pas sherbejne si pike nisjeje per algoritmin gjenetik.
+Branch and Bound Scheduler eksploron hapësirën e zgjidhjeve duke krijuar degëzime të mundshme dhe duke larguar drejtimet që nuk duken premtuese.
+Kjo metodë është përdorur për të krijuar zgjidhje fillestare të forta, të cilat më pas shërbejnë si pikë nisjeje për algoritmin gjenetik.
 
 Ideja kryesore:
 
-- ndertohen zgjidhje te pjesshme duke ecur neper kohe;
-- ne cdo pike vendimi gjenerohen programet kandidate qe mund te shtohen ne orar;
-- per cdo kandidat llogaritet score-i duke perfshire score-in baze, bonuset, penalitetet dhe kufizimet;
-- per cdo degezim vleresohet potenciali maksimal qe mund te arrihet me pjesen e mbetur te dites;
-- degezimet qe nuk mund te japin rezultat me te mire se zgjidhja aktuale me e mire largohen;
-- ruhet zgjidhja me score me te larte qe gjendet brenda kohes se lejuar.
+- ndërtohen zgjidhje të pjesshme duke ecur nëpër kohë;
+- në çdo pikë vendimi gjenerohen programet kandidate që mund të shtohen në orar;
+- për çdo kandidat llogaritet score-i duke përfshirë score-in bazë, bonuset, penalitetet dhe kufizimet;
+- për çdo degëzim vlerësohet potenciali maksimal që mund të arrihet me pjesën e mbetur të ditës;
+- degëzimet që nuk mund të japin rezultat më të mirë se zgjidhja aktuale më e mirë largohen;
+- ruhet zgjidhja me score më të lartë që gjendet brenda kohës së lejuar.
 
-Komponentet kryesore te implementimit:
+Komponentet kryesore të implementimit:
 
-| Komponenti | Qellimi |
+| Komponenti | Qëllimi |
 |---|---|
-| Preprocessing | Rendit programet sipas kanaleve dhe koheve, pergatit priority blocks dhe vlerat optimiste per pruning |
-| Randomized warm starts | Krijon disa zgjidhje fillestare te shpejta per te pasur nje incumbent te mire para kerkimit kryesor |
-| Candidate generation | Gjen programet qe mund te vendosen ne kohen aktuale pa shkelur kufizimet |
-| Upper bound | Vlereson kufirin maksimal teorik qe mund te arrihet nga nje gjendje e pjesshme |
-| Pruning | Ndal eksplorimin e degezimeve qe nuk mund ta kalojne score-in me te mire aktual |
-| DFS search | Eksploron degezimet me stack dhe perditeson zgjidhjen me te mire |
+| Preprocessing | Rendit programet sipas kanaleve dhe koheve, pergatit priority blocks dhe vlerat optimiste për pruning |
+| Randomized warm starts | Krijon disa zgjidhje fillestare të shpejta për të pasur një incumbent të mirë para kërkimit kryesor |
+| Candidate generation | Gjen programet që mund të vendosen në kohën aktuale pa shkelur kufizimet |
+| Upper bound | Vlereson kufirin maksimal teorik që mund të arrihet nga një gjendje e pjesshme |
+| Pruning | Ndal eksplorimin e degëzimeve që nuk mund ta kalojnë score-in më të mirë aktual |
+| DFS search | Eksploron degëzimet me stack dhe përditëson zgjidhjen më të mirë |
 
-Arsyeja pse kjo metode eshte e pershtatshme per warm start eshte se zakonisht prodhon zgjidhje valide dhe me score te mire. Algoritmi gjenetik nuk fillon nga nje orar plotesisht random, por nga nje zgjidhje qe tashme respekton kufizimet kryesore dhe ka score te larte.
+Arsyeja pse kjo metodë është e përshtatshme për warm start është se zakonisht prodhon zgjidhje valide dhe me score të mirë. Algoritmi gjenetik nuk fillon nga një orar plotësisht random, por nga një zgjidhje që tashmë respekton kufizimet kryesore dhe ka score të lartë.
 
-Output-et e Branch and Bound ruhen ne:
+Output-et e Branch and Bound ruhen në:
 
 ```text
 data/output/branchandboundscheduler
 ```
 
-Ne algoritmin gjenetik, keto output-e jane perdorur si **zgjidhje iniciale te gatshme**.
+Në algoritmin gjenetik, këto output-e janë përdorur si **zgjidhje iniciale të gatshme**.
 
-E rendesishme:
+E rëndësishme:
 
 ```text
-Algoritmi gjenetik nuk e gjeneron prape zgjidhjen fillestare me Branch and Bound.
-Ai e lexon zgjidhjen ekzistuese nga output-et e ruajtura te Branch and Bound.
+Algoritmi gjenetik nuk e gjeneron prapë zgjidhjen fillestare me Branch and Bound.
+Ai e lexon zgjidhjen ekzistuese nga output-et e ruajtura të Branch and Bound.
 ```
 
-Kjo qasje u zgjodh per dy arsye:
+Kjo qasje u zgjodh për dy arsye:
 
-- kursen kohe gjate ekzekutimit te algoritmit gjenetik;
-- e ben eksperimentin me te kontrollueshem, sepse cdo run niset nga e njejta zgjidhje iniciale per ate instance.
+- kursen kohë gjatë ekzekutimit të algoritmit gjenetik;
+- e bën eksperimentin më të kontrollueshëm, sepse çdo run niset nga e njëjta zgjidhje iniciale për atë instance.
 
-Total score i zgjidhjeve fillestare Branch and Bound per 17 instancat ishte:
+Total score i zgjidhjeve fillestare Branch and Bound për 17 instancat ishte:
 
 ```text
 136573
@@ -116,495 +134,330 @@ Total score i zgjidhjeve fillestare Branch and Bound per 17 instancat ishte:
 
 ## Algoritmi Gjenetik
 
-Algoritmi gjenetik perdoret per te permiresuar zgjidhjet fillestare te marra nga Branch and Bound.
-
-Ne kete projekt, nje individ ne popullate perfaqeson nje orar te plote ose te pjesshem:
+Algoritmi gjenetik përdoret për të përmirësuar zgjidhjet fillestare të marra nga Branch and Bound. Në këtë projekt, një individ në popullatë përfaqëson një orar të plotë ose të pjesshëm:
 
 ```text
-individual = liste e programeve te planifikuara
+individual = liste e programeve të planifikuara
 ```
 
-Popullata fillestare krijohet duke marre zgjidhjen nga Branch and Bound dhe duke krijuar variante te reja me mutacion dhe repair.
+Popullata fillestare nuk krijohet nga zero. Si individi i parë merret zgjidhja e gatshme nga Branch and Bound, ndërsa individët tjerë krijohen duke bërë mutacion mbi këtë zgjidhje dhe pastaj duke aplikuar `repair`. Kjo qasje e ruan një pikënisje të fortë dhe, në të njëjtën kohë, krijon diversitet për kërkim.
 
 ### Struktura e Algoritmit
 
-Algoritmi funksionon keshtu:
+Rrjedha kryesore e algoritmit është:
 
-1. Lexohet instance nga `data/input`.
-2. Lexohet output-i perkates nga `data/output/branchandboundscheduler`.
+1. Lexohet instanca nga `data/input`.
+2. Lexohet output-i përkatës nga `data/output/branchandboundscheduler`.
 3. Krijohet popullata fillestare nga zgjidhja Branch and Bound.
-4. Llogaritet fitness per secilin individ.
-5. Zgjidhen prinderit me tournament selection.
-6. Krijohen femije me crossover.
+4. Llogaritet fitness për secilin individ.
+5. Zgjidhen prindërit me tournament selection.
+6. Krijohen fëmijë me crossover.
 7. Aplikohet mutacioni.
-8. Aplikohet repair per te ruajtur validitetin.
-9. Popullata perditesohet duke ruajtur elitat dhe femijet me te mire.
-10. Ruhet gjithmone zgjidhja me e mire e gjetur deri ne ate moment.
+8. Aplikohet repair për ta mbajtur orarin valid.
+9. Popullata përditësohet duke ruajtur elitat dhe kandidatët më të mirë.
+10. Ruhet gjithmonë zgjidhja më e mirë e gjetur deri në atë moment.
 
-### Funksionet Kryesore ne Implementim
-
-Implementimi eshte ndare ne funksione te vogla, ku secili funksion ka nje rol te qarte:
+### Funksionet Kryesore
 
 | Funksioni | Roli |
 |---|---|
-| `_base_schedule` | Merr zgjidhjen fillestare nga Branch and Bound dhe e filtron qe te jete valide |
-| `_initial_population` | Krijon popullaten fillestare duke ruajtur bazen dhe duke krijuar variante me mutacion |
-| `_fitness` | Llogarit score-in e nje individi pas filtrimit valid |
-| `_select_population` | Rendit popullaten, ruan elitat dhe krijon mating pool |
-| `_pick_parent` | Zgjedh nje prind me tournament selection |
-| `_cross` | Bashkon dy prinder me prerje kohore dhe pastaj thirr repair |
-| `_mutate` | Largon segmente te dobeta dhe rinderton orarin me repair |
-| `_repair` | Mbush boshlleqet kohore me kandidatet me te mire duke ruajtur validitetin |
-| `_can_add` | Kontrollon nese nje program mund te shtohet pa shkelur kufizimet |
-| `_best_fill_candidate` | Zgjedh kandidatin me te mire per intervalin aktual |
-| `_make_child` | Krijon femiun nga dy prinder dhe e krahason me prindin me te mire |
-| `generate_solution` | Ekzekuton ciklin kryesor te algoritmit gjenetik deri ne limitin e kohes |
+| `_base_schedule` | Merr zgjidhjen fillestare nga Branch and Bound dhe e filtron që të jetë valide |
+| `_initial_population` | Krijon popullatën fillestare duke ruajtur bazën dhe duke krijuar variante me mutacion |
+| `_fitness` | Llogarit score-in e një individi pas filtrimit valid |
+| `_select_population` | Rendit popullatën, ruan elitat dhe krijon mating pool |
+| `_pick_parent` | Zgjedh një prind me tournament selection |
+| `_cross` | Bashkon dy prindër me prerje kohore dhe pastaj thërret repair |
+| `_mutate` | Largon segmente të dobëta dhe rindërton orarin me repair |
+| `_repair` | Mbush boshllëqet kohore me kandidatët më të mirë duke ruajtur validitetin |
+| `_can_add` | Kontrollon nëse një program mund të shtohet pa shkelur kufizimet |
+| `_best_fill_candidate` | Zgjedh kandidatin më të mirë për intervalin aktual |
+| `_make_child` | Krijon fëmijën nga dy prindër dhe e krahason me prindin më të mirë |
+| `generate_solution` | Ekzekuton ciklin kryesor të algoritmit gjenetik deri në limitin e kohës |
 
-Kjo ndarje e ben algoritmin me te lehte per t'u kuptuar: selection zgjedh prinderit, crossover krijon femijen, mutation krijon ndryshim, repair e ben zgjidhjen valide, ndersa elitism siguron qe zgjidhja me e mire nuk humbet.
+### Selection, Crossover, Mutation dhe Repair
 
-### Perditesimi i Popullates
+Për selection përdoret `tournament selection`. Në çdo zgjedhje merren disa individë nga popullata dhe fiton ai me fitness më të lartë. Kjo e favorizon cilësinë, por nuk e largon plotësisht rastësinë, prandaj popullata ruan diversitet.
 
-Ne fund te cdo gjenerate krijohet nje popullate e re.
-Procesi eshte:
+Crossover-i është me pikë kohore: një pjesë e orarit merret nga prindi i parë dhe pjesa tjetër nga prindi i dytë. Ky operator është i përshtatshëm për scheduling, sepse orari është i renditur në kohë dhe një prerje kohore krijon fëmijë që kanë kuptim për problemin.
 
-1. Renditen individet sipas fitness.
-2. Dy individet me te mire ruhen direkt si elita.
-3. Nga gjysma me e mire e popullates krijohet mating pool.
-4. Prinderit zgjidhen me tournament selection.
-5. Nga prinderit krijohet nje femije me crossover.
-6. Femija mund te pesoje mutacion.
-7. Repair e ben femijen valid dhe mundohet te mbushe boshlleqet me programe te mira.
-8. Femija krahasohet me prindin me te forte; ne popullate futet kandidati me score me te mire.
+Mutacioni nuk përdor operatorët `swap`, `shift`, `insert` ose `replace`. Operatori ynë është `remove and repair`: largohen një ose disa segmente me cilësi më të dobët dhe pastaj `repair` rindërton boshllëkun me kandidatë më të mirë. Kur algoritmi ngec, përdoret edhe një mutacion më agresiv mbi një zonë të dobët të orarit.
 
-Kjo do te thote qe femijet e dobet nuk e prishin popullaten, sepse nuk pranohen automatikisht nese jane me te keq se prinderit. Ne te njejten kohe, mutacioni dhe repair krijojne variante te reja qe mund ta kalojne zgjidhjen ekzistuese.
+`Repair` është pjesa kryesore që e mban zgjidhjen valide. Ai kontrollon kohën e hapjes/mbylljes, mbivendosjet, minimum duration, priority blocks dhe kufizimin për zhanret e njëpasnjëshme. Pastaj mbush boshllëqet me programet më të mira të mundshme sipas score-it, bonuseve dhe penaliteteve.
 
-### Fitness
+### Elitism dhe Përditësimi i Popullatës
 
-Fitness eshte score total i orarit pas filtrimit dhe validimit te tij.
-Per llogaritje perdoren funksionet ekzistuese te projektit:
+Në çdo gjeneratë ruhen individët më të mirë (`elite_size`). Këta kalojnë direkt në gjeneratën tjetër, prandaj zgjidhja më e mirë nuk humbet edhe nëse crossover ose mutation prodhojnë fëmijë më të dobët.
 
-```text
-AlgorithmUtils.filter_valid_schedule
-AlgorithmUtils.score_filtered_schedule
-```
+Fëmijët krijohen nga mating pool, jo vetëm nga elitat. Pas krijimit, fëmija krahasohet me prindin më të fortë. Nëse fëmija është më i mirë, pranohet fëmija; nëse jo, ruhet prindi më i mirë. Kjo e mbron popullatën nga përkeqësimi, por prapë lejon përmirësime kur fëmija sjell kombinim më të mirë.
 
-Kjo siguron qe vleresimi i algoritmit gjenetik te jete i njejte me logjiken e projektit.
+### Cache dhe Shpejtësia
 
-### Selection
+Për shkak se algoritmi vlerëson shumë individë, janë përdorur cache për operacionet më të shpeshta:
 
-Per zgjedhjen e prinderve perdoret **tournament selection**.
-
-Ideja:
-
-- zgjidhen disa individe rastesisht nga popullata;
-- individi me fitness me te larte fiton turneun;
-- fituesi perdoret si prind per krijimin e femijeve.
-
-Ky mekanizem ruan balancen mes:
-
-- shfrytezimit te zgjidhjeve te mira;
-- ruajtjes se diversitetit ne popullate.
-
-### Elitism
-
-Ne cdo gjenerate ruhen individet me te mire.
-Kjo do te thote qe zgjidhja me e mire nuk humbet edhe nese mutacioni ose crossover prodhojne femije me score me te ulet.
-
-### Crossover
-
-Crossover eshte operatori qe kombinon dy prinder.
-
-Ne kete projekt perdoret crossover me pike kohore:
-
-- zgjedhet nje kohe prerjeje;
-- merret pjesa e pare e orarit nga prindi i pare;
-- merret pjesa e dyte nga prindi i dyte;
-- pastaj thirret repair per ta bere orarin valid dhe per te mbushur boshlleqet.
-
-Ky operator eshte i pershtatshem per problemin tone, sepse orari eshte i varur nga koha.
-
-### Mutation
-
-Mutacioni perdoret per te krijuar ndryshime te reja ne orar.
-
-Ne kete projekt nuk jane perdorur operatoret e ndaluar:
-
-```text
-swap, shift, insert, replace
-```
-
-Mutacioni yne eshte i tipit:
-
-```text
-remove and repair
-```
-
-Ai largon nje ose disa programe me cilesi me te dobet dhe pastaj repair mundohet ta rindertoje ate pjese me programe me te mira.
-
-Kur algoritmi ngec per disa gjenerata, perdoret edhe nje mutacion me i drejtuar:
-
-```text
-weak-region mutation
-```
-
-Ky mutacion identifikon nje zone te dobet te orarit, largon nje bllok te vogel programesh dhe e rinderton ate zone me repair.
-
-### Repair
-
-Repair eshte pjesa kryesore e algoritmit.
-
-Qellimi i tij eshte:
-
-- te filtroje programet jo valide;
-- te ruaje kufizimet e problemit;
-- te mbushe boshlleqet kohore me kandidatet me te mire;
-- te mos lejoje mbivendosje, shkelje te priority blocks ose tejkalim te zhanrit.
-
-Repair perdor nje liste kandidatesh te renditur dhe merr kandidatet me vlere me te mire.
-Per diversitet, ndonjehere zgjedh rastesisht nje nga 3 kandidatet me te mire.
-
-### Cache
-
-Per ta bere ekzekutimin me te shpejte, perdoren cache:
-
-- `f_cache` per fitness;
-- `add_cache` per kontrollin nese nje program mund te shtohet;
-- `quality_cache` per cilesine e segmenteve.
-
-Kjo eshte e rendesishme sepse algoritmi gjenetik vlereson shume individe dhe pa cache ekzekutimi do te ishte me i ngadalte.
-
-## Parametrat e Eksperimenteve te Reja
-
-Eksperimentet e fundit jane ekzekutuar ne menyre automatike nga `main.py`, pa nderhyrje manuale gjate zgjedhjes se instancave.
-Qellimi ishte te krahasohen tri konfigurime te algoritmit gjenetik duke perdorur te njejtat 17 instanca dhe te njejtin limit kohor per secilin run.
-
-Komanda e ekzekutimit ishte:
-
-```powershell
-python AA_25-26-main/AA_25-26-main/main.py --ga-auto --ga-runs 10 --ga-time 300
-```
-
-Kjo komande i ekzekuton keto tri eksperimente:
-
-| Experiment | Profile | Time strategy | Runs | Pershkrim |
-|---|---|---|---:|---|
-| `exp_same_equal_v2` | `single` | `equal` | 10 | Te gjitha instancat perdorin te njejtet parametra baze |
-| `exp_tuned_equal_v2` | `tuned` | `equal` | 10 | Disa instanca perdorin parametra te pershtatur |
-| `exp_tuned_equal_mutboost_v2` | `tuned` | `equal` | 10 | Konfigurim tuned me te njejten ndarje kohe dhe me mekanizmat agresive te mutacionit kur algoritmi ngec |
-
-Parametrat baze te eksperimenteve te reja:
-
-| Parameter | Value | Pershkrim |
-|---|---:|---|
-| population_size | 50 | Numri baze i individeve ne popullate |
-| tournament_size | 3 | Numri i individeve qe garojne per zgjedhjen e nje prindi |
-| elite_size | 2 | Numri i individeve me te mire qe ruhen direkt |
-| crossover_rate | 0.90 | Probabiliteti i kombinimit te dy prinderve |
-| mutation_rate | 0.30 | Probabiliteti baze i mutacionit |
-| max_generations | 10000 | Kufiri maksimal i gjeneratave |
-| candidate_pool_size | 700 | Numri maksimal i kandidateve per repair |
-| repair_random_rate | 0.20 | Probabiliteti qe repair te zgjedhe rastesisht nga kandidatet me te mire |
-
-Ne profilin `tuned`, disa instanca perdorin parametra te pershtatur:
-
-| Instance group | population_size | crossover_rate | mutation_rate | Arsyeja |
-|---|---:|---:|---:|---|
-| australia_iptv, canada_pw, youtube_gold, youtube_premium | 4 | 0.90 | 0.20 | Popullate me e vogel per me shume gjenerata te shpejta |
-| china_pw | 12 | 0.90 | 0.30 | Me shume diversitet ne popullate |
-| spain_iptv, uk_iptv | 14 | 0.85 | 0.45 | Eksplorim me agresiv per instanca me potencial me te madh |
-| Instancat tjera | 50 | 0.90 | 0.30 | Parametrat baze |
-
-### Ndarja e Kohes
-
-Ne keto eksperimente eshte perdorur strategjia `equal`.
-Kjo do te thote qe brenda nje run-i, buxheti total prej rreth 300 sekondash ndahet ne menyre pothuajse te barabarte per 17 instancat.
-
-| Time strategy | Pershkrim |
+| Cache | Qëllimi |
 |---|---|
-| `equal` | Cdo instance merr nje pjese te ngjashme te kohes totale te run-it |
+| `f_cache` | Ruan fitness-in e orareve që janë vlerësuar më parë |
+| `add_cache` | Ruan kontrollin nëse një program mund të shtohet në një gjendje të caktuar |
+| `quality_cache` | Ruan cilësinë e segmenteve për mutacionin e drejtuar |
 
-Kjo qasje e ben krahasimin me te drejte, sepse te tri eksperimentet kane te njejten strukture kohore.
-Ndryshimi kryesor vjen nga parametrat dhe nga sjellja e algoritmit gjate mutation, crossover dhe repair.
+Kjo e bën ekzekutimin më të lehtë për laptop dhe shmang llogaritjet e përsëritura.
 
-## Eksperimentet
+## Parametrat e Algoritmit Gjenetik
 
-Eksperimentet e vjetra jane larguar nga kjo permbledhje dhe README mban vetem tri eksperimentet e reja:
+Parametrat bazë janë përdorur në eksperimentin e parë dhe shërbejnë si konfigurim i balancuar:
+
+| Parameter | Value | Përshkrim |
+|---|---:|---|
+| `population_size` | 50 | Numri i individeve në popullatë |
+| `tournament_size` | 3 | Numri i individeve që garojne për zgjedhjen e një prindi |
+| `elite_size` | 2 | Numri i individeve më të mirë që ruhen direkt |
+| `crossover_rate` | 0.90 | Probabiliteti që dy prindër të kombinohen me crossover |
+| `mutation_rate` | 0.30 | Probabiliteti bazë që një fëmijë të ndryshohet me mutation |
+| `max_generations` | 10000 | Kufiri maksimal i gjeneratave, edhe pse zakonisht ndalet nga koha ose stagnimi |
+| `candidate_pool_size` | 700 | Numri maksimal i kandidatëve të ruajtur për çdo kohë fillimi gjatë repair |
+| `repair_random_rate` | 0.20 | Probabiliteti që repair të zgjedhë rastësisht nga kandidatët më të mirë |
+| `REPAIR_TOP_K` | 3 | Numri i kandidatëve më të mirë që mbahen gjatë zgjedhjes në repair |
+| `stagnation_limit` | 10 | Ndalesa e hershme nëse nuk ka përmirësim për 10 gjenerata |
+| `min_runtime_before_stop` | 20s | Algoritmi nuk ndalet nga stagnimi pa kaluar se paku 20 sekonda |
+| `max_instance_time` | 300s | çdo run për çdo instance ka maksimum 5 minuta |
+
+Stagnimi përdoret që algoritmi të mos shpenzoje kohë kur popullata nuk po përmirësohet. Nëse nuk ka përmirësim, pas disa gjeneratave aktivizohet mutacion më agresiv; nëse prapë nuk ka përmirësim dhe kanë kaluar se paku 20 sekonda, ekzekutimi i asaj instance ndalet më herët.
+
+## Eksperimentet e Realizuara
+
+Janë realizuar tri eksperimente. Të tria përdorin të njëjtat 17 instanca dhe të njëjtat zgjidhje fillestare nga Branch and Bound. Ndryshimi është të parametrat e algoritmit gjenetik.
+
+| Experiment | Profile | Ideja kryesore |
+|---|---|---|
+| `exp_uniform_balanced` | `single` | Parametra të njëjtë për çdo instance, si baseline i pastër dhe i lehtë për krahasim |
+| `exp_tuned_by_instance` | `tuned` | Parametra të përshtatur sipas madhësisë së instancës |
+| `exp_stronger_exploration` | `strong` | Parametra më eksplorues, me popullatë dhe mutacion më të madh |
+
+### Pse u zgjodhën këto eksperimente
+
+Eksperimenti i parë teston nëse një konfigurim i vetëm mund të funksionojë mirë për të gjitha instancat. Kjo është qasja më e thjeshtë dhe më e lehtë për t'u shpjeguar.
+
+Eksperimenti i dytë e ndan problemin sipas madhësisë së instancës. Instancat e vogla nuk kanë nevojë për popullatë shumë të madhe, ndërsa instancat e mëdha kanë më shumë kombinime të mundshme dhe mund të përfitojnë nga më shumë diversitet.
+
+Eksperimenti i tretë teston nëse eksplorimi më agresiv jep rezultate më të larta. Ai përdor popullatë më të madhe dhe mutation rate më të lartë, por kjo mund të këtë edhe rrezik: nëse zgjidhja fillestare nga Branch and Bound është shumë e mirë, mutacioni tepër agresiv mund ta prishë strukturën e mirë të saj.
+
+### Parametrat sipas Eksperimentit
+
+| Experiment | Parametrat |
+|---|---|
+| `exp_uniform_balanced` | `population_size=50`, `crossover_rate=0.90`, `mutation_rate=0.30` për të gjitha instancat |
+| `exp_tuned_by_instance` | Small: `population_size=25`, `mutation_rate=0.25`; Medium: `population_size=40`, `mutation_rate=0.30`; Large: `population_size=60`, `crossover_rate=0.88`, `mutation_rate=0.35`; Huge: `population_size=70`, `crossover_rate=0.85`, `mutation_rate=0.40` |
+| `exp_stronger_exploration` | Small: `population_size=35`, `mutation_rate=0.30`; Medium: `population_size=55`, `mutation_rate=0.35`; Large: `population_size=75`, `crossover_rate=0.85`, `mutation_rate=0.42`; Hard/Huge: `population_size=85`, `crossover_rate=0.85`, `mutation_rate=0.45` |
+
+Parametrat që mbeten të njëjtë në të gjitha eksperimentet janë:
 
 ```text
-exp_same_equal_v2
-exp_tuned_equal_v2
-exp_tuned_equal_mutboost_v2
+tournament_size = 3
+elite_size = 2
+max_generations = 10000
+candidate_pool_size = 700
+repair_random_rate = 0.20
+REPAIR_TOP_K = 3
+stagnation_limit = 10
+min_runtime_before_stop = 20 seconds
+max_instance_time = 300 seconds
 ```
 
-Output-et ruhen ne:
+### Grupimi i Instancave për Parametrat e Përshtatur
+
+| Group | Instances | Arsyeja |
+|---|---|---|
+| Small | `croatia_tv`, `germany_tv`, `kosovo_tv`, `netherlands_tv`, `toy` | Pak programe dhe hapësirë më e vogël kërkimi |
+| Medium | `singapore_pw`, `spain_iptv`, `uk_tv` | Madhesi mesatare, kerkon pak më shumë diversitet |
+| Large | `australia_iptv`, `canada_pw`, `france_iptv`, `uk_iptv` | Shumë programe dhe më shumë kombinime të mundshme |
+| Huge/Hard | `china_pw`, `usa_tv`, `us_iptv`, `youtube_gold`, `youtube_premium` | Hapësirë shumë e madhe kërkimi ose horizonte më të gjata kohore |
+
+### Koha e Ekzekutimit
+
+çdo run i një instance në një eksperiment ka limit maksimal prej 300 sekondash:
 
 ```text
-data/output/genetic_algorithm/experiments
+1 run për 1 instance = maksimum 5 minuta
 ```
 
-Struktura e output-eve per secilin eksperiment eshte:
+Për secilin eksperiment janë bërë 10 runs për secilën nga 17 instancat:
 
 ```text
-experiment_name/
-  australia_iptv/
-    run1_score.json
-    run2_score.json
-    ...
-  youtube_premium/
-    run1_score.json
-    ...
-  run_summaries/
-    run1_summary.json
-    ...
-  summary.json
+17 instanca x 10 runs = 170 output-e për eksperiment
+3 eksperimente x 170 output-e = 510 output-e gjithsej
 ```
 
-Secili eksperiment ka:
+Disa ekzekutime përfundojnë më herët për shkak të early stopping. Kjo ndodh vetëm kur algoritmi ka kaluar kohën minimale prej 20 sekondash dhe nuk ka gjetur përmirësim për disa gjenerata.
 
-| Item | Value |
-|---|---:|
-| Runs | 10 |
-| Instanca per run | 17 |
-| Output-e te pritura | 170 |
-| Summary per run | 10 |
-| Summary final | 1 |
+## Rezultatet e Eksperimenteve
 
-Total score i zgjidhjeve fillestare nga Branch and Bound mbetet:
+Total score i zgjidhjeve fillestare nga Branch and Bound është:
 
 ```text
 136573
 ```
 
-## Rezultatet Kryesore
+### Përmbledhje e Rezultateve
 
-Permbledhja e rezultateve per 10 runs:
+| Experiment | Strategjia | Profile | Runs | Best total | Avg total | Worst total | Best run | Gain vs BnB |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `exp_uniform_balanced` | Parametra të njëjtë për të gjitha instancat | single | 10 | 166067 | 156936.1 | 148869 | 2 | +29494 |
+| `exp_tuned_by_instance` | Parametra të përshtatur sipas madhësisë së instancës | tuned | 10 | 156085 | 154732.8 | 152678 | 3 | +19512 |
+| `exp_stronger_exploration` | Parametra të përshtatur + eksplorim më i fortë | strong | 10 | 154423 | 152535.8 | 151503 | 2 | +17850 |
 
-| Experiment | Best total score | Average total score | Worst total score | Best run | Gain vs BnB |
-|---|---:|---:|---:|---:|---:|
-| `exp_same_equal_v2` | 148228 | 146782.9 | 145438 | 9 | +11655 |
-| `exp_tuned_equal_v2` | 172563 | 166271.8 | 156977 | 7 | +35990 |
-| `exp_tuned_equal_mutboost_v2` | 172791 | 165672.7 | 156939 | 2 | +36218 |
+### Total Score për Secilin Run
 
-Nga kjo tabele shihet qe konfigurimet `tuned` japin permiresim shume me te madh se konfigurimi me parametra te njejte per te gjitha instancat.
-Rezultati me i larte i arritur eshte:
+| Run | `exp_uniform_balanced` | `exp_tuned_by_instance` | `exp_stronger_exploration` |
+| ---: | ---: | ---: | ---: |
+| 1 | 164721 | 153900 | 153945 |
+| 2 | 166067 | 152678 | 154423 |
+| 3 | 157212 | 156085 | 151503 |
+| 4 | 155877 | 155159 | 151988 |
+| 5 | 154499 | 154807 | 152557 |
+| 6 | 156822 | 154850 | 151974 |
+| 7 | 155556 | 154882 | 152026 |
+| 8 | 157563 | 155570 | 151897 |
+| 9 | 148869 | 155613 | 152648 |
+| 10 | 152175 | 153784 | 152397 |
 
-```text
-Best total score = 172791
-```
+## Rezultatet e Plota për çdo Eksperiment
 
-Ky rezultat vjen nga:
+### Eksperimenti 1: `exp_uniform_balanced`
 
-```text
-exp_tuned_equal_mutboost_v2, run 2
-```
+Parametra të njëjtë për të gjitha instancat.
 
-Permiresimi krahasuar me Branch and Bound eshte:
+| Instance | BnB | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Run 6 | Run 7 | Run 8 | Run 9 | Run 10 | Best | Avg | Worst |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| australia_iptv | 3541 | 4374 | 4448 | 4395 | 4397 | 4456 | 4396 | 4350 | 4333 | 4344 | 4379 | 4456 | 4387.2 | 4333 |
+| canada_pw | 4157 | 4716 | 4775 | 4718 | 4764 | 4741 | 4732 | 4739 | 4722 | 4822 | 4765 | 4822 | 4749.4 | 4716 |
+| china_pw | 2535 | 2801 | 2801 | 2827 | 2796 | 2801 | 2805 | 2805 | 2801 | 2796 | 2810 | 2827 | 2804.3 | 2796 |
+| croatia_tv | 2120 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220.0 | 2220 |
+| france_iptv | 4046 | 9182 | 8854 | 9331 | 9288 | 9730 | 9576 | 9109 | 9527 | 8608 | 9461 | 9730 | 9266.6 | 8608 |
+| germany_tv | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626.0 | 1626 |
+| kosovo_tv | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567.0 | 2567 |
+| netherlands_tv | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632.0 | 2632 |
+| singapore_pw | 4292 | 4406 | 4648 | 4555 | 4579 | 4417 | 4740 | 4493 | 4623 | 4659 | 4418 | 4740 | 4553.8 | 4406 |
+| spain_iptv | 4232 | 5195 | 5501 | 5192 | 5415 | 5305 | 5480 | 5402 | 5433 | 5450 | 5169 | 5501 | 5354.2 | 5169 |
+| toy | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510.0 | 510 |
+| uk_iptv | 4855 | 6124 | 6350 | 5942 | 5481 | 5392 | 6211 | 6071 | 6408 | 6170 | 6091 | 6408 | 6024.0 | 5392 |
+| uk_tv | 2171 | 2236 | 2240 | 2240 | 2209 | 2240 | 2209 | 2236 | 2231 | 2240 | 2240 | 2240 | 2232.1 | 2209 |
+| usa_tv | 3561 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575.0 | 3575 |
+| us_iptv | 4168 | 4564 | 4422 | 4529 | 4569 | 4467 | 4569 | 4567 | 4490 | 4532 | 4527 | 4569 | 4523.6 | 4422 |
+| youtube_gold | 66919 | 67513 | 67576 | 67445 | 67312 | 67315 | 67284 | 67285 | 67335 | 67543 | 67161 | 67576 | 67376.9 | 67161 |
+| youtube_premium | 22641 | 40480 | 41322 | 32908 | 31937 | 30505 | 31690 | 31369 | 32530 | 24575 | 28024 | 41322 | 32534.0 | 24575 |
 
-```text
-172791 - 136573 = +36218
-```
+### Eksperimenti 2: `exp_tuned_by_instance`
 
-## Rezultatet per Secilin Run
+Parametra të përshtatur sipas madhësisë së instancës.
 
-| Run | exp_same_equal_v2 score | Time (s) | exp_tuned_equal_v2 score | Time (s) | exp_tuned_equal_mutboost_v2 score | Time (s) |
-|---:|---:|---:|---:|---:|---:|---:|
-| 1 | 147041 | 300.39 | 156977 | 286.78 | 172043 | 252.21 |
-| 2 | 147340 | 301.06 | 171336 | 246.27 | 172791 | 242.86 |
-| 3 | 146880 | 300.27 | 171396 | 283.81 | 166129 | 300.32 |
-| 4 | 145438 | 300.63 | 168683 | 280.26 | 156939 | 257.74 |
-| 5 | 147352 | 300.28 | 167084 | 279.42 | 165884 | 289.11 |
-| 6 | 145835 | 300.71 | 168686 | 300.32 | 170307 | 300.43 |
-| 7 | 146160 | 300.73 | 172563 | 298.47 | 168458 | 300.40 |
-| 8 | 146689 | 300.55 | 158188 | 292.37 | 158093 | 300.05 |
-| 9 | 148228 | 300.36 | 164779 | 284.37 | 164571 | 272.27 |
-| 10 | 146866 | 300.59 | 163026 | 300.38 | 161512 | 300.41 |
+| Instance | BnB | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Run 6 | Run 7 | Run 8 | Run 9 | Run 10 | Best | Avg | Worst |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| australia_iptv | 3541 | 4148 | 4460 | 4371 | 4378 | 4242 | 4307 | 4339 | 4440 | 4404 | 4456 | 4460 | 4354.5 | 4148 |
+| canada_pw | 4157 | 4677 | 4728 | 4702 | 4662 | 4778 | 4749 | 4751 | 4728 | 4744 | 4887 | 4887 | 4740.6 | 4662 |
+| china_pw | 2535 | 2801 | 2805 | 2801 | 2796 | 2805 | 2801 | 2822 | 2801 | 2801 | 2805 | 2822 | 2803.8 | 2796 |
+| croatia_tv | 2120 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220.0 | 2220 |
+| france_iptv | 4046 | 10121 | 9465 | 9237 | 9373 | 8305 | 9397 | 9032 | 9434 | 9386 | 8962 | 10121 | 9271.2 | 8305 |
+| germany_tv | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626.0 | 1626 |
+| kosovo_tv | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567.0 | 2567 |
+| netherlands_tv | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632.0 | 2632 |
+| singapore_pw | 4292 | 4508 | 4450 | 4738 | 4728 | 4432 | 4650 | 4507 | 4511 | 4752 | 4520 | 4752 | 4579.6 | 4432 |
+| spain_iptv | 4232 | 5237 | 5368 | 5415 | 5178 | 5459 | 5225 | 5448 | 5328 | 5381 | 5560 | 5560 | 5359.9 | 5178 |
+| toy | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510.0 | 510 |
+| uk_iptv | 4855 | 6414 | 6181 | 6121 | 6540 | 6180 | 5840 | 5689 | 5813 | 6265 | 6026 | 6540 | 6106.9 | 5689 |
+| uk_tv | 2171 | 2240 | 2240 | 2240 | 2240 | 2240 | 2246 | 2240 | 2240 | 2240 | 2240 | 2246 | 2240.6 | 2240 |
+| usa_tv | 3561 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575.0 | 3575 |
+| us_iptv | 4168 | 4531 | 4528 | 4569 | 4530 | 4398 | 4417 | 4533 | 4415 | 4492 | 4492 | 4569 | 4490.5 | 4398 |
+| youtube_gold | 66919 | 67245 | 67177 | 67269 | 67265 | 67249 | 67266 | 67245 | 67274 | 67278 | 67245 | 67278 | 67251.3 | 67177 |
+| youtube_premium | 22641 | 28848 | 28146 | 31492 | 30339 | 31589 | 30822 | 31146 | 31456 | 30740 | 29461 | 31589 | 30403.9 | 28146 |
 
-## Rezultatet me te Mira per Secilen Instance
+### Eksperimenti 3: `exp_stronger_exploration`
 
-| Instance | BnB initial | exp_same_equal_v2 best | exp_tuned_equal_v2 best | exp_tuned_equal_mutboost_v2 best | Overall best | Best experiment |
-|---|---:|---:|---:|---:|---:|---|
-| australia_iptv | 3541 | 4370 | 4343 | 4354 | 4370 | `exp_same_equal_v2` |
-| canada_pw | 4157 | 4798 | 4725 | 4725 | 4798 | `exp_same_equal_v2` |
-| china_pw | 2535 | 2822 | 2805 | 2801 | 2822 | `exp_same_equal_v2` |
-| croatia_tv | 2120 | 2220 | 2220 | 2220 | 2220 | te trija |
-| france_iptv | 4046 | 8531 | 9299 | 8499 | 9299 | `exp_tuned_equal_v2` |
-| germany_tv | 1626 | 1626 | 1626 | 1626 | 1626 | te trija |
-| kosovo_tv | 2567 | 2567 | 2567 | 2567 | 2567 | te trija |
-| netherlands_tv | 2632 | 2632 | 2632 | 2632 | 2632 | te trija |
-| singapore_pw | 4292 | 4617 | 4631 | 4654 | 4654 | `exp_tuned_equal_mutboost_v2` |
-| spain_iptv | 4232 | 5344 | 5450 | 5380 | 5450 | `exp_tuned_equal_v2` |
-| toy | 510 | 510 | 510 | 510 | 510 | te trija |
-| uk_iptv | 4855 | 6075 | 6022 | 6239 | 6239 | `exp_tuned_equal_mutboost_v2` |
-| uk_tv | 2171 | 2246 | 2246 | 2246 | 2246 | te trija |
-| usa_tv | 3561 | 3575 | 3575 | 3575 | 3575 | te trija |
-| us_iptv | 4168 | 4568 | 4569 | 4569 | 4569 | `exp_tuned_equal_v2`, `exp_tuned_equal_mutboost_v2` |
-| youtube_gold | 66919 | 67117 | 67421 | 67413 | 67421 | `exp_tuned_equal_v2` |
-| youtube_premium | 22641 | 25805 | 49868 | 50033 | 50033 | `exp_tuned_equal_mutboost_v2` |
+Parametra të përshtatur + eksplorim më i fortë.
 
-## Mesatarja per Secilen Instance
-
-| Instance | exp_same_equal_v2 avg | exp_tuned_equal_v2 avg | exp_tuned_equal_mutboost_v2 avg |
-|---|---:|---:|---:|
-| australia_iptv | 4244.2 | 4226.0 | 4232.0 |
-| canada_pw | 4704.0 | 4645.5 | 4646.4 |
-| china_pw | 2796.1 | 2793.5 | 2793.0 |
-| croatia_tv | 2220.0 | 2220.0 | 2220.0 |
-| france_iptv | 8084.4 | 8328.4 | 8038.3 |
-| germany_tv | 1626.0 | 1626.0 | 1626.0 |
-| kosovo_tv | 2567.0 | 2567.0 | 2567.0 |
-| netherlands_tv | 2632.0 | 2632.0 | 2632.0 |
-| singapore_pw | 4522.4 | 4528.0 | 4537.2 |
-| spain_iptv | 5175.1 | 5288.8 | 5268.6 |
-| toy | 510.0 | 510.0 | 510.0 |
-| uk_iptv | 5711.9 | 5699.8 | 5711.7 |
-| uk_tv | 2241.8 | 2241.2 | 2241.2 |
-| usa_tv | 3575.0 | 3575.0 | 3575.0 |
-| us_iptv | 4475.6 | 4476.9 | 4476.9 |
-| youtube_gold | 67055.0 | 67306.2 | 67296.2 |
-| youtube_premium | 24642.4 | 43607.5 | 43301.2 |
+| Instance | BnB | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Run 6 | Run 7 | Run 8 | Run 9 | Run 10 | Best | Avg | Worst |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| australia_iptv | 3541 | 4376 | 4384 | 4517 | 4484 | 4403 | 4192 | 4386 | 4339 | 4361 | 4422 | 4517 | 4386.4 | 4192 |
+| canada_pw | 4157 | 4749 | 4710 | 4741 | 4696 | 4774 | 4660 | 4747 | 4676 | 4697 | 4807 | 4807 | 4725.7 | 4660 |
+| china_pw | 2535 | 2801 | 2796 | 2801 | 2801 | 2794 | 2801 | 2801 | 2801 | 2818 | 2796 | 2818 | 2801.0 | 2794 |
+| croatia_tv | 2120 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220.0 | 2220 |
+| france_iptv | 4046 | 9092 | 9246 | 9269 | 9337 | 10050 | 9338 | 9663 | 9152 | 9600 | 9519 | 10050 | 9426.6 | 9092 |
+| germany_tv | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626.0 | 1626 |
+| kosovo_tv | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567.0 | 2567 |
+| netherlands_tv | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632.0 | 2632 |
+| singapore_pw | 4292 | 4624 | 4600 | 4480 | 4618 | 4487 | 4630 | 4617 | 4593 | 4624 | 4480 | 4630 | 4575.3 | 4480 |
+| spain_iptv | 4232 | 5379 | 5500 | 5399 | 5330 | 5359 | 5383 | 5354 | 5151 | 5128 | 5331 | 5500 | 5331.4 | 5128 |
+| toy | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510.0 | 510 |
+| uk_iptv | 4855 | 5886 | 6136 | 5998 | 5780 | 6495 | 6353 | 5859 | 6497 | 6247 | 5998 | 6497 | 6124.9 | 5780 |
+| uk_tv | 2171 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2246 | 2240 | 2246 | 2240.6 | 2240 |
+| usa_tv | 3561 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575.0 | 3575 |
+| us_iptv | 4168 | 4569 | 4531 | 4466 | 4451 | 4565 | 4530 | 4405 | 4532 | 4533 | 4414 | 4569 | 4499.6 | 4405 |
+| youtube_gold | 66919 | 67221 | 67232 | 67137 | 67137 | 67172 | 67189 | 67152 | 67172 | 67179 | 67174 | 67232 | 67176.5 | 67137 |
+| youtube_premium | 22641 | 29878 | 29918 | 27325 | 27984 | 27088 | 27528 | 27672 | 27614 | 28085 | 28086 | 29918 | 28117.8 | 27088 |
 
 ## Interpretimi i Rezultateve
 
-Rezultatet tregojne tri gjera kryesore:
+Nga rezultatet shihet që të tria konfigurimet përmirësojnë zgjidhjen fillestare nga Branch and Bound. Megjithate, në këto ekzekutime konkrete, rezultati më i mirë total dhe mesatarja më e mirë u arriten nga `exp_uniform_balanced`.
 
-1. Parametrat e njejte per te gjitha instancat japin permiresim te qendrueshem, por te kufizuar.
-2. Parametrat e pershtatur sipas instances rrisin ndjeshem score-in total.
-3. Eksperimenti `exp_tuned_equal_mutboost_v2` arriti score-in me te mire absolut, sidomos fale permiresimeve te medha ne instanca si `youtube_premium`, `uk_iptv` dhe `singapore_pw`.
+Kjo tregon që për këtë problem, një konfigurim i balancuar me `population_size=50`, `crossover_rate=0.90` dhe `mutation_rate=0.30` ruan raport më të mirë mes eksplorimit dhe stabilitetit. Konfigurimet e përshtatura dhe më agresive krijojnë më shumë diversitet, por në disa instanca e prishin më shpesh strukturën e mirë të zgjidhjes fillestare nga Branch and Bound.
 
-Disa instanca si `toy`, `germany_tv`, `kosovo_tv` dhe `netherlands_tv` nuk ndryshojne shume, sepse zgjidhja fillestare nga Branch and Bound eshte tashme shume afer maksimumit praktik per ato raste.
-Instancat me te medha, sidomos `youtube_premium`, kane hapesire me te madhe per permiresim dhe aty algoritmi gjenetik jep ndikimin me te madh.
+Eksperimenti `exp_tuned_by_instance` dhe `exp_stronger_exploration` prapë janë të vlefshme për analize, sepse tregojne efektin e parametrave të ndryshëm. Në disa instanca ato arrijne score të mirë, por në total nuk e kalojnë konfigurimin e parë.
 
-## Si te Ekzekutohet Projekti
+## Konfigurimi Final i Zgjedhur
 
-Per ekzekutim interaktiv:
+Për versionin final zgjedhim:
+
+```text
+exp_uniform_balanced
+```
+
+Arsyeja është se ky eksperiment dha:
+
+| Metric | Value |
+|---|---:|
+| Best total score | 166067 |
+| Average total score | 156936.1 |
+| Worst total score | 148869 |
+| Best gain vs Branch and Bound | +29494 |
+
+Pra, edhe pse janë testuar parametra të përshtatur dhe eksplorim më i fortë, konfigurimi i balancuar me parametra të njëjtë për të gjitha instancat doli më i qëndrueshëm dhe më i suksesshëm në total.
+
+## Si të Ekzekutohet Projekti
+
+Për ekzekutim interaktiv:
 
 ```powershell
 python AA_25-26-main/AA_25-26-main/main.py
 ```
 
-Per ekzekutimin automatik te tri eksperimenteve te reja:
+Në mënyrë interaktive mund të zgjidhet instanca, pastaj algoritmi, dhe nëse zgjidhet Genetic Algorithm mund të zgjidhet njëri nga tri eksperimentet.
+
+Për ekzekutimin automatik të tri eksperimenteve:
 
 ```powershell
 python AA_25-26-main/AA_25-26-main/main.py --ga-auto --ga-runs 10 --ga-time 300
 ```
 
-Per ekzekutim direkt te nje eksperimenti te vetem me `ga_experiment.py`:
+Për ekzekutim direkt të eksperimentit final:
 
 ```powershell
-python AA_25-26-main/AA_25-26-main/ga_experiment.py --runs 10 --total-time 300 --profile tuned --time-profile equal --experiment-name exp_tuned_equal_v2
+cd AA_25-26-main/AA_25-26-main
+python ga_experiment.py --runs 10 --total-time 5100 --max-instance-time 300 --profile single --experiment-name exp_uniform_balanced --clean-output
 ```
 
-## Shembull Ekzekutimi me Instance `australia_iptv`
+## Përfundim
 
-Per ta treguar rrjedhen e algoritmit gjenetik, marrim si shembull instancen `australia_iptv`.
+Algoritmi gjenetik u ndërtua mbi zgjidhjet iniciale të Branch and Bound dhe përdori selection, crossover, mutation, repair, elitism, cache dhe early stopping për të kërkuar orare me score më të lartë.
 
-### Hapi 1: Leximi i instances
-
-Fillimisht lexohet file-i hyres:
+Rezultati më i mirë final ishte:
 
 ```text
-data/input/australia_iptv.json
+166067
 ```
 
-Nga ky file merren kanalet, programet, kohet e hapjes/mbylljes, preferencat kohore, priority blocks dhe kufizimet tjera.
-
-### Hapi 2: Marrja e zgjidhjes fillestare
-
-Pastaj merret output-i i gatshem nga Branch and Bound:
+Ky rezultat është përmirësim ndaj Branch and Bound për:
 
 ```text
-data/output/branchandboundscheduler/australia_iptv_output_branchandboundscheduler_3541.json
+166067 - 136573 = +29494
 ```
 
-Ky output ka score fillestar:
-
-```text
-Branch and Bound score = 3541
-```
-
-Kjo zgjidhje kthehet ne liste programesh te planifikuara dhe perdoret si individi i pare i popullates.
-
-### Hapi 3: Krijimi i popullates fillestare
-
-Ne rezultatin me te mire per `australia_iptv`, eksperimenti ishte `exp_same_equal_v2`, run 6.
-Parametrat ishin:
-
-| Parameter | Value |
-|---|---:|
-| population_size | 50 |
-| tournament_size | 3 |
-| elite_size | 2 |
-| crossover_rate | 0.90 |
-| mutation_rate | 0.30 |
-| candidate_pool_size | 700 |
-| repair_random_rate | 0.20 |
-
-Popullata fillestare nisi nga score-i i Branch and Bound dhe variante te krijuara me mutation + repair.
-Disa nga score-et fillestare ishin:
-
-```text
-[3541, 3560, 3328, 3489, 3371, 3543, 3543, 3594, 3563, 3491, ...]
-```
-
-Kjo tregon pse diversiteti eshte i dobishem: disa individe jane me te dobet se zgjidhja fillestare, por disa variante fillestare mund te jene menjehere me te mira dhe te hapin rruge per permiresime te tjera.
-
-### Hapi 4: Selection, Crossover, Mutation dhe Repair
-
-Ne cdo gjenerate ndodh kjo rrjedhe:
-
-1. Popullata renditet sipas fitness.
-2. Dy individet me te mire ruhen si elita.
-3. Prinderit zgjidhen me tournament selection.
-4. Crossover kombinon dy prinder sipas nje pike kohore.
-5. Mutation largon pjese me cilesi te dobet dhe hap vend per alternativa.
-6. Repair e ben orarin valid dhe mbush boshlleqet me kandidatet me te mire.
-7. Femija pranohet vetem nese eshte me i mire se prindi me i forte.
-
-Kur algoritmi ngec per disa gjenerata, aktivizohet nje sjellje me agresive: mutacioni largon me shume programe ose nje zone te dobet te orarit dhe pastaj repair e rinderton ate pjese.
-Kjo ndihmon qe algoritmi te mos mbetet i bllokuar ne te njejten zgjidhje.
-
-### Hapi 5: Rezultati per `australia_iptv`
-
-Rezultati me i mire i arritur per kete instance ishte:
-
-| Field | Value |
-|---|---:|
-| Experiment | `exp_same_equal_v2` |
-| Run | 6 |
-| Generations | 35 |
-| Time limit (s) | 17.65 |
-| Elapsed (s) | 16.53 |
-| Final score | 4370 |
-| Gain vs BnB | +829 |
-
-Output-i u ruajt ne:
-
-```text
-data/output/genetic_algorithm/experiments/exp_same_equal_v2/australia_iptv/run6_4370.json
-```
-
-Ky shembull tregon rrjedhen e plote: zgjidhja fillestare merret nga Branch and Bound, krijohet popullata, zgjedhen prinderit, krijohen femije me crossover, ndryshohen me mutation, riparohen me repair dhe ne fund ruhet zgjidhja me score me te larte.
-
-## Perfundim
-
-Rezultatet e reja tregojne qe algoritmi gjenetik permireson ndjeshem zgjidhjet fillestare te Branch and Bound.
-Nga tri eksperimentet e reja, rezultati me i mire absolut u arrit nga:
-
-```text
-exp_tuned_equal_mutboost_v2, run 2
-```
-
-Me total score:
-
-```text
-172791
-```
-
-Kjo paraqet permiresim prej:
-
-```text
-+36218 krahasuar me totalin fillestar te Branch and Bound
-```
-
-Prandaj, per rezultat maksimal ne keto ekzekutime, konfigurimi me i mire eshte `exp_tuned_equal_mutboost_v2`.
-Per stabilitet mesatar, `exp_tuned_equal_v2` ka mesatare pak me te larte, ndersa `exp_tuned_equal_mutboost_v2` arriti kulmin me te mire.
+Kjo e bën `exp_uniform_balanced` konfigurimin final më të mirë në rezultatet aktuale të projektit.
