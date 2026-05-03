@@ -172,6 +172,9 @@ class GeneticAlgorithmScheduler:
                 break
 
             for prog in self.progs_by_start[start]:
+                if self._time_left() <= 0:
+                    break
+
                 uid = getattr(prog, "unique_id", None)
                 end = Utils.get_end(prog)
 
