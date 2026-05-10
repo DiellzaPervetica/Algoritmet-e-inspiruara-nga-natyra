@@ -9,6 +9,7 @@ from ga_experiment import GA_EXPERIMENTS, run_all_experiment_batches, run_instan
 
 from scheduler.beam_search_scheduler import BeamSearchScheduler
 from scheduler.branch_and_bound_scheduler import BranchAndBoundScheduler
+from scheduler.ils_scheduler import run_ils_experiment
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 
@@ -70,6 +71,7 @@ def main():
     print(" [1] Beam Search")
     print(" [2] Branch and Bound")
     print(" [3] Genetic Algorithm")
+    print(" [4] Iterated Local Search")
     
     choice = input("Selection: ").strip()
 
@@ -104,6 +106,9 @@ def main():
 
         _, experiment_name, _, profile = experiment
         run_instance_experiment(instance_name, instance, experiment_name, profile)
+
+    elif choice == '4':
+        run_ils_experiment(instance_name, instance)
 
 if __name__ == "__main__":
     main()
