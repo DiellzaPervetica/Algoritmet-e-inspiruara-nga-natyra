@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td width="150" align="center" valign="center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/University_of_Prishtina_logo.svg/1200px-University_of_Prishtina_logo.svg.png" width="120" alt="University Logo" />
+      <img src="logo.png" width="120" alt="University Logo" />
     </td>
     <td valign="top">
       <p>Universiteti i Prishtinës</p>
