@@ -1,49 +1,46 @@
+import argparse
 import bisect
 import json
 import random
+import sys
 import time
 from pathlib import Path
 
-from ga_experiment import GA_OUTPUT_DIR, load_initial_schedule, instance_name, last_number, save_solution
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from ga_experiment import GA_BASE_PARAMS, build_ga_parameters, instance_name, save_solution
 from models.solution import Solution
+from parser.parser import Parser
+from scheduler.branch_and_bound_scheduler import BranchAndBoundScheduler
+from scheduler.genetic_algorithm_scheduler import GeneticAlgorithmScheduler
 from utils.algorithm_utils import AlgorithmUtils
 from utils.utils import Utils
 
-ILS_OUTPUT_DIR = Path(__file__).resolve().parents[1] / "data" / "output" / "ga_and_ils"
-DEFAULT_BASE_EXPERIMENT = "exp_uniform_balanced"
+
+ILS_OUTPUT_DIR = PROJECT_ROOT / "data" / "output" / "ga_and_ils"
 DEFAULT_RUNS = 10
-DEFAULT_TIME_PER_RUN = 300.0
-DEFAULT_MAX_STAGNATION = 100
+DEFAULT_BNB_TIME = 30.0
+DEFAULT_GA_TIME = 240.0
+DEFAULT_ILS_TIME = 60.0
+DEFAULT_MAX_STAGNATION = 80
 
-
-def find_best_ga_output(name, experiment_name=DEFAULT_BASE_EXPERIMENT):
-    output_dir = GA_OUTPUT_DIR / "experiments" / experiment_name / name
-    files = list(output_dir.glob("run*.json"))
-    return max(files, key=last_number) if files else None
-
-
-class ILS:
-    def __init__(
-        self,
-        instance,
-        seed=None,
-        candidate_pool_size=700,
-        top_k=3,
-        random_repair=0.15,
-    ):
-        self.instance = instance
+class ILSScheduler:
+    def __init__(self, instance_data, seed=None, candidate_pool_size=700, top_k=3):
+        self.instance = instance_data
         self.rng = random.Random(seed if seed is not None else random.randint(1, 1_000_000))
         self.top_k = top_k
-        self.random_repair = random_repair
         self.score_cache = {}
         self.quality_cache = {}
-        Utils.set_current_instance(instance)
-        self.input_overlap_ids = AlgorithmUtils.compute_input_overlap_ids(instance)
-        self.max_bonus_by_genre = AlgorithmUtils.build_max_bonus_by_genre(instance)
-        self.tail_size = max(3, int(getattr(instance, "max_consecutive_genre", 3)))
-        self.programs_by_start = {}
 
-        for channel in instance.channels:
+        Utils.set_current_instance(self.instance)
+        self.input_overlap_ids = AlgorithmUtils.compute_input_overlap_ids(self.instance)
+        self.max_bonus_by_genre = AlgorithmUtils.build_max_bonus_by_genre(self.instance)
+        self.tail_size = max(3, int(getattr(self.instance, "max_consecutive_genre", 3)))
+
+        self.programs_by_start = {}
+        for channel in self.instance.channels:
             for program in channel.programs:
                 program.channel_id = getattr(program, "channel_id", channel.channel_id) or channel.channel_id
                 if getattr(program, "unique_id", None) not in self.input_overlap_ids:
@@ -70,11 +67,7 @@ class ILS:
     def _quality(self, item):
         uid = Utils.get_uid(item)
         if uid not in self.quality_cache:
-            self.quality_cache[uid] = AlgorithmUtils.get_segment_quality(
-                self.instance,
-                item,
-                self.input_overlap_ids,
-            )
+            self.quality_cache[uid] = AlgorithmUtils.get_segment_quality(self.instance, item, self.input_overlap_ids)
         return self.quality_cache[uid]
 
     def _can_add(self, schedule, item):
@@ -89,11 +82,11 @@ class ILS:
         if schedule and start < Utils.get_end(schedule[-1]):
             return False
 
-        program_length = Utils.get_end(program) - Utils.get_start(program)
+        full_length = Utils.get_end(program) - Utils.get_start(program)
         item_length = end - start
-        if program_length >= self.instance.min_duration and item_length < self.instance.min_duration:
+        if full_length >= self.instance.min_duration and item_length < self.instance.min_duration:
             return False
-        if program_length < self.instance.min_duration and item_length != program_length:
+        if full_length < self.instance.min_duration and item_length != full_length:
             return False
 
         for block in self.instance.priority_blocks:
@@ -107,10 +100,9 @@ class ILS:
             if not previous_program or getattr(previous_program, "genre", "") != genre:
                 break
             streak += 1
-
         return streak <= self.instance.max_consecutive_genre
 
-    def _pick_candidate(self, schedule, used_ids, cursor, end_time):
+    def _best_candidate(self, schedule, used_ids, cursor, end_time):
         candidates = []
         left = bisect.bisect_left(self.start_times, cursor)
         right = bisect.bisect_right(self.start_times, end_time)
@@ -122,33 +114,23 @@ class ILS:
                     continue
 
                 item = Utils.make_schedule(
-                    program.channel_id,
-                    program.program_id,
-                    Utils.get_start(program),
-                    Utils.get_end(program),
-                    self._program_value(program),
-                    uid,
+                    program.channel_id, program.program_id, Utils.get_start(program), Utils.get_end(program),
+                    self._program_value(program), uid,
                 )
+                if self._can_add(schedule, item):
+                    wait_penalty = 0.03 * max(0, start - cursor)
+                    switch_penalty = self.instance.switch_penalty if schedule and schedule[-1].channel_id != program.channel_id else 0
+                    candidates.append((self._program_value(program) - wait_penalty - switch_penalty, item))
 
-                if not self._can_add(schedule, item):
-                    continue
-
-                wait_penalty = 0.03 * max(0, start - cursor)
-                switch_penalty = self.instance.switch_penalty if schedule and schedule[-1].channel_id != program.channel_id else 0
-                value = self._program_value(program) - wait_penalty - switch_penalty
-                candidates.append((value, item))
-                candidates = sorted(candidates, key=lambda pair: pair[0], reverse=True)[:self.top_k]
-
+        candidates = sorted(candidates, key=lambda pair: pair[0], reverse=True)[:self.top_k]
         if not candidates:
             return None
-        if len(candidates) > 1 and self.rng.random() < self.random_repair:
-            return self.rng.choice(candidates)[1]
-        return candidates[0][1]
+        return self.rng.choice(candidates)[1] if len(candidates) > 1 and self.rng.random() < 0.15 else candidates[0][1]
 
     def _fill_interval(self, schedule, used_ids, start_time, end_time):
         cursor = start_time
         while cursor < end_time:
-            item = self._pick_candidate(schedule, used_ids, cursor, end_time)
+            item = self._best_candidate(schedule, used_ids, cursor, end_time)
             if item is None:
                 break
             schedule.append(item)
@@ -158,144 +140,160 @@ class ILS:
 
     def _repair(self, schedule):
         base = AlgorithmUtils.filter_valid_schedule(schedule, self.instance, self.input_overlap_ids)
-        fixed = []
+        repaired = []
         used_ids = {Utils.get_uid(item) for item in base}
         cursor = self.instance.opening_time
 
         for item in sorted(base, key=Utils.sort_schedule_item):
-            cursor = self._fill_interval(fixed, used_ids, cursor, Utils.get_start(item))
-            if Utils.get_start(item) >= cursor and self._can_add(fixed, item):
-                fixed.append(item)
+            cursor = self._fill_interval(repaired, used_ids, cursor, Utils.get_start(item))
+            if Utils.get_start(item) >= cursor and self._can_add(repaired, item):
+                repaired.append(item)
                 cursor = Utils.get_end(item)
 
-        self._fill_interval(fixed, used_ids, cursor, self.instance.closing_time)
-        return AlgorithmUtils.filter_valid_schedule(fixed, self.instance, self.input_overlap_ids)
+        self._fill_interval(repaired, used_ids, cursor, self.instance.closing_time)
+        return AlgorithmUtils.filter_valid_schedule(repaired, self.instance, self.input_overlap_ids)
 
-    def _weak_indexes(self, schedule, count):
-        return sorted(range(len(schedule)), key=lambda index: self._quality(schedule[index]))[:count]
-
-    def _local_search(self, schedule, deadline, attempts):
-        best = max(schedule, self._repair(schedule), key=self._score)
-        best_score = self._score(best)
-
-        for _ in range(attempts):
-            if time.perf_counter() >= deadline or not best:
-                break
-
-            remove_index = self.rng.choice(self._weak_indexes(best, min(8, len(best))))
-            candidate = self._repair(best[:remove_index] + best[remove_index + 1:])
-            candidate_score = self._score(candidate)
-
-            if candidate_score > best_score:
-                best = candidate
-                best_score = candidate_score
-
-        return best
-
-    def _perturb(self, schedule, size):
+    def _perturb(self, schedule, max_removed=4):
         if not schedule:
             return self._repair([])
 
         child = list(schedule)
-        remove_count = min(len(child), self.rng.randint(1, max(1, size)))
+        remove_count = min(len(child), self.rng.randint(1, max_removed))
+        weak_indexes = sorted(range(len(child)), key=lambda index: self._quality(child[index]))
 
         if len(child) > remove_count and self.rng.random() < 0.5:
             start = self.rng.randint(0, len(child) - remove_count)
             del child[start:start + remove_count]
         else:
-            weak_indexes = self._weak_indexes(child, min(len(child), remove_count * 4))
-            indexes_to_remove = set(self.rng.sample(weak_indexes, remove_count))
-            child = [item for index, item in enumerate(child) if index not in indexes_to_remove]
+            removed = set(self.rng.sample(weak_indexes[:max(remove_count, 8)], remove_count))
+            child = [item for index, item in enumerate(child) if index not in removed]
 
         return self._repair(child)
 
-    def improve(
-        self,
-        schedule,
-        time_limit_sec=300.0,
-        max_stagnation=100,
-        local_attempts=40,
-        perturbation_size=4,
-    ):
+    def improve(self, schedule, time_limit_sec=DEFAULT_ILS_TIME, max_stagnation=DEFAULT_MAX_STAGNATION):
         deadline = time.perf_counter() + time_limit_sec
         original = AlgorithmUtils.filter_valid_schedule(schedule, self.instance, self.input_overlap_ids)
-        best = max(original, self._local_search(original, deadline, local_attempts), key=self._score)
+        best = max(original, self._repair(original), key=self._score)
         best_score = self._score(best)
-        stagnation = 0
         iterations = 0
+        stagnation = 0
 
         while time.perf_counter() < deadline and stagnation < max_stagnation:
             iterations += 1
-            candidate = self._local_search(self._perturb(best, perturbation_size), deadline, local_attempts)
+            candidate = self._perturb(best)
             candidate_score = self._score(candidate)
-
             if candidate_score > best_score:
                 best = candidate
                 best_score = candidate_score
+                stagnation = 0
             else:
                 stagnation += 1
 
         return Solution(best, best_score), iterations, stagnation
 
 
-def run_ils_experiment(
-    selected_instance_name,
-    instance,
-    runs=DEFAULT_RUNS,
-    time_per_run=DEFAULT_TIME_PER_RUN,
-    base_experiment=DEFAULT_BASE_EXPERIMENT,
-    max_stagnation=DEFAULT_MAX_STAGNATION,
-):
+def _score(solution):
+    return int(solution.total_score) if solution else None
+
+
+def run_bnb_ga_ils_once(instance, name, run_index, seed, bnb_time, ga_time, ils_time, ga_profile):
+    started = time.perf_counter()
+    print(f"\nRun {run_index} | seed={seed}")
+
+    bnb_start = time.perf_counter()
+    bnb = BranchAndBoundScheduler(instance, time_limit_sec=bnb_time, seed=seed, verbose=False).generate_solution()
+    bnb_elapsed = time.perf_counter() - bnb_start
+    print(f"[BnB] score={_score(bnb)} | time={bnb_elapsed:.2f}s")
+
+    ga_params = build_ga_parameters(ga_profile, name, GA_BASE_PARAMS)
+    ga_start = time.perf_counter()
+    ga = GeneticAlgorithmScheduler(
+        instance,
+        initial_schedule=bnb.scheduled_programs if bnb else None,
+        time_limit_sec=ga_time,
+        seed=seed,
+        stagnation_limit=10,
+        min_runtime_before_stop_sec=min(20.0, max(1.0, ga_time)),
+        **ga_params,
+    )
+    ga_solution = ga.generate_solution()
+    ga_elapsed = time.perf_counter() - ga_start
+    print(f"[GA ] score={_score(ga_solution)} | generations={ga.generations_done} | time={ga_elapsed:.2f}s")
+
+    ils_start = time.perf_counter()
+    ils_solution, iterations, stagnation = ILSScheduler(instance, seed=seed + 100_000).improve(ga_solution.scheduled_programs, ils_time)
+    ils_elapsed = time.perf_counter() - ils_start
+    final = max(ga_solution, ils_solution, key=lambda solution: solution.total_score)
+    print(f"[ILS] score={_score(ils_solution)} | iterations={iterations} | time={ils_elapsed:.2f}s")
+    print(f"[Best] final={_score(final)} | improvement={_score(final) - _score(ga_solution)}")
+
+    return final, dict(
+        run=run_index,
+        seed=seed,
+        bnb_score=_score(bnb),
+        ga_score=_score(ga_solution),
+        ils_score=_score(ils_solution),
+        final_score=_score(final),
+        improvement_over_ga=_score(final) - _score(ga_solution),
+        bnb_seconds=round(bnb_elapsed, 2),
+        ga_seconds=round(ga_elapsed, 2),
+        ils_seconds=round(ils_elapsed, 2),
+        total_seconds=round(time.perf_counter() - started, 2),
+        ga_generations=ga.generations_done,
+        ils_iterations=iterations,
+        ils_stagnation=stagnation,
+    )
+
+
+def run_ils_experiment(selected_instance_name, instance, runs=DEFAULT_RUNS, bnb_time_per_run=DEFAULT_BNB_TIME,
+                       ga_time_per_run=DEFAULT_GA_TIME, ils_time_per_run=DEFAULT_ILS_TIME, ga_profile="single"):
     name = instance_name(selected_instance_name)
-    base_path = find_best_ga_output(name, base_experiment)
-
-    if not base_path:
-        print(f"[Error] No GA output found for {name} in experiment {base_experiment}.")
-        print("[Info] Run Genetic Algorithm first, then try ILS.")
-        return []
-
-    base_schedule = load_initial_schedule(base_path, instance)
     output_dir = ILS_OUTPUT_DIR / name
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    seed_rng = random.Random(42)
-    scheduler = ILS(instance, seed=seed_rng.randint(1, 1_000_000))
-    base_score = scheduler._score(base_schedule)
-    summary = []
+    for path in output_dir.glob("run*.json"):
+        path.unlink()
 
-    print(f"[Info] ILS base solution loaded from: {base_path.name}")
-    print(f"[Info] Base score: {base_score}")
-    print(f"[Info] Runs: {runs}")
-    print(f"[Info] Max time per run: {time_per_run:.0f} seconds")
-    print(f"[Info] Max stagnation: {max_stagnation}")
+    rng = random.Random(42)
+    summary = []
+    print(f"\nPipeline: Branch and Bound -> GA -> ILS")
+    print(f"Instance: {name} | runs={runs} | output={output_dir.relative_to(PROJECT_ROOT)}")
 
     for run_index in range(1, runs + 1):
-        scheduler.rng = random.Random(seed_rng.randint(1, 1_000_000))
-        solution, iterations, stagnation = scheduler.improve(
-            base_schedule,
-            time_limit_sec=time_per_run,
-            max_stagnation=max_stagnation,
+        seed = rng.randint(1, 1_000_000)
+        solution, row = run_bnb_ga_ils_once(
+            instance, name, run_index, seed, bnb_time_per_run, ga_time_per_run, ils_time_per_run, ga_profile
         )
-        solution = max(solution, Solution(base_schedule, base_score), key=lambda item: item.total_score)
-
-        score = int(solution.total_score)
-        output_path = output_dir / f"run{run_index}_{score}.json"
+        output_path = output_dir / f"run{run_index}_{int(solution.total_score)}.json"
         save_solution(solution, output_path)
-
-        row = {
-            "run": run_index,
-            "base_file": base_path.name,
-            "before_score": int(base_score),
-            "after_score": score,
-            "improvement": score - int(base_score),
-            "iterations": iterations,
-            "stagnation": stagnation,
-            "output": str(output_path.relative_to(Path(__file__).resolve().parents[1])),
-        }
+        row["output"] = str(output_path.relative_to(PROJECT_ROOT))
         summary.append(row)
-        print(f"Run {run_index}/{runs}: {row['before_score']} -> {row['after_score']} | Saved: {output_path.name}")
 
     summary_path = output_dir / "summary.json"
     summary_path.write_text(json.dumps(summary, indent=4), encoding="utf-8")
-    print(f"\n[Info] Summary saved: {summary_path}")
+    print(f"\nSummary saved: {summary_path.relative_to(PROJECT_ROOT)}")
     return summary
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Run Branch and Bound -> GA -> ILS")
+    parser.add_argument("--input", "-i", required=True)
+    parser.add_argument("--runs", type=int, default=DEFAULT_RUNS)
+    parser.add_argument("--bnb-time", type=float, default=DEFAULT_BNB_TIME)
+    parser.add_argument("--ga-time", type=float, default=DEFAULT_GA_TIME)
+    parser.add_argument("--ils-time", type=float, default=DEFAULT_ILS_TIME)
+    parser.add_argument("--ga-profile", choices=["single", "tuned", "strong"], default="single")
+    args = parser.parse_args()
+    input_path = Path(args.input)
+    if not input_path.is_absolute():
+        input_path = PROJECT_ROOT / input_path
+
+    instance = Parser(str(input_path)).parse()
+    Utils.set_current_instance(instance)
+    run_ils_experiment(
+        input_path.stem, instance, args.runs, args.bnb_time, args.ga_time, args.ils_time, args.ga_profile
+    )
+
+
+if __name__ == "__main__":
+    main()
