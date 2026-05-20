@@ -67,8 +67,8 @@
             "end": 690
         },
         {
-            "program_id": "Channel_1024_4",
-            "channel_id": 1024,
+            "program_id": "Channel_657_4",
+            "channel_id": 657,
             "start": 690,
             "end": 720
         },
@@ -79,14 +79,14 @@
             "end": 750
         },
         {
-            "program_id": "Channel_321_6",
-            "channel_id": 321,
+            "program_id": "Channel_343_5",
+            "channel_id": 343,
             "start": 750,
             "end": 780
         },
         {
-            "program_id": "Channel_892_4",
-            "channel_id": 892,
+            "program_id": "Channel_549_7",
+            "channel_id": 549,
             "start": 780,
             "end": 810
         },
@@ -97,14 +97,14 @@
             "end": 840
         },
         {
-            "program_id": "Channel_338_6",
-            "channel_id": 338,
+            "program_id": "Channel_250_6",
+            "channel_id": 250,
             "start": 840,
             "end": 870
         },
         {
-            "program_id": "Channel_486_8",
-            "channel_id": 486,
+            "program_id": "Channel_575_8",
+            "channel_id": 575,
             "start": 870,
             "end": 900
         },
@@ -115,14 +115,14 @@
             "end": 930
         },
         {
-            "program_id": "ABC_7",
-            "channel_id": 0,
+            "program_id": "Channel_858_7",
+            "channel_id": 858,
             "start": 930,
             "end": 960
         },
         {
-            "program_id": "Channel_872_11",
-            "channel_id": 872,
+            "program_id": "Channel_609_8",
+            "channel_id": 609,
             "start": 960,
             "end": 990
         },
@@ -163,8 +163,8 @@
             "end": 1170
         },
         {
-            "program_id": "Channel_343_11",
-            "channel_id": 343,
+            "program_id": "Channel_690_10",
+            "channel_id": 690,
             "start": 1170,
             "end": 1200
         },
@@ -205,8 +205,8 @@
             "end": 1410
         },
         {
-            "program_id": "CNBC_14",
-            "channel_id": 33,
+            "program_id": "Channel_793_14",
+            "channel_id": 793,
             "start": 1410,
             "end": 1440
         }

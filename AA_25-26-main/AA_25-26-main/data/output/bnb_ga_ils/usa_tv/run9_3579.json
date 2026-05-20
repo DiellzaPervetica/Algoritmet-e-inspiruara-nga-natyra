@@ -67,14 +67,14 @@
             "end": 690
         },
         {
-            "program_id": "Channel_1024_4",
-            "channel_id": 1024,
+            "program_id": "Channel_801_4",
+            "channel_id": 801,
             "start": 690,
             "end": 720
         },
         {
-            "program_id": "Channel_714_6",
-            "channel_id": 714,
+            "program_id": "Channel_801_5",
+            "channel_id": 801,
             "start": 720,
             "end": 750
         },
@@ -85,8 +85,8 @@
             "end": 780
         },
         {
-            "program_id": "Channel_892_4",
-            "channel_id": 892,
+            "program_id": "Channel_233_6",
+            "channel_id": 233,
             "start": 780,
             "end": 810
         },
@@ -121,8 +121,8 @@
             "end": 960
         },
         {
-            "program_id": "Channel_872_11",
-            "channel_id": 872,
+            "program_id": "Channel_659_8",
+            "channel_id": 659,
             "start": 960,
             "end": 990
         },
@@ -205,8 +205,8 @@
             "end": 1410
         },
         {
-            "program_id": "CNBC_14",
-            "channel_id": 33,
+            "program_id": "Channel_793_14",
+            "channel_id": 793,
             "start": 1410,
             "end": 1440
         }

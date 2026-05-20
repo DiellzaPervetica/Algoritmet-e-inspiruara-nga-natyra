@@ -121,8 +121,8 @@
             "end": 960
         },
         {
-            "program_id": "Channel_872_11",
-            "channel_id": 872,
+            "program_id": "Channel_659_8",
+            "channel_id": 659,
             "start": 960,
             "end": 990
         },
@@ -163,8 +163,8 @@
             "end": 1170
         },
         {
-            "program_id": "Channel_343_11",
-            "channel_id": 343,
+            "program_id": "Channel_690_10",
+            "channel_id": 690,
             "start": 1170,
             "end": 1200
         },
@@ -205,8 +205,8 @@
             "end": 1410
         },
         {
-            "program_id": "CNBC_14",
-            "channel_id": 33,
+            "program_id": "Channel_793_14",
+            "channel_id": 793,
             "start": 1410,
             "end": 1440
         }

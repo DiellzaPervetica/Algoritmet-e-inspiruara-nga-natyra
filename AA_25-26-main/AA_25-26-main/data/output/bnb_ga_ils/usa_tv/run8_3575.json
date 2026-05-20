@@ -67,8 +67,8 @@
             "end": 690
         },
         {
-            "program_id": "Channel_1024_4",
-            "channel_id": 1024,
+            "program_id": "Channel_482_5",
+            "channel_id": 482,
             "start": 690,
             "end": 720
         },
@@ -85,8 +85,8 @@
             "end": 780
         },
         {
-            "program_id": "Channel_892_4",
-            "channel_id": 892,
+            "program_id": "Channel_233_6",
+            "channel_id": 233,
             "start": 780,
             "end": 810
         },
@@ -121,8 +121,8 @@
             "end": 960
         },
         {
-            "program_id": "Channel_872_11",
-            "channel_id": 872,
+            "program_id": "Channel_659_8",
+            "channel_id": 659,
             "start": 960,
             "end": 990
         },
@@ -163,8 +163,8 @@
             "end": 1170
         },
         {
-            "program_id": "Channel_343_11",
-            "channel_id": 343,
+            "program_id": "Channel_690_10",
+            "channel_id": 690,
             "start": 1170,
             "end": 1200
         },
