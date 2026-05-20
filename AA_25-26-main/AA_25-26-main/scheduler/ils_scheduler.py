@@ -19,18 +19,28 @@ from utils.algorithm_utils import AlgorithmUtils
 from utils.utils import Utils
 
 
-ILS_OUTPUT_DIR = PROJECT_ROOT / "data" / "output" / "ga_and_ils"
+ILS_OUTPUT_DIR = PROJECT_ROOT / "data" / "output" / "bnb_ga_ils"
 DEFAULT_RUNS = 10
 DEFAULT_BNB_TIME = 30.0
 DEFAULT_GA_TIME = 240.0
 DEFAULT_ILS_TIME = 60.0
-DEFAULT_MAX_STAGNATION = 80
+DEFAULT_MAX_STAGNATION = 400
 
 class ILSScheduler:
-    def __init__(self, instance_data, seed=None, candidate_pool_size=700, top_k=3):
+    def __init__(
+        self,
+        instance_data,
+        seed=None,
+        candidate_pool_size=700,
+        top_k=6,
+        repair_random_rate=0.35,
+        max_removed=8,
+    ):
         self.instance = instance_data
         self.rng = random.Random(seed if seed is not None else random.randint(1, 1_000_000))
         self.top_k = top_k
+        self.repair_random_rate = repair_random_rate
+        self.max_removed = max_removed
         self.score_cache = {}
         self.quality_cache = {}
 
@@ -125,7 +135,7 @@ class ILSScheduler:
         candidates = sorted(candidates, key=lambda pair: pair[0], reverse=True)[:self.top_k]
         if not candidates:
             return None
-        return self.rng.choice(candidates)[1] if len(candidates) > 1 and self.rng.random() < 0.15 else candidates[0][1]
+        return self.rng.choice(candidates)[1] if len(candidates) > 1 and self.rng.random() < self.repair_random_rate else candidates[0][1]
 
     def _fill_interval(self, schedule, used_ids, start_time, end_time):
         cursor = start_time
@@ -153,19 +163,21 @@ class ILSScheduler:
         self._fill_interval(repaired, used_ids, cursor, self.instance.closing_time)
         return AlgorithmUtils.filter_valid_schedule(repaired, self.instance, self.input_overlap_ids)
 
-    def _perturb(self, schedule, max_removed=4):
+    def _perturb(self, schedule, max_removed=None):
         if not schedule:
             return self._repair([])
 
         child = list(schedule)
+        max_removed = max_removed or self.max_removed
         remove_count = min(len(child), self.rng.randint(1, max_removed))
         weak_indexes = sorted(range(len(child)), key=lambda index: self._quality(child[index]))
 
-        if len(child) > remove_count and self.rng.random() < 0.5:
+        if len(child) > remove_count and self.rng.random() < 0.45:
             start = self.rng.randint(0, len(child) - remove_count)
             del child[start:start + remove_count]
         else:
-            removed = set(self.rng.sample(weak_indexes[:max(remove_count, 8)], remove_count))
+            candidate_pool = weak_indexes[:max(remove_count, min(len(child), 12))]
+            removed = set(self.rng.sample(candidate_pool, remove_count))
             child = [item for index, item in enumerate(child) if index not in removed]
 
         return self._repair(child)
@@ -175,19 +187,34 @@ class ILSScheduler:
         original = AlgorithmUtils.filter_valid_schedule(schedule, self.instance, self.input_overlap_ids)
         best = max(original, self._repair(original), key=self._score)
         best_score = self._score(best)
+        current = list(best)
+        current_score = best_score
         iterations = 0
         stagnation = 0
 
-        while time.perf_counter() < deadline and stagnation < max_stagnation:
+        while time.perf_counter() < deadline:
             iterations += 1
-            candidate = self._perturb(best)
+            aggressive = stagnation >= max_stagnation
+            source = best if self.rng.random() < 0.75 else current
+            max_removed = self.max_removed * 2 if aggressive else self.max_removed
+            candidate = self._perturb(source, max_removed=max_removed)
             candidate_score = self._score(candidate)
+
             if candidate_score > best_score:
                 best = candidate
                 best_score = candidate_score
+                current = list(candidate)
+                current_score = candidate_score
                 stagnation = 0
             else:
+                if candidate_score >= current_score or self.rng.random() < 0.08:
+                    current = list(candidate)
+                    current_score = candidate_score
                 stagnation += 1
+                if aggressive:
+                    current = self._perturb(best, max_removed=max_removed)
+                    current_score = self._score(current)
+                    stagnation = 0
 
         return Solution(best, best_score), iterations, stagnation
 

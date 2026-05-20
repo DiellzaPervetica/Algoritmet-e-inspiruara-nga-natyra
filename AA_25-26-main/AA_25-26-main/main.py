@@ -9,7 +9,13 @@ from ga_experiment import GA_EXPERIMENTS, run_all_experiment_batches, run_instan
 
 from scheduler.beam_search_scheduler import BeamSearchScheduler
 from scheduler.branch_and_bound_scheduler import BranchAndBoundScheduler
-from scheduler.ils_scheduler import run_ils_experiment
+from scheduler.ils_scheduler import (
+    DEFAULT_BNB_TIME,
+    DEFAULT_GA_TIME,
+    DEFAULT_ILS_TIME,
+    DEFAULT_RUNS,
+    run_ils_experiment,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 
@@ -38,6 +44,11 @@ def main():
     parser_arg.add_argument("--ga-auto", action="store_true", help="Run all GA experiments automatically (non-interactive)")
     parser_arg.add_argument("--ga-runs", type=int, default=10, help="Number of runs per experiment in auto mode")
     parser_arg.add_argument("--ga-time", type=float, default=300.0, help="Per-instance time limit (seconds) in auto mode")
+    parser_arg.add_argument("--pipeline-runs", type=int, default=DEFAULT_RUNS, help="Number of runs for Branch and Bound -> GA -> ILS")
+    parser_arg.add_argument("--bnb-time", type=float, default=DEFAULT_BNB_TIME, help="Branch and Bound time limit per pipeline run (seconds)")
+    parser_arg.add_argument("--pipeline-ga-time", type=float, default=DEFAULT_GA_TIME, help="Genetic Algorithm time limit per pipeline run (seconds)")
+    parser_arg.add_argument("--ils-time", type=float, default=DEFAULT_ILS_TIME, help="ILS time limit per pipeline run (seconds)")
+    parser_arg.add_argument("--pipeline-ga-profile", choices=["single", "tuned", "strong"], default="single", help="GA parameter profile used inside the pipeline")
     args = parser_arg.parse_args()
 
     clear_console()
@@ -71,7 +82,7 @@ def main():
     print(" [1] Beam Search")
     print(" [2] Branch and Bound")
     print(" [3] Genetic Algorithm")
-    print(" [4] Iterated Local Search")
+    print(" [4] Branch and Bound + Genetic Algorithm + ILS")
     
     choice = input("Selection: ").strip()
 
@@ -108,7 +119,23 @@ def main():
         run_instance_experiment(instance_name, instance, experiment_name, profile)
 
     elif choice == '4':
-        run_ils_experiment(instance_name, instance)
+        print("\n[Info] Running pipeline: Branch and Bound -> Genetic Algorithm -> ILS")
+        print(
+            f"[Info] Runs={args.pipeline_runs} | "
+            f"BnB={args.bnb_time:.0f}s | "
+            f"GA={args.pipeline_ga_time:.0f}s | "
+            f"ILS={args.ils_time:.0f}s | "
+            f"profile={args.pipeline_ga_profile}"
+        )
+        run_ils_experiment(
+            instance_name,
+            instance,
+            runs=args.pipeline_runs,
+            bnb_time_per_run=args.bnb_time,
+            ga_time_per_run=args.pipeline_ga_time,
+            ils_time_per_run=args.ils_time,
+            ga_profile=args.pipeline_ga_profile,
+        )
 
 if __name__ == "__main__":
     main()

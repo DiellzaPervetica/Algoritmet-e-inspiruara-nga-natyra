@@ -33,8 +33,8 @@
 - [Konfigurimi Final i Zgjedhur](#konfigurimi-final-i-zgjedhur)
 - [Përfundim i Algoritmit Gjenetik](#përfundim-i-algoritmit-gjenetik)
 - [Përmirësimi Final me Iterated Local Search](#përmirësimi-final-me-iterated-local-search)
-- [Rezultatet e GA + ILS](#rezultatet-e-ga--ils)
-- [Rezultatet e Plota te GA + ILS](#rezultatet-e-plota-te-ga--ils)
+- [Rezultatet e BnB + GA + ILS](#rezultatet-e-bnb--ga--ils)
+- [Rezultatet e Plota te BnB + GA + ILS](#rezultatet-e-plota-te-bnb--ga--ils)
 - [Si të Ekzekutohet Projekti](#si-të-ekzekutohet-projekti)
 
 
@@ -447,199 +447,260 @@ Kjo e bën `exp_uniform_balanced` konfigurimin final më të mirë në rezultate
 
 ## Përmirësimi Final me Iterated Local Search
 
-Pas perfundimit te eksperimenteve me algoritmin gjenetik, eshte shtuar edhe nje faze e dyte optimizimi me **Iterated Local Search**. Qellimi i kesaj faze nuk eshte te krijoje orare nga zero, por te marre zgjidhjet me te mira te eksperimentit `exp_uniform_balanced` dhe te kerkoje permiresime shtese mbi to.
-
-Pra, per secilen instance merret si seed rezultati me i mire i gjetur nga:
+Në fazën finale, opsioni `4` e ekzekuton pipeline-in në rendin:
 
 ```text
-data/output/genetic_algorithm/experiments/exp_uniform_balanced
+Branch and Bound -> Genetic Algorithm -> ILS
 ```
 
-Pastaj mbi kete seed aplikohet Iterated Local Search. Output-et finale ruhen ne:
+Për çdo run ruhen rezultatet e të tri fazave: `bnb_score`, `ga_score`, `ils_score`, `final_score`, si edhe koha e secilës fazë. ILS e merr si pikënisje rezultatin e GA-së nga i njëjti run dhe rezultati final ruhet si vlera më e mirë pas GA + ILS.
+
+Output-et e kësaj faze ruhen në:
 
 ```text
-data/output/ga_and_ils
+data/output/bnb_ga_ils/<instance>/summary.json
 ```
 
-E rendesishme:
+Parametrat e ekzekutimit final:
 
-```text
-GA + ILS nuk e ekzekuton prape algoritmin gjenetik.
-Faza ILS lexon rezultatin me te mire ekzistues nga exp_uniform_balanced dhe e perdor si pikenisje.
-```
+| Parameter | Value |
+|---|---:|
+| Runs për instancë | 10 |
+| Branch and Bound për run | 30s |
+| Genetic Algorithm për run | 240s |
+| ILS për run | 60s |
+| Maksimumi për run | 330s / 5.5 min |
+| Maksimumi për instancë | 55 min |
 
-### Ideja Kryesore e ILS
+### Rezultatet e BnB + GA + ILS
 
-Iterated Local Search punon duke mbajtur gjithmone zgjidhjen me te mire aktuale dhe duke provuar ndryshime te kontrolluara mbi te. Nese nje ndryshim jep score me te mire, zgjidhja pranohet. Nese jo, zgjidhja me e mire ruhet dhe kerkimi vazhdon deri ne stagnim ose deri ne limitin kohor.
-
-Rrjedha kryesore eshte:
-
-1. Lexohet instanca nga `data/input`.
-2. Gjehet output-i me score me te larte nga `exp_uniform_balanced`.
-3. Ky output perdoret si seed fillestar.
-4. Aplikohet local search mbi seed-in.
-5. Behet perturbim i kontrolluar i orarit.
-6. Aplikohet repair per ta kthyer orarin ne gjendje valide.
-7. Kandidati pranohet vetem nese ka score me te larte se zgjidhja me e mire aktuale.
-8. Nese kandidati nuk sjell permiresim, rritet stagnimi.
-9. Stagnimi nuk resetohet ne zero pas permiresimit; ai mbetet numer i tentimeve te pasuksesshme.
-10. Ruhet gjithmone rezultati me i mire i gjetur.
-
-Kjo qasje u zgjodh sepse seed-i nga algoritmi gjenetik eshte tashme i forte. Prandaj, ne kete faze nuk kerkohet eksplorim shume agresiv, por permiresim lokal i kujdesshem.
-
-### Funksionet Kryesore
-
-| Funksioni | Roli |
-|---|---|
-| `find_best_ga_output` | Gjen output-in me score me te larte nga eksperimenti `exp_uniform_balanced` |
-| `ILS` | Klasa qe ekzekuton Iterated Local Search per nje instance |
-| `load_initial_schedule` | Lexon output-in ekzistues te GA dhe e kthen ne orar te perdorshem |
-| `save_solution` | Ruan zgjidhjen e re ne format JSON |
-| `_program_value` | Vlereson kandidatin duke kombinuar score-in e programit me bonusin maksimal te zhanrit |
-| `_score` | Llogarit score-in e orarit pas filtrimit valid |
-| `_quality` | Llogarit cilesine e nje segmenti per te gjetur pjeset me te dobeta |
-| `_can_add` | Kontrollon nese nje program mund te shtohet pa shkelur kufizimet |
-| `_pick_candidate` | Zgjedh kandidatin me te mire ose nje kandidat nga top-k gjate repair |
-| `_fill_interval` | Mbush intervalet boshe me programe te vlefshme |
-| `_repair` | Rinderton orarin dhe ruan validitetin |
-| `_weak_indexes` | Gjen segmentet me te dobeta te orarit |
-| `_local_search` | Provon largimin e segmenteve te dobeta dhe rindertimin me repair |
-| `_perturb` | Ben ndryshim te kontrolluar mbi zgjidhjen aktuale |
-| `improve` | Ekzekuton ciklin kryesor te ILS |
-| `run_ils_experiment` | Ekzekuton 10 runs per nje instance nga `main.py` |
-
-### Operatoret e Perdorur
-
-Ne kete faze jane perdorur operatore te thjeshte, te kuptueshem dhe te pershtatshem per scheduling:
-
-| Operator | Qellimi |
-|---|---|
-| Remove weak segment | Largon nje segment me cilesi te ulet nga orari |
-| Partial repair | Rinderton boshllikun me kandidat me score me te mire |
-| Window perturbation | Largon nje numer te vogel segmentesh nga nje zone e orarit |
-| Weak-list perturbation | Zgjedh disa segmente te dobeta dhe i zevendeson |
-| Best-preserving acceptance | Pranon vetem zgjidhje qe permiresojne score-in |
-
-Keta operatore u perdoren sepse nuk prishin krejt strukturen e seed-it te mire nga GA, por japin mundesi qe orari te permiresohet lokalisht.
-
-### Parametrat e GA + ILS
-
-Parametrat aktuale te fazes GA + ILS jane:
-
-| Parameter | Value | Pershkrim |
-|---|---:|---|
-| `top_k` | 3 | Numri i kandidateve me te mire qe ruhen gjate repair |
-| `random_repair` | 0.15 | Probabiliteti per te zgjedhur rastesisht nga top-k |
-| `local_attempts` | 40 | Numri i tentimeve lokale brenda nje iterimi |
-| `perturbation_size` | 4 | Numri maksimal i segmenteve qe mund te largohen gjate perturbimit |
-| `max_stagnation` | 100 | Numri maksimal total i tentimeve pa permiresim |
-| `time_per_run` | 300s | Maksimumi 5 minuta per cdo run |
-| `candidate_pool_size` | 700 | Numri maksimal i kandidateve te ruajtur per repair |
-| `runs` | 10 | Numri i ekzekutimeve per secilen instance |
-| `base_experiment` | `exp_uniform_balanced` | Eksperimenti i GA nga i cili merret seed-i fillestar |
-
-Algoritmi provon te gjeje permiresim, por nuk lejon qe output-i final te jete me i dobet se seed-i fillestar. Ne fund te cdo run ruhet maksimumi mes zgjidhjes se re dhe seed-it te GA. Nga `main.py`, cdo run ka limit maksimal 300 sekonda dhe nje instance ekzekutohet 10 here.
-
-### Rezultatet e GA + ILS
-
-Seed total nga zgjidhjet me te mira te `exp_uniform_balanced` eshte:
-
-```text
-167321
-```
-
-Total score i zgjidhjeve me te mira pas GA + ILS eshte:
-
-```text
-175826
-```
-
-Permiresimi ndaj seed-it te GA eshte:
-
-```text
-175826 - 167321 = +8505
-```
-
-Permiresimi ndaj Branch and Bound eshte:
-
-```text
-175826 - 136573 = +39253
-```
-
-Permbledhja e runs:
+Përmbledhja është nxjerrë nga `summary.json` për secilën instancë.
 
 | Metric | Value |
 |---|---:|
 | Instances | 17 |
 | Runs total | 170 |
-| Improved runs | 54 |
-| Same runs | 116 |
+| Improved runs | 94 |
+| Same runs | 76 |
 | Worse runs | 0 |
-| Improved instances | 10 |
-| Best total per run | 175601 |
-| Best run | 5 |
-| Sum of best instance scores | 175826 |
+| Sum of best BnB scores | 138224 |
+| Sum of best GA scores | 149083 |
+| Sum of best final scores | 175947 |
+| Improvement vs GA | +26864 |
+| Improvement vs BnB | +37723 |
+| Total recorded time | 6.57 h |
+
+| Instance | Runs | Best BnB | Best GA | Best ILS | Best Final | Avg Final | Total improvement | Total time (min) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| australia_iptv | 10 | 4182 | 4427 | 4556 | 4556 | 4421.3 | 1547 | 20.28 |
+| canada_pw | 10 | 4615 | 4775 | 4775 | 4775 | 4723.8 | 96 | 18.64 |
+| china_pw | 10 | 2598 | 2850 | 2872 | 2872 | 2800.5 | 155 | 21.63 |
+| croatia_tv | 10 | 2120 | 2220 | 2220 | 2220 | 2220.0 | 0 | 18.34 |
+| france_iptv | 10 | 4112 | 9525 | 10014 | 10014 | 9689.9 | 5739 | 27.92 |
+| germany_tv | 10 | 1633 | 1633 | 1633 | 1633 | 1633.0 | 0 | 18.35 |
+| kosovo_tv | 10 | 2567 | 2567 | 2567 | 2567 | 2567.0 | 0 | 18.35 |
+| netherlands_tv | 10 | 2632 | 2632 | 2632 | 2632 | 2632.0 | 0 | 18.35 |
+| singapore_pw | 10 | 4297 | 4744 | 5311 | 5311 | 5135.4 | 5676 | 18.53 |
+| spain_iptv | 10 | 4501 | 5496 | 6048 | 6048 | 5980.8 | 6276 | 19.08 |
+| toy | 10 | 510 | 510 | 510 | 510 | 510.0 | 0 | 13.34 |
+| uk_iptv | 10 | 4906 | 6709 | 7248 | 7248 | 6775.9 | 7745 | 23.51 |
+| uk_tv | 10 | 2171 | 2246 | 2255 | 2255 | 2245.4 | 24 | 18.35 |
+| us_iptv | 10 | 4190 | 4518 | 4528 | 4528 | 4437.9 | 147 | 121.66 |
+| usa_tv | 10 | 3561 | 3575 | 3575 | 3575 | 3575.0 | 0 | 5.86 |
+| youtube_gold | 10 | 66988 | 67021 | 67444 | 67444 | 67342.4 | 3454 | 5.91 |
+| youtube_premium | 10 | 22641 | 23635 | 47759 | 47759 | 46827.6 | 234169 | 5.89 |
 
 ### Total Score per Secilin Run
 
-| Run | GA + ILS total |
-| ---: | ---: |
-| 1 | 171263 |
-| 2 | 175376 |
-| 3 | 172680 |
-| 4 | 174269 |
-| 5 | 175601 |
-| 6 | 171426 |
-| 7 | 171506 |
-| 8 | 171812 |
-| 9 | 171237 |
-| 10 | 170638 |
+| Run | BnB total | GA total | ILS total | Final total | Improvement | Time (min) |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 137335 | 147499 | 174743 | 174743 | 27244 | 50.47 |
+| 2 | 136835 | 146245 | 173290 | 173290 | 27045 | 50.78 |
+| 3 | 137003 | 146269 | 172893 | 172893 | 26624 | 50.44 |
+| 4 | 137604 | 148059 | 173802 | 173802 | 25743 | 51.90 |
+| 5 | 137339 | 147035 | 173043 | 173043 | 26008 | 50.94 |
+| 6 | 136979 | 146901 | 174463 | 174463 | 27562 | 27.90 |
+| 7 | 137318 | 146711 | 174459 | 174459 | 27748 | 27.70 |
+| 8 | 137193 | 146401 | 172672 | 172672 | 26271 | 28.16 |
+| 9 | 137380 | 147750 | 172861 | 172861 | 25111 | 27.93 |
+| 10 | 137275 | 147281 | 172953 | 172953 | 25672 | 27.75 |
 
-### Rezultatet e Plota te GA + ILS
+### Rezultatet e Plota te BnB + GA + ILS
 
-| Instance | Seed GA | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Run 6 | Run 7 | Run 8 | Run 9 | Run 10 | Best | Avg | Worst |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| australia_iptv | 4456 | 4464 | 4459 | 4456 | 4465 | 4461 | 4464 | 4456 | 4459 | 4465 | 4464 | 4465 | 4461.3 | 4456 |
-| canada_pw | 4822 | 4822 | 4822 | 4822 | 4822 | 4822 | 4824 | 4822 | 4822 | 4822 | 4822 | 4824 | 4822.2 | 4822 |
-| china_pw | 2827 | 2858 | 2858 | 2858 | 2858 | 2858 | 2858 | 2858 | 2858 | 2858 | 2827 | 2858 | 2854.9 | 2827 |
-| croatia_tv | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220 | 2220.0 | 2220 |
-| france_iptv | 9730 | 9730 | 9730 | 9730 | 9730 | 9730 | 9730 | 9812 | 9730 | 9730 | 9751 | 9812 | 9740.3 | 9730 |
-| germany_tv | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626 | 1626.0 | 1626 |
-| kosovo_tv | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567 | 2567.0 | 2567 |
-| netherlands_tv | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632 | 2632.0 | 2632 |
-| singapore_pw | 4740 | 4767 | 4740 | 4767 | 4740 | 4767 | 4740 | 4783 | 4740 | 4767 | 4740 | 4783 | 4755.1 | 4740 |
-| spain_iptv | 5501 | 5501 | 5597 | 5501 | 5587 | 5501 | 5612 | 5525 | 5502 | 5501 | 5560 | 5612 | 5538.7 | 5501 |
-| toy | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510 | 510.0 | 510 |
-| uk_iptv | 6408 | 6413 | 6408 | 6408 | 6408 | 6408 | 6408 | 6408 | 6408 | 6408 | 6413 | 6413 | 6409.0 | 6408 |
-| uk_tv | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240 | 2240.0 | 2240 |
-| us_iptv | 4569 | 4569 | 4569 | 4569 | 4569 | 4569 | 4569 | 4569 | 4569 | 4569 | 4569 | 4569 | 4569.0 | 4569 |
-| usa_tv | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3575 | 3580 | 3580 | 3575.5 | 3575 |
-| youtube_gold | 67576 | 67713 | 67667 | 67678 | 67685 | 67763 | 67732 | 67678 | 67723 | 67683 | 67686 | 67763 | 67700.8 | 67667 |
-| youtube_premium | 41322 | 45056 | 49156 | 46521 | 48035 | 49352 | 45119 | 45225 | 45631 | 45064 | 44431 | 49352 | 46359.0 | 44431 |
+Tabela në vijim paraqet secilin run për secilën instancë, me score dhe kohë për BnB, GA dhe ILS.
 
-### Interpretimi i Rezultateve te ILS
-
-Rezultatet tregojne se ILS e permireson konfigurimin me te mire te algoritmit gjenetik pa prodhuar asnje run me score me te ulet se seed-i fillestar. Kjo ndodh sepse ne fund te cdo run ruhet maksimumi mes zgjidhjes se re dhe zgjidhjes fillestare.
-
-Permiresimi me i madh ndodh te `youtube_premium`, ku score-i rritet nga `41322` ne `49352`. Kjo ndikon shume ne totalin final, sepse eshte instance me hapesire te madhe kerkimi dhe me shume mundesi per rindertim lokal.
-
-Disa instanca nuk ndryshojne, sepse ose seed-i eshte tashme shume i forte, ose instanca ka hapesire te vogel kerkimi. Kjo shihet te `croatia_tv`, `germany_tv`, `kosovo_tv`, `netherlands_tv`, `toy`, `uk_tv` dhe `us_iptv`.
-
-### Perfundimi i Faze se GA + ILS
-
-Faza GA + ILS e rrit rezultatin final nga:
-
-```text
-166067
-```
-
-ne:
-
-```text
-175826
-```
-
-Kjo e ben GA + ILS fazen me te forte te projektit, sepse merr zgjidhjet me te mira te algoritmit gjenetik dhe i permireson edhe me tej me kerkimin lokal te iteruar.
+| Instance | Run | Seed | BnB | GA | ILS | Final | Improvement | BnB s | GA s | ILS s | Total s | GA gen | ILS iter |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| australia_iptv | 1 | 670488 | 4182 | 4313 | 4556 | 4556 | 243 | 30.31 | 24.27 | 60.05 | 114.64 | 38 | 5576 |
+| australia_iptv | 2 | 116740 | 3506 | 4167 | 4330 | 4330 | 163 | 30.54 | 25.60 | 60.05 | 116.18 | 43 | 7475 |
+| australia_iptv | 3 | 26226 | 3703 | 4319 | 4473 | 4473 | 154 | 30.76 | 30.85 | 60.05 | 121.66 | 48 | 6282 |
+| australia_iptv | 4 | 777573 | 4123 | 4200 | 4459 | 4459 | 259 | 30.28 | 23.53 | 60.04 | 113.85 | 35 | 7796 |
+| australia_iptv | 5 | 288390 | 4181 | 4261 | 4465 | 4465 | 204 | 30.26 | 34.74 | 60.04 | 125.04 | 48 | 6731 |
+| australia_iptv | 6 | 256788 | 3618 | 4186 | 4334 | 4334 | 148 | 30.80 | 32.44 | 60.05 | 123.30 | 25 | 5265 |
+| australia_iptv | 7 | 234054 | 3693 | 4227 | 4479 | 4479 | 252 | 30.26 | 32.77 | 60.05 | 123.08 | 34 | 5237 |
+| australia_iptv | 8 | 146317 | 3645 | 4255 | 4298 | 4298 | 43 | 30.37 | 48.41 | 60.03 | 138.81 | 66 | 6494 |
+| australia_iptv | 9 | 772247 | 4172 | 4427 | 4431 | 4431 | 4 | 30.35 | 28.96 | 60.05 | 119.36 | 42 | 7445 |
+| australia_iptv | 10 | 107474 | 4121 | 4311 | 4388 | 4388 | 77 | 30.35 | 30.19 | 60.03 | 120.58 | 44 | 7626 |
+| canada_pw | 1 | 670488 | 4526 | 4678 | 4692 | 4692 | 14 | 30.47 | 20.10 | 60.05 | 110.61 | 30 | 6336 |
+| canada_pw | 2 | 116740 | 4568 | 4698 | 4698 | 4698 | 0 | 30.42 | 20.35 | 60.07 | 110.83 | 35 | 6672 |
+| canada_pw | 3 | 26226 | 4536 | 4670 | 4691 | 4691 | 21 | 30.36 | 20.77 | 60.11 | 111.24 | 26 | 5415 |
+| canada_pw | 4 | 777573 | 4597 | 4684 | 4687 | 4687 | 3 | 30.37 | 20.96 | 60.05 | 111.39 | 33 | 5912 |
+| canada_pw | 5 | 288390 | 4585 | 4775 | 4775 | 4775 | 0 | 30.49 | 20.29 | 60.06 | 110.83 | 36 | 7331 |
+| canada_pw | 6 | 256788 | 4554 | 4679 | 4700 | 4700 | 21 | 30.42 | 20.08 | 60.05 | 110.55 | 31 | 6397 |
+| canada_pw | 7 | 234054 | 4615 | 4737 | 4737 | 4737 | 0 | 30.28 | 20.79 | 60.05 | 111.12 | 27 | 3420 |
+| canada_pw | 8 | 146317 | 4590 | 4737 | 4745 | 4745 | 8 | 30.43 | 21.29 | 60.08 | 111.80 | 20 | 3657 |
+| canada_pw | 9 | 772247 | 4531 | 4739 | 4757 | 4757 | 18 | 30.31 | 21.50 | 60.06 | 111.87 | 39 | 6823 |
+| canada_pw | 10 | 107474 | 4526 | 4745 | 4756 | 4756 | 11 | 30.40 | 27.42 | 60.05 | 117.86 | 44 | 7005 |
+| china_pw | 1 | 670488 | 2480 | 2799 | 2806 | 2806 | 7 | 41.46 | 25.70 | 60.08 | 127.24 | 36 | 4684 |
+| china_pw | 2 | 116740 | 2484 | 2683 | 2683 | 2683 | 0 | 44.78 | 20.35 | 60.07 | 125.19 | 37 | 4541 |
+| china_pw | 3 | 26226 | 2548 | 2818 | 2840 | 2840 | 22 | 39.78 | 32.87 | 60.06 | 132.71 | 50 | 4403 |
+| china_pw | 4 | 777573 | 2598 | 2822 | 2839 | 2839 | 17 | 39.81 | 24.30 | 60.12 | 124.23 | 38 | 4361 |
+| china_pw | 5 | 288390 | 2514 | 2750 | 2778 | 2778 | 28 | 40.26 | 27.80 | 60.07 | 128.13 | 50 | 4270 |
+| china_pw | 6 | 256788 | 2541 | 2831 | 2831 | 2831 | 0 | 40.42 | 24.14 | 60.06 | 124.62 | 44 | 5147 |
+| china_pw | 7 | 234054 | 2522 | 2762 | 2762 | 2762 | 0 | 52.20 | 25.11 | 60.17 | 137.48 | 25 | 2901 |
+| china_pw | 8 | 146317 | 2536 | 2712 | 2736 | 2736 | 24 | 59.15 | 20.84 | 60.08 | 140.07 | 35 | 4954 |
+| china_pw | 9 | 772247 | 2553 | 2823 | 2858 | 2858 | 35 | 42.18 | 32.67 | 60.07 | 134.92 | 49 | 5405 |
+| china_pw | 10 | 107474 | 2587 | 2850 | 2872 | 2872 | 22 | 40.02 | 23.29 | 60.07 | 123.37 | 41 | 4837 |
+| croatia_tv | 1 | 670488 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.08 | 60.01 | 110.10 | 160 | 113836 |
+| croatia_tv | 2 | 116740 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.04 | 60.01 | 110.05 | 142 | 100460 |
+| croatia_tv | 3 | 26226 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.09 | 60.01 | 110.10 | 161 | 110623 |
+| croatia_tv | 4 | 777573 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.08 | 60.01 | 110.09 | 157 | 114938 |
+| croatia_tv | 5 | 288390 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.02 | 60.01 | 110.04 | 128 | 85695 |
+| croatia_tv | 6 | 256788 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.02 | 60.01 | 110.04 | 132 | 115606 |
+| croatia_tv | 7 | 234054 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.02 | 60.01 | 110.03 | 153 | 96039 |
+| croatia_tv | 8 | 146317 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.05 | 60.01 | 110.06 | 140 | 113448 |
+| croatia_tv | 9 | 772247 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.02 | 60.01 | 110.03 | 155 | 110168 |
+| croatia_tv | 10 | 107474 | 2120 | 2220 | 2220 | 2220 | 0 | 30.00 | 20.07 | 60.01 | 110.08 | 163 | 117688 |
+| france_iptv | 1 | 670488 | 4112 | 8945 | 9650 | 9650 | 705 | 30.33 | 72.60 | 60.05 | 162.98 | 135 | 18282 |
+| france_iptv | 2 | 116740 | 4060 | 8915 | 9630 | 9630 | 715 | 30.50 | 90.92 | 60.05 | 181.48 | 162 | 18804 |
+| france_iptv | 3 | 26226 | 4085 | 8572 | 9328 | 9328 | 756 | 30.54 | 40.16 | 60.05 | 130.75 | 79 | 19341 |
+| france_iptv | 4 | 777573 | 4035 | 9525 | 9962 | 9962 | 437 | 30.12 | 97.38 | 60.05 | 187.55 | 161 | 18512 |
+| france_iptv | 5 | 288390 | 4022 | 9371 | 9828 | 9828 | 457 | 30.14 | 72.63 | 60.04 | 162.81 | 124 | 18338 |
+| france_iptv | 6 | 256788 | 4021 | 9281 | 10014 | 10014 | 733 | 30.40 | 93.86 | 60.05 | 184.32 | 161 | 18678 |
+| france_iptv | 7 | 234054 | 4065 | 8647 | 9647 | 9647 | 1000 | 30.46 | 61.48 | 60.05 | 151.98 | 116 | 19855 |
+| france_iptv | 8 | 146317 | 4018 | 9205 | 9601 | 9601 | 396 | 30.23 | 77.57 | 60.05 | 167.85 | 142 | 19642 |
+| france_iptv | 9 | 772247 | 4062 | 9289 | 9415 | 9415 | 126 | 30.15 | 82.01 | 60.05 | 172.21 | 145 | 19291 |
+| france_iptv | 10 | 107474 | 4069 | 9410 | 9824 | 9824 | 414 | 30.28 | 82.71 | 60.06 | 173.04 | 147 | 19182 |
+| germany_tv | 1 | 670488 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.03 | 60.02 | 110.05 | 189 | 157129 |
+| germany_tv | 2 | 116740 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.05 | 60.02 | 110.07 | 184 | 156547 |
+| germany_tv | 3 | 26226 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.11 | 60.02 | 110.13 | 193 | 155822 |
+| germany_tv | 4 | 777573 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.09 | 60.02 | 110.11 | 189 | 156284 |
+| germany_tv | 5 | 288390 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.02 | 60.02 | 110.04 | 178 | 156224 |
+| germany_tv | 6 | 256788 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.01 | 60.02 | 110.03 | 185 | 154489 |
+| germany_tv | 7 | 234054 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.07 | 60.02 | 110.09 | 182 | 156393 |
+| germany_tv | 8 | 146317 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.01 | 60.02 | 110.03 | 185 | 155636 |
+| germany_tv | 9 | 772247 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.12 | 60.02 | 110.14 | 153 | 152334 |
+| germany_tv | 10 | 107474 | 1633 | 1633 | 1633 | 1633 | 0 | 30.00 | 20.08 | 60.02 | 110.10 | 192 | 157340 |
+| kosovo_tv | 1 | 670488 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.04 | 60.02 | 110.06 | 152 | 118969 |
+| kosovo_tv | 2 | 116740 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.05 | 60.02 | 110.07 | 159 | 120998 |
+| kosovo_tv | 3 | 26226 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.07 | 60.02 | 110.10 | 160 | 119922 |
+| kosovo_tv | 4 | 777573 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.13 | 60.03 | 110.16 | 155 | 120973 |
+| kosovo_tv | 5 | 288390 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.02 | 60.02 | 110.05 | 153 | 114629 |
+| kosovo_tv | 6 | 256788 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.04 | 60.02 | 110.06 | 158 | 120438 |
+| kosovo_tv | 7 | 234054 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.13 | 60.02 | 110.15 | 154 | 121423 |
+| kosovo_tv | 8 | 146317 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.04 | 60.02 | 110.07 | 156 | 118364 |
+| kosovo_tv | 9 | 772247 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.13 | 60.02 | 110.16 | 142 | 118941 |
+| kosovo_tv | 10 | 107474 | 2567 | 2567 | 2567 | 2567 | 0 | 30.00 | 20.03 | 60.03 | 110.06 | 152 | 120188 |
+| netherlands_tv | 1 | 670488 | 2632 | 2632 | 2632 | 2632 | 0 | 30.00 | 20.11 | 60.02 | 110.14 | 142 | 111371 |
+| netherlands_tv | 2 | 116740 | 2632 | 2632 | 2632 | 2632 | 0 | 30.00 | 20.09 | 60.02 | 110.11 | 142 | 110167 |
+| netherlands_tv | 3 | 26226 | 2632 | 2632 | 2632 | 2632 | 0 | 30.00 | 20.10 | 60.02 | 110.12 | 139 | 110638 |
+| netherlands_tv | 4 | 777573 | 2632 | 2632 | 2632 | 2632 | 0 | 30.01 | 20.09 | 60.03 | 110.13 | 113 | 82722 |
+| netherlands_tv | 5 | 288390 | 2632 | 2632 | 2632 | 2632 | 0 | 30.01 | 20.11 | 60.02 | 110.13 | 45 | 37828 |
+| netherlands_tv | 6 | 256788 | 2632 | 2632 | 2632 | 2632 | 0 | 30.00 | 20.07 | 60.02 | 110.10 | 132 | 110875 |
+| netherlands_tv | 7 | 234054 | 2632 | 2632 | 2632 | 2632 | 0 | 30.00 | 20.09 | 60.02 | 110.11 | 139 | 112911 |
+| netherlands_tv | 8 | 146317 | 2632 | 2632 | 2632 | 2632 | 0 | 30.00 | 20.11 | 60.02 | 110.13 | 141 | 112251 |
+| netherlands_tv | 9 | 772247 | 2632 | 2632 | 2632 | 2632 | 0 | 30.00 | 20.08 | 60.02 | 110.10 | 133 | 109948 |
+| netherlands_tv | 10 | 107474 | 2632 | 2632 | 2632 | 2632 | 0 | 30.00 | 20.03 | 60.02 | 110.06 | 139 | 113409 |
+| singapore_pw | 1 | 670488 | 4268 | 4554 | 5280 | 5280 | 726 | 30.11 | 21.98 | 60.03 | 112.11 | 85 | 32809 |
+| singapore_pw | 2 | 116740 | 4268 | 4466 | 5060 | 5060 | 594 | 30.10 | 20.21 | 60.03 | 110.34 | 68 | 31337 |
+| singapore_pw | 3 | 26226 | 4286 | 4527 | 5154 | 5154 | 627 | 30.11 | 21.28 | 60.03 | 111.42 | 74 | 31914 |
+| singapore_pw | 4 | 777573 | 4297 | 4736 | 5221 | 5221 | 485 | 30.08 | 25.24 | 60.04 | 115.35 | 94 | 30705 |
+| singapore_pw | 5 | 288390 | 4292 | 4629 | 5051 | 5051 | 422 | 30.11 | 20.45 | 60.03 | 110.59 | 74 | 33090 |
+| singapore_pw | 6 | 256788 | 4282 | 4520 | 5311 | 5311 | 791 | 30.07 | 20.27 | 60.04 | 110.37 | 73 | 32636 |
+| singapore_pw | 7 | 234054 | 4286 | 4615 | 5171 | 5171 | 556 | 30.07 | 20.30 | 60.03 | 110.40 | 76 | 30585 |
+| singapore_pw | 8 | 146317 | 4286 | 4426 | 5258 | 5258 | 832 | 30.09 | 20.11 | 60.03 | 110.23 | 71 | 29652 |
+| singapore_pw | 9 | 772247 | 4268 | 4461 | 4850 | 4850 | 389 | 30.10 | 20.12 | 60.03 | 110.25 | 68 | 28950 |
+| singapore_pw | 10 | 107474 | 4276 | 4744 | 4998 | 4998 | 254 | 30.09 | 20.48 | 60.03 | 110.61 | 75 | 31163 |
+| spain_iptv | 1 | 670488 | 4445 | 5379 | 6020 | 6020 | 641 | 30.18 | 20.34 | 60.04 | 110.56 | 65 | 27548 |
+| spain_iptv | 2 | 116740 | 4445 | 5458 | 5969 | 5969 | 511 | 30.19 | 20.15 | 60.04 | 110.38 | 65 | 28664 |
+| spain_iptv | 3 | 26226 | 4445 | 5254 | 6016 | 6016 | 762 | 30.18 | 20.12 | 60.04 | 110.33 | 67 | 29299 |
+| spain_iptv | 4 | 777573 | 4494 | 5394 | 5952 | 5952 | 558 | 30.20 | 30.63 | 60.03 | 120.86 | 104 | 30803 |
+| spain_iptv | 5 | 288390 | 4444 | 5496 | 6024 | 6024 | 528 | 30.19 | 41.97 | 60.04 | 132.20 | 131 | 27723 |
+| spain_iptv | 6 | 256788 | 4501 | 5293 | 5949 | 5949 | 656 | 30.20 | 20.10 | 60.04 | 110.33 | 68 | 28672 |
+| spain_iptv | 7 | 234054 | 4452 | 5334 | 5934 | 5934 | 600 | 30.19 | 21.81 | 60.04 | 112.04 | 70 | 30485 |
+| spain_iptv | 8 | 146317 | 4501 | 5228 | 5910 | 5910 | 682 | 30.18 | 20.31 | 60.04 | 110.53 | 66 | 29343 |
+| spain_iptv | 9 | 772247 | 4494 | 5316 | 5986 | 5986 | 670 | 30.18 | 26.98 | 60.04 | 117.19 | 87 | 29298 |
+| spain_iptv | 10 | 107474 | 4494 | 5380 | 6048 | 6048 | 668 | 30.20 | 20.10 | 60.04 | 110.34 | 64 | 28733 |
+| toy | 1 | 670488 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.01 | 60.00 | 80.01 | 786 | 708472 |
+| toy | 2 | 116740 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.02 | 60.00 | 80.02 | 771 | 705717 |
+| toy | 3 | 26226 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.00 | 60.00 | 80.00 | 773 | 713454 |
+| toy | 4 | 777573 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.02 | 60.00 | 80.03 | 739 | 685823 |
+| toy | 5 | 288390 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.01 | 60.00 | 80.02 | 712 | 703040 |
+| toy | 6 | 256788 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.01 | 60.00 | 80.01 | 728 | 695595 |
+| toy | 7 | 234054 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.02 | 60.00 | 80.02 | 782 | 718046 |
+| toy | 8 | 146317 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.01 | 60.00 | 80.01 | 771 | 681254 |
+| toy | 9 | 772247 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.01 | 60.00 | 80.01 | 750 | 708489 |
+| toy | 10 | 107474 | 510 | 510 | 510 | 510 | 0 | 0.00 | 20.00 | 60.00 | 80.00 | 776 | 680002 |
+| uk_iptv | 1 | 670488 | 4472 | 6709 | 7248 | 7248 | 539 | 50.87 | 38.69 | 60.07 | 149.62 | 90 | 16564 |
+| uk_iptv | 2 | 116740 | 4864 | 5549 | 6424 | 6424 | 875 | 49.82 | 21.02 | 60.06 | 130.90 | 49 | 16071 |
+| uk_iptv | 3 | 26226 | 4837 | 5773 | 6668 | 6668 | 895 | 49.27 | 38.08 | 60.06 | 147.41 | 95 | 15013 |
+| uk_iptv | 4 | 777573 | 4754 | 6429 | 7112 | 7112 | 683 | 50.53 | 34.48 | 60.08 | 145.09 | 83 | 15150 |
+| uk_iptv | 5 | 288390 | 4830 | 5753 | 6320 | 6320 | 567 | 49.17 | 34.41 | 60.06 | 143.64 | 84 | 14335 |
+| uk_iptv | 6 | 256788 | 4738 | 5701 | 6975 | 6975 | 1274 | 49.24 | 29.04 | 60.06 | 138.34 | 68 | 15176 |
+| uk_iptv | 7 | 234054 | 4835 | 6246 | 6919 | 6919 | 673 | 48.89 | 34.13 | 60.06 | 143.08 | 83 | 15078 |
+| uk_iptv | 8 | 146317 | 4906 | 5781 | 6255 | 6255 | 474 | 49.18 | 28.94 | 60.06 | 138.18 | 73 | 14331 |
+| uk_iptv | 9 | 772247 | 4855 | 6395 | 6935 | 6935 | 540 | 49.37 | 27.86 | 60.07 | 137.30 | 65 | 17031 |
+| uk_iptv | 10 | 107474 | 4837 | 5678 | 6903 | 6903 | 1225 | 50.47 | 26.43 | 60.06 | 136.96 | 67 | 13093 |
+| uk_tv | 1 | 670488 | 2171 | 2246 | 2255 | 2255 | 9 | 30.03 | 20.08 | 60.01 | 110.12 | 110 | 50380 |
+| uk_tv | 2 | 116740 | 2171 | 2240 | 2240 | 2240 | 0 | 30.02 | 20.10 | 60.01 | 110.13 | 121 | 52352 |
+| uk_tv | 3 | 26226 | 2171 | 2240 | 2240 | 2240 | 0 | 30.02 | 20.03 | 60.01 | 110.06 | 126 | 54095 |
+| uk_tv | 4 | 777573 | 2171 | 2240 | 2240 | 2240 | 0 | 30.01 | 20.11 | 60.01 | 110.14 | 127 | 54159 |
+| uk_tv | 5 | 288390 | 2171 | 2246 | 2255 | 2255 | 9 | 30.02 | 20.03 | 60.01 | 110.05 | 117 | 54045 |
+| uk_tv | 6 | 256788 | 2171 | 2240 | 2240 | 2240 | 0 | 30.02 | 20.05 | 60.01 | 110.08 | 131 | 54739 |
+| uk_tv | 7 | 234054 | 2171 | 2240 | 2246 | 2246 | 6 | 30.02 | 20.14 | 60.02 | 110.17 | 129 | 53388 |
+| uk_tv | 8 | 146317 | 2171 | 2246 | 2246 | 2246 | 0 | 30.02 | 20.10 | 60.01 | 110.13 | 123 | 53413 |
+| uk_tv | 9 | 772247 | 2171 | 2246 | 2246 | 2246 | 0 | 30.02 | 20.07 | 60.01 | 110.10 | 123 | 53430 |
+| uk_tv | 10 | 107474 | 2171 | 2246 | 2246 | 2246 | 0 | 30.02 | 20.17 | 60.01 | 110.20 | 129 | 53352 |
+| us_iptv | 1 | 670488 | 4096 | 4421 | 4431 | 4431 | 10 | 1264.85 | 78.08 | 60.52 | 1403.45 | 48 | 1539 |
+| us_iptv | 2 | 116740 | 3885 | 4333 | 4335 | 4335 | 2 | 1281.89 | 82.72 | 60.38 | 1424.99 | 49 | 1654 |
+| us_iptv | 3 | 26226 | 4120 | 4379 | 4393 | 4393 | 14 | 1314.48 | 49.38 | 60.43 | 1424.29 | 30 | 1526 |
+| us_iptv | 4 | 777573 | 4190 | 4373 | 4464 | 4464 | 91 | 1338.03 | 60.87 | 60.37 | 1459.27 | 38 | 1255 |
+| us_iptv | 5 | 288390 | 4008 | 4483 | 4489 | 4489 | 6 | 1275.81 | 70.70 | 60.63 | 1407.14 | 47 | 1570 |
+| us_iptv | 6 | 256788 | 4168 | 4518 | 4518 | 4518 | 0 | 0.00 | 20.44 | 15.41 | 35.88 | 14 | 374 |
+| us_iptv | 7 | 234054 | 4108 | 4348 | 4354 | 4354 | 6 | 0.00 | 20.42 | 15.68 | 36.15 | 12 | 289 |
+| us_iptv | 8 | 146317 | 4112 | 4510 | 4528 | 4528 | 18 | 0.00 | 20.54 | 15.40 | 35.96 | 12 | 414 |
+| us_iptv | 9 | 772247 | 4005 | 4455 | 4455 | 4455 | 0 | 0.00 | 20.48 | 16.13 | 36.63 | 13 | 401 |
+| us_iptv | 10 | 107474 | 3998 | 4412 | 4412 | 4412 | 0 | 0.00 | 20.50 | 15.40 | 35.91 | 14 | 382 |
+| usa_tv | 1 | 670488 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.08 | 15.04 | 35.14 | 29 | 1130 |
+| usa_tv | 2 | 116740 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.07 | 15.07 | 35.16 | 29 | 1126 |
+| usa_tv | 3 | 26226 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.07 | 15.06 | 35.17 | 27 | 1131 |
+| usa_tv | 4 | 777573 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.06 | 15.05 | 35.13 | 28 | 1285 |
+| usa_tv | 5 | 288390 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.07 | 15.04 | 35.13 | 29 | 1351 |
+| usa_tv | 6 | 256788 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.06 | 15.15 | 35.25 | 29 | 1203 |
+| usa_tv | 7 | 234054 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.07 | 15.05 | 35.14 | 27 | 1284 |
+| usa_tv | 8 | 146317 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.06 | 15.06 | 35.14 | 27 | 1240 |
+| usa_tv | 9 | 772247 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.06 | 15.05 | 35.13 | 29 | 1313 |
+| usa_tv | 10 | 107474 | 3561 | 3575 | 3575 | 3575 | 0 | 0.00 | 20.06 | 15.04 | 35.11 | 28 | 1181 |
+| youtube_gold | 1 | 670488 | 66919 | 67021 | 67444 | 67444 | 423 | 0.00 | 20.78 | 15.15 | 35.95 | 2 | 209 |
+| youtube_gold | 2 | 116740 | 66960 | 66964 | 67351 | 67351 | 387 | 0.00 | 20.21 | 15.18 | 35.42 | 1 | 204 |
+| youtube_gold | 3 | 26226 | 66909 | 67001 | 67280 | 67280 | 279 | 0.00 | 20.39 | 15.14 | 35.56 | 2 | 197 |
+| youtube_gold | 4 | 777573 | 66970 | 66984 | 67322 | 67322 | 338 | 0.00 | 20.21 | 15.16 | 35.39 | 1 | 204 |
+| youtube_gold | 5 | 288390 | 66889 | 66984 | 67278 | 67278 | 294 | 0.00 | 20.19 | 15.09 | 35.30 | 1 | 204 |
+| youtube_gold | 6 | 256788 | 66919 | 66993 | 67361 | 67361 | 368 | 0.00 | 20.25 | 15.15 | 35.41 | 2 | 197 |
+| youtube_gold | 7 | 234054 | 66988 | 67001 | 67314 | 67314 | 313 | 0.00 | 20.22 | 15.14 | 35.38 | 2 | 207 |
+| youtube_gold | 8 | 146317 | 66803 | 67021 | 67309 | 67309 | 288 | 0.00 | 20.20 | 15.17 | 35.40 | 2 | 209 |
+| youtube_gold | 9 | 772247 | 66825 | 67000 | 67339 | 67339 | 339 | 0.00 | 20.15 | 15.13 | 35.31 | 2 | 206 |
+| youtube_gold | 10 | 107474 | 66826 | 67001 | 67426 | 67426 | 425 | 0.00 | 20.26 | 15.10 | 35.38 | 2 | 190 |
+| youtube_premium | 1 | 670488 | 22641 | 23297 | 47224 | 47224 | 23927 | 0.00 | 20.21 | 15.12 | 35.34 | 4 | 862 |
+| youtube_premium | 2 | 116740 | 22601 | 23635 | 47433 | 47433 | 23798 | 0.00 | 20.14 | 15.11 | 35.26 | 5 | 891 |
+| youtube_premium | 3 | 26226 | 22340 | 23579 | 46673 | 46673 | 23094 | 0.00 | 20.29 | 15.12 | 35.43 | 5 | 838 |
+| youtube_premium | 4 | 777573 | 22352 | 23535 | 46407 | 46407 | 22872 | 0.00 | 20.29 | 15.10 | 35.41 | 5 | 835 |
+| youtube_premium | 5 | 288390 | 22380 | 23150 | 46643 | 46643 | 23493 | 0.00 | 20.15 | 15.12 | 35.29 | 4 | 850 |
+| youtube_premium | 6 | 256788 | 22443 | 23522 | 47093 | 47093 | 23571 | 0.00 | 20.17 | 15.13 | 35.32 | 5 | 913 |
+| youtube_premium | 7 | 234054 | 22560 | 23417 | 47759 | 47759 | 24342 | 0.00 | 20.16 | 15.12 | 35.30 | 4 | 860 |
+| youtube_premium | 8 | 146317 | 22602 | 23143 | 46649 | 46649 | 23506 | 0.00 | 20.13 | 15.12 | 35.26 | 4 | 858 |
+| youtube_premium | 9 | 772247 | 22421 | 23462 | 46452 | 46452 | 22990 | 0.00 | 20.14 | 15.12 | 35.29 | 4 | 833 |
+| youtube_premium | 10 | 107474 | 22347 | 23367 | 45943 | 45943 | 22576 | 0.00 | 20.16 | 15.17 | 35.35 | 4 | 626 |
 
 ## Si të Ekzekutohet Projekti
 
@@ -655,49 +716,25 @@ Për ekzekutim interaktiv përdoret:
 python main.py
 ```
 
-Në këtë mënyrë shfaqet lista e instancave nga `data/input`, pastaj zgjedhet algoritmi:
+Pas kësaj shfaqet lista e instancave nga `data/input`, pastaj zgjedhet algoritmi:
 
 ```text
 [1] Beam Search
 [2] Branch and Bound
 [3] Genetic Algorithm
-[4] Iterated Local Search
+[4] Branch and Bound + Genetic Algorithm + ILS
 ```
 
-Opsioni `1` ekzekuton Beam Search për instancën e zgjedhur dhe ruan rezultatin në:
+Opsioni `4` ekzekuton pipeline-in final `Branch and Bound -> Genetic Algorithm -> ILS` për instancën e zgjedhur. Për çdo instance bëhen `10` runs, ndërsa për çdo run ruhen score-t dhe koha e tri fazave në `summary.json`.
+
+Output-et ruhen në:
 
 ```text
-data/output/beam_search/<instance>
+data/output/bnb_ga_ils/<instance>
 ```
 
-Opsioni `2` ekzekuton Branch and Bound për instancën e zgjedhur dhe ruan rezultatin në:
-
-```text
-data/output/branch_and_bound/<instance>
-```
-
-Opsioni `3` ekzekuton algoritmin gjenetik. Pas zgjedhjes së këtij opsioni, zgjidhet edhe njëri nga tri eksperimentet:
-
-```text
-[1] Parametra te njejte per te gjitha instancat
-[2] Parametra te pershtatur sipas instances
-[3] Parametra te pershtatur + eksplorim me i forte
-```
-
-Për ekzekutimin automatik të tri eksperimenteve të algoritmit gjenetik përdoret:
+Për ekzekutim me parametrat finalë nga terminali mund të përdoret:
 
 ```powershell
-python main.py --ga-auto --ga-runs 10 --ga-time 300
-```
-
-Për ekzekutim direkt të eksperimentit final të algoritmit gjenetik:
-
-```powershell
-python ga_experiment.py --runs 10 --total-time 5100 --max-instance-time 300 --profile single --experiment-name exp_uniform_balanced --clean-output
-```
-
-Opsioni `4` ekzekuton Iterated Local Search mbi output-in më të mirë ekzistues nga `exp_uniform_balanced`. Ky opsion nuk e ekzekuton prapë algoritmin gjenetik, por lexon seed-in ekzistues dhe tenton ta përmirësojë. Output-et ruhen në:
-
-```text
-data/output/ga_and_ils/<instance>
+python main.py --pipeline-runs 10 --bnb-time 30 --pipeline-ga-time 240 --ils-time 60 --pipeline-ga-profile single
 ```
